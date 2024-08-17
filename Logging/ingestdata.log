@@ -1,0 +1,9 @@
+2024-08-17 06:29:10,737 - ingestdata - INFO - Starting data download from URL: https://drive.google.com/file/d/1Ywp1-NctzM7BllvMvMe9eQLRGVZgZqAd/view?usp=drive_link
+2024-08-17 06:29:10,738 - ingestdata - INFO - Starting download from https://drive.google.com/uc?/export=download&id=1Ywp1-NctzM7BllvMvMe9eQLRGVZgZqAd
+2024-08-17 06:29:14,841 - ingestdata - INFO - File size: 0.05 MB
+2024-08-17 06:29:14,842 - ingestdata - INFO - Download completed. File size: 0.05 MB
+2024-08-17 06:29:14,842 - ingestdata - INFO - Download completed. File saved to: /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip
+2024-08-17 06:29:14,843 - ingestdata - INFO - Starting extraction of ZIP file: /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip
+2024-08-17 06:29:14,843 - ingestdata - INFO - Starting extraction of /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-17 06:29:14,859 - ingestdata - INFO - Extraction completed successfully to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-17 06:29:14,860 - ingestdata - INFO - Extraction completed. Files extracted to: /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
