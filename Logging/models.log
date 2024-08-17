@@ -1,0 +1,48 @@
+2024-08-17 07:13:24,889 - BrestCancer - INFO - Logistic Regression model initialized.
+2024-08-17 07:15:46,589 - BrestCancer - INFO - Logistic Regression model initialized.
+2024-08-17 07:16:11,156 - BrestCancer - INFO - Logistic Regression model initialized.
+2024-08-17 07:17:15,121 - BrestCancer - INFO - Logistic Regression model initialized.
+2024-08-17 07:21:20,810 - BrestCancer - INFO - Logistic Regression model initialized.
+2024-08-17 07:21:20,892 - BrestCancer - INFO - Logistic Regression model trained and saved to logistic_regression_model.pkl.
+2024-08-17 07:27:26,359 - BrestCancer - INFO - Logistic Regression model initialized.
+2024-08-17 07:27:26,360 - BrestCancer - INFO - Support Vector Machine model initialized.
+2024-08-17 07:27:26,360 - BrestCancer - INFO - Decision Tree model initialized.
+2024-08-17 07:27:26,361 - BrestCancer - INFO - Random Forest model initialized.
+2024-08-17 07:27:26,361 - BrestCancer - INFO - K-Nearest Neighbors model initialized.
+2024-08-17 07:27:26,361 - BrestCancer - INFO - Naive Bayes model initialized.
+2024-08-17 07:27:26,362 - BrestCancer - INFO - Gradient Boosting model initialized.
+2024-08-17 07:27:26,362 - BrestCancer - INFO - Training Logistic Regression...
+2024-08-17 07:27:26,462 - BrestCancer - INFO - Logistic Regression model trained and saved to logistic_regression_model.pkl.
+2024-08-17 07:27:26,462 - BrestCancer - INFO - Training completed for Logistic Regression.
+2024-08-17 07:27:26,463 - BrestCancer - INFO - Making predictions with Logistic Regression...
+2024-08-17 07:27:26,465 - BrestCancer - INFO - Logistic Regression predictions: [1 0 2 1 1 0 1 2 1 1 2 0 0 0 0 1 2 1 1 2 0 2 0 2 2 2 2 2 0 0]
+2024-08-17 07:27:26,465 - BrestCancer - INFO - Training Support Vector Machine...
+2024-08-17 07:27:26,478 - BrestCancer - INFO - Support Vector Machine model trained and saved to svc_model.pkl.
+2024-08-17 07:27:26,479 - BrestCancer - INFO - Training completed for Support Vector Machine.
+2024-08-17 07:27:26,479 - BrestCancer - INFO - Making predictions with Support Vector Machine...
+2024-08-17 07:27:26,482 - BrestCancer - INFO - Support Vector Machine predictions: [1 0 2 1 1 0 1 2 1 1 2 0 0 0 0 1 2 1 1 2 0 2 0 2 2 2 2 2 0 0]
+2024-08-17 07:27:26,482 - BrestCancer - INFO - Training Decision Tree...
+2024-08-17 07:27:26,490 - BrestCancer - INFO - Decision Tree model trained and saved to decision_tree_model.pkl.
+2024-08-17 07:27:26,490 - BrestCancer - INFO - Training completed for Decision Tree.
+2024-08-17 07:27:26,490 - BrestCancer - INFO - Making predictions with Decision Tree...
+2024-08-17 07:27:26,493 - BrestCancer - INFO - Decision Tree predictions: [1 0 2 1 1 0 1 2 1 1 2 0 0 0 0 1 2 1 1 2 0 2 0 2 2 2 2 2 0 0]
+2024-08-17 07:27:26,493 - BrestCancer - INFO - Training Random Forest...
+2024-08-17 07:27:27,252 - BrestCancer - INFO - Random Forest model trained and saved to random_forest_model.pkl.
+2024-08-17 07:27:27,252 - BrestCancer - INFO - Training completed for Random Forest.
+2024-08-17 07:27:27,253 - BrestCancer - INFO - Making predictions with Random Forest...
+2024-08-17 07:27:27,300 - BrestCancer - INFO - Random Forest predictions: [1 0 2 1 1 0 1 2 1 1 2 0 0 0 0 1 2 1 1 2 0 2 0 2 2 2 2 2 0 0]
+2024-08-17 07:27:27,301 - BrestCancer - INFO - Training K-Nearest Neighbors...
+2024-08-17 07:27:27,332 - BrestCancer - INFO - K-Nearest Neighbors model trained and saved to knn_model.pkl.
+2024-08-17 07:27:27,333 - BrestCancer - INFO - Training completed for K-Nearest Neighbors.
+2024-08-17 07:27:27,333 - BrestCancer - INFO - Making predictions with K-Nearest Neighbors...
+2024-08-17 07:27:27,403 - BrestCancer - INFO - K-Nearest Neighbors predictions: [1 0 2 1 1 0 1 2 1 1 2 0 0 0 0 1 2 1 1 2 0 2 0 2 2 2 2 2 0 0]
+2024-08-17 07:27:27,414 - BrestCancer - INFO - Training Naive Bayes...
+2024-08-17 07:27:27,427 - BrestCancer - INFO - Naive Bayes model trained and saved to naive_bayes_model.pkl.
+2024-08-17 07:27:27,428 - BrestCancer - INFO - Training completed for Naive Bayes.
+2024-08-17 07:27:27,430 - BrestCancer - INFO - Making predictions with Naive Bayes...
+2024-08-17 07:27:27,433 - BrestCancer - INFO - Naive Bayes predictions: [1 0 2 1 1 0 1 2 1 1 2 0 0 0 0 1 2 1 1 2 0 2 0 2 2 2 2 2 0 0]
+2024-08-17 07:27:27,435 - BrestCancer - INFO - Training Gradient Boosting...
+2024-08-17 07:27:29,250 - BrestCancer - INFO - Gradient Boosting model trained and saved to gradient_boosting_model.pkl.
+2024-08-17 07:27:29,250 - BrestCancer - INFO - Training completed for Gradient Boosting.
+2024-08-17 07:27:29,251 - BrestCancer - INFO - Making predictions with Gradient Boosting...
+2024-08-17 07:27:29,260 - BrestCancer - INFO - Gradient Boosting predictions: [1 0 2 1 1 0 1 2 1 1 2 0 0 0 0 1 2 1 1 2 0 2 0 2 2 2 2 2 0 0]
