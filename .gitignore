@@ -1,0 +1,44 @@
+# Ignore environment directories
+/env/
+Brest/
+
+# Ignore files larger than 100 MB
+# This line excludes files larger than 100 MB, but it might not work with all Git versions or configurations.
+# Consider using a Git LFS (Large File Storage) solution for managing large files.
+*.tar
+*.gz
+*.zip
+*.7z
+*.rar
+*.iso
+*.img
+
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environment directories
+venv/
+ENV/
+env/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore IDE/editor-specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore sensitive files
+config.json
+*.env
+secrets/
+

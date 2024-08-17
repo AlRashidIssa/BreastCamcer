@@ -1,0 +1,37 @@
+# Machine Learning Libraries
+numpy
+pandas
+scikit-learn
+tensorflow
+torch
+xgboost
+lightgbm
+
+# Data Processing
+requests
+beautifulsoup4
+
+# Visualization
+matplotlib
+seaborn
+plotly
+
+# Model Management
+mlflow
+tfx
+
+# Deployment
+flask
+django
+gunicorn
+fastapi
+uvicorn
+
+# Utilities
+pytest
+pytest-cov
+jupyterlab
+
+# Optional
+pydantic
+joblib
