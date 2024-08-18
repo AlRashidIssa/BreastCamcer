@@ -7,3 +7,9 @@
 2024-08-17 06:29:14,843 - ingestdata - INFO - Starting extraction of /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
 2024-08-17 06:29:14,859 - ingestdata - INFO - Extraction completed successfully to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
 2024-08-17 06:29:14,860 - ingestdata - INFO - Extraction completed. Files extracted to: /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-18 05:01:11,683 - Test - ERROR - Error parsing the file
+2024-08-18 05:04:36,201 - src.BrestCancer.ingestdata - WARNING - The file empty_file.csv is empty.
+2024-08-18 05:04:36,206 - src.BrestCancer.ingestdata - ERROR - File Ingest Data, Invalid Path: invalid_path.csv
+2024-08-18 05:04:36,213 - src.BrestCancer.ingestdata - ERROR - Error parsing the file parser_error_file.csv.
+2024-08-18 05:04:36,223 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from valid_path.csv
+2024-08-18 05:04:36,231 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Unexpected error

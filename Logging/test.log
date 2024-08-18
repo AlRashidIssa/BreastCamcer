@@ -83,3 +83,4 @@
 2024-08-18 04:32:59,076 - Test - INFO - Random Forest model trained and saved successfully
 2024-08-18 04:32:59,079 - Test - INFO - Testing SVC Model Training
 2024-08-18 04:32:59,080 - Test - INFO - SVC model trained and saved successfully
+2024-08-18 05:01:11,683 - Test - ERROR - Error parsing the file
