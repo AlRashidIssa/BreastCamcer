@@ -84,3 +84,34 @@
 2024-08-18 04:32:59,079 - Test - INFO - Testing SVC Model Training
 2024-08-18 04:32:59,080 - Test - INFO - SVC model trained and saved successfully
 2024-08-18 05:01:11,683 - Test - ERROR - Error parsing the file
+2024-08-18 15:21:51,774 - Test - INFO - Setting up the test environment.
+2024-08-18 15:21:51,784 - Test - INFO - Test data written to mock_data.csv
+2024-08-18 15:21:51,785 - Test - INFO - Starting test for empty dataset.
+2024-08-18 15:21:51,790 - Test - CRITICAL - Critical error during empty dataset test: An unexpected error occurred: The file mock_data.csv is empty.
+2024-08-18 15:21:51,797 - Test - INFO - Cleaning up the test environment.
+2024-08-18 15:21:51,798 - Test - INFO - Test data file mock_data.csv removed.
+2024-08-18 15:21:51,799 - Test - INFO - Setting up the test environment.
+2024-08-18 15:21:51,802 - Test - INFO - Test data written to mock_data.csv
+2024-08-18 15:21:51,803 - Test - INFO - Starting test for file not found scenario.
+2024-08-18 15:21:51,804 - Test - INFO - File not found scenario test completed.
+2024-08-18 15:21:51,804 - Test - INFO - Cleaning up the test environment.
+2024-08-18 15:21:51,805 - Test - INFO - Test data file mock_data.csv removed.
+2024-08-18 15:21:51,806 - Test - INFO - Setting up the test environment.
+2024-08-18 15:21:51,810 - Test - INFO - Test data written to mock_data.csv
+2024-08-18 15:21:51,810 - Test - INFO - Starting test for file parsing error.
+2024-08-18 15:21:51,817 - Test - CRITICAL - Critical error during file parsing test: An unexpected error occurred: Target column 'target' not found in the dataset.
+2024-08-18 15:21:51,820 - Test - INFO - Cleaning up the test environment.
+2024-08-18 15:21:51,820 - Test - INFO - Test data file mock_data.csv removed.
+2024-08-18 15:21:51,821 - Test - INFO - Setting up the test environment.
+2024-08-18 15:21:51,824 - Test - INFO - Test data written to mock_data.csv
+2024-08-18 15:21:51,824 - Test - INFO - Starting test for successful data split.
+2024-08-18 15:21:51,843 - Test - DEBUG - Data split into X_train: (4, 2), X_test: (1, 2), y_train: 4, y_test: 1
+2024-08-18 15:21:51,844 - Test - INFO - Test for successful data split completed.
+2024-08-18 15:21:51,844 - Test - INFO - Cleaning up the test environment.
+2024-08-18 15:21:51,845 - Test - INFO - Test data file mock_data.csv removed.
+2024-08-18 15:21:51,846 - Test - INFO - Setting up the test environment.
+2024-08-18 15:21:51,850 - Test - INFO - Test data written to mock_data.csv
+2024-08-18 15:21:51,851 - Test - INFO - Starting test for target column not found.
+2024-08-18 15:21:51,860 - Test - CRITICAL - Critical error during target column not found test: An unexpected error occurred: Target column 'target' not found in the dataset.
+2024-08-18 15:21:51,862 - Test - INFO - Cleaning up the test environment.
+2024-08-18 15:21:51,863 - Test - INFO - Test data file mock_data.csv removed.

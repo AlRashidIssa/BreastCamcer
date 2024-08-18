@@ -13,3 +13,115 @@
 2024-08-18 05:04:36,213 - src.BrestCancer.ingestdata - ERROR - Error parsing the file parser_error_file.csv.
 2024-08-18 05:04:36,223 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from valid_path.csv
 2024-08-18 05:04:36,231 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Unexpected error
+2024-08-18 15:06:58,225 - src.BrestCancer.ingestdata - CRITICAL - File not found: invalid_file.csv
+2024-08-18 15:09:41,585 - src.BrestCancer.ingestdata - INFO - Reading data from empty_file.csv
+2024-08-18 15:09:41,595 - src.BrestCancer.ingestdata - WARNING - The dataset is empty.
+2024-08-18 15:09:41,595 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: The dataset is empty.
+2024-08-18 15:09:41,601 - src.BrestCancer.ingestdata - CRITICAL - File not found: invalid_file.csv
+2024-08-18 15:09:41,606 - src.BrestCancer.ingestdata - INFO - Reading data from invalid_file.csv
+2024-08-18 15:09:41,607 - src.BrestCancer.ingestdata - ERROR - Error parsing the file invalid_file.csv.
+2024-08-18 15:09:41,614 - src.BrestCancer.ingestdata - INFO - Reading data from valid_file.csv
+2024-08-18 15:09:41,617 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: [Errno 2] No such file or directory: 'valid_file.csv'
+2024-08-18 15:09:41,618 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: An unexpected error occurred: [Errno 2] No such file or directory: 'valid_file.csv'
+2024-08-18 15:09:41,634 - src.BrestCancer.ingestdata - INFO - Reading data from valid_file.csv
+2024-08-18 15:09:41,635 - src.BrestCancer.ingestdata - ERROR - Target column 'target' not found in the dataset.
+2024-08-18 15:09:41,635 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Target column 'target' not found in the dataset.
+2024-08-18 15:09:41,642 - src.BrestCancer.ingestdata - INFO - Reading data from unexpected_error_file.csv
+2024-08-18 15:09:41,643 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Unexpected error
+2024-08-18 15:17:42,445 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
+2024-08-18 15:17:42,446 - src.BrestCancer.ingestdata - WARNING - The file mock_data.csv is empty.
+2024-08-18 15:17:42,447 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: The file mock_data.csv is empty.
+2024-08-18 15:17:42,463 - src.BrestCancer.ingestdata - CRITICAL - File not found: non_existent_file.csv
+2024-08-18 15:17:42,470 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
+2024-08-18 15:17:42,475 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
+2024-08-18 15:17:42,476 - src.BrestCancer.ingestdata - ERROR - Target column 'target' not found in the dataset.
+2024-08-18 15:17:42,477 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Target column 'target' not found in the dataset.
+2024-08-18 15:17:42,484 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
+2024-08-18 15:17:42,488 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
+2024-08-18 15:17:42,507 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
+2024-08-18 15:17:42,512 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
+2024-08-18 15:17:42,512 - src.BrestCancer.ingestdata - ERROR - Target column 'target' not found in the dataset.
+2024-08-18 15:17:42,513 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Target column 'target' not found in the dataset.
+2024-08-18 15:19:27,804 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
+2024-08-18 15:19:27,806 - src.BrestCancer.ingestdata - WARNING - The file mock_data.csv is empty.
+2024-08-18 15:19:27,806 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: The file mock_data.csv is empty.
+2024-08-18 15:19:27,819 - src.BrestCancer.ingestdata - CRITICAL - File not found: non_existent_file.csv
+2024-08-18 15:19:27,826 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
+2024-08-18 15:19:27,832 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
+2024-08-18 15:19:27,833 - src.BrestCancer.ingestdata - ERROR - Target column 'target' not found in the dataset.
+2024-08-18 15:19:27,833 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Target column 'target' not found in the dataset.
+2024-08-18 15:19:27,842 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
+2024-08-18 15:19:27,848 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
+2024-08-18 15:19:27,871 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
+2024-08-18 15:19:27,876 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
+2024-08-18 15:19:27,876 - src.BrestCancer.ingestdata - ERROR - Target column 'target' not found in the dataset.
+2024-08-18 15:19:27,877 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Target column 'target' not found in the dataset.
+2024-08-18 15:21:51,774 - Test - INFO - Setting up the test environment.
+2024-08-18 15:21:51,784 - Test - INFO - Test data written to mock_data.csv
+2024-08-18 15:21:51,785 - Test - INFO - Starting test for empty dataset.
+2024-08-18 15:21:51,788 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
+2024-08-18 15:21:51,790 - src.BrestCancer.ingestdata - WARNING - The file mock_data.csv is empty.
+2024-08-18 15:21:51,790 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: The file mock_data.csv is empty.
+2024-08-18 15:21:51,790 - Test - CRITICAL - Critical error during empty dataset test: An unexpected error occurred: The file mock_data.csv is empty.
+2024-08-18 15:21:51,797 - Test - INFO - Cleaning up the test environment.
+2024-08-18 15:21:51,798 - Test - INFO - Test data file mock_data.csv removed.
+2024-08-18 15:21:51,799 - Test - INFO - Setting up the test environment.
+2024-08-18 15:21:51,802 - Test - INFO - Test data written to mock_data.csv
+2024-08-18 15:21:51,803 - Test - INFO - Starting test for file not found scenario.
+2024-08-18 15:21:51,803 - src.BrestCancer.ingestdata - CRITICAL - File not found: non_existent_file.csv
+2024-08-18 15:21:51,804 - Test - INFO - File not found scenario test completed.
+2024-08-18 15:21:51,804 - Test - INFO - Cleaning up the test environment.
+2024-08-18 15:21:51,805 - Test - INFO - Test data file mock_data.csv removed.
+2024-08-18 15:21:51,806 - Test - INFO - Setting up the test environment.
+2024-08-18 15:21:51,810 - Test - INFO - Test data written to mock_data.csv
+2024-08-18 15:21:51,810 - Test - INFO - Starting test for file parsing error.
+2024-08-18 15:21:51,811 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
+2024-08-18 15:21:51,816 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
+2024-08-18 15:21:51,817 - src.BrestCancer.ingestdata - ERROR - Target column 'target' not found in the dataset.
+2024-08-18 15:21:51,817 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Target column 'target' not found in the dataset.
+2024-08-18 15:21:51,817 - Test - CRITICAL - Critical error during file parsing test: An unexpected error occurred: Target column 'target' not found in the dataset.
+2024-08-18 15:21:51,820 - Test - INFO - Cleaning up the test environment.
+2024-08-18 15:21:51,820 - Test - INFO - Test data file mock_data.csv removed.
+2024-08-18 15:21:51,821 - Test - INFO - Setting up the test environment.
+2024-08-18 15:21:51,824 - Test - INFO - Test data written to mock_data.csv
+2024-08-18 15:21:51,824 - Test - INFO - Starting test for successful data split.
+2024-08-18 15:21:51,825 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
+2024-08-18 15:21:51,830 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
+2024-08-18 15:21:51,843 - Test - DEBUG - Data split into X_train: (4, 2), X_test: (1, 2), y_train: 4, y_test: 1
+2024-08-18 15:21:51,844 - Test - INFO - Test for successful data split completed.
+2024-08-18 15:21:51,844 - Test - INFO - Cleaning up the test environment.
+2024-08-18 15:21:51,845 - Test - INFO - Test data file mock_data.csv removed.
+2024-08-18 15:21:51,846 - Test - INFO - Setting up the test environment.
+2024-08-18 15:21:51,850 - Test - INFO - Test data written to mock_data.csv
+2024-08-18 15:21:51,851 - Test - INFO - Starting test for target column not found.
+2024-08-18 15:21:51,854 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
+2024-08-18 15:21:51,858 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
+2024-08-18 15:21:51,859 - src.BrestCancer.ingestdata - ERROR - Target column 'target' not found in the dataset.
+2024-08-18 15:21:51,859 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Target column 'target' not found in the dataset.
+2024-08-18 15:21:51,860 - Test - CRITICAL - Critical error during target column not found test: An unexpected error occurred: Target column 'target' not found in the dataset.
+2024-08-18 15:21:51,862 - Test - INFO - Cleaning up the test environment.
+2024-08-18 15:21:51,863 - Test - INFO - Test data file mock_data.csv removed.
+2024-08-18 15:32:39,185 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:32:39,195 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:32:39,200 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:32:39,205 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:32:39,209 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:33:40,760 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:33:40,769 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:33:40,774 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:33:40,781 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:33:40,786 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:34:58,886 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:34:58,896 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:34:58,901 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:34:58,907 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:34:58,912 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:37:07,893 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:37:07,903 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:37:07,908 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:37:07,914 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:37:07,918 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
+2024-08-18 15:58:22,115 - src.BrestCancer.ingestdata - INFO - Reading data from /home/alrashidissa/Desktop/BreastCancer/Test/breast-cancer.csv
+2024-08-18 15:58:22,186 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from /home/alrashidissa/Desktop/BreastCancer/Test/breast-cancer.csv
+2024-08-18 16:04:54,884 - src.BrestCancer.ingestdata - INFO - Reading data from /home/alrashidissa/Desktop/BreastCancer/Test/breast-cancer.csv
+2024-08-18 16:04:54,902 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from /home/alrashidissa/Desktop/BreastCancer/Test/breast-cancer.csv
