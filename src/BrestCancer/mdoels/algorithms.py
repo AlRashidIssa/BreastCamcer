@@ -1,3 +1,4 @@
+import sys
 import joblib # type: ignore
 import numpy as np
 import pandas as pd # type: ignore
@@ -10,7 +11,11 @@ from sklearn.tree import DecisionTreeClassifier  # type: ignore
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier # type: ignore
 from sklearn.neighbors import KNeighborsClassifier # type: ignore
 from sklearn.naive_bayes import GaussianNB # type: ignore
-from BrestCancer import models_info, models_warning, models_error, models_debug, models_critical
+
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
+
+
+from src.BrestCancer.mdoels import models_info, models_warning, models_error, models_debug, models_critical
 
 class IModel(ABC):
     """

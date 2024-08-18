@@ -1,0 +1,85 @@
+2024-08-18 04:12:02,273 - Test - INFO - Model correctly not found as expected.
+2024-08-18 04:12:02,275 - Test - INFO - Model load failed as expected due to an exception.
+2024-08-18 04:12:02,276 - Test - INFO - Model loaded successfully and is an instance of BaseEstimator.
+2024-08-18 04:12:02,280 - Test - INFO - Model loading failed as expected and raised ValueError.
+2024-08-18 04:12:02,285 - Test - INFO - Prediction failed as expected and raised an exception.
+2024-08-18 04:12:02,292 - Test - INFO - Prediction was successful and returned the expected results.
+2024-08-18 04:13:44,921 - Test - INFO - Model correctly not found as expected.
+2024-08-18 04:13:44,923 - Test - INFO - Model load failed as expected due to an exception.
+2024-08-18 04:13:44,924 - Test - INFO - Model loaded successfully and is an instance of BaseEstimator.
+2024-08-18 04:13:44,929 - Test - INFO - Model loading failed as expected and raised ValueError.
+2024-08-18 04:13:44,933 - Test - INFO - Prediction failed as expected and raised an exception.
+2024-08-18 04:13:44,937 - Test - INFO - Prediction was successful and returned the expected results.
+2024-08-18 04:14:41,662 - Test - INFO - Model correctly not found as expected.
+2024-08-18 04:14:41,664 - Test - INFO - Model load failed as expected due to an exception.
+2024-08-18 04:14:41,665 - Test - INFO - Model loaded successfully and is an instance of BaseEstimator.
+2024-08-18 04:14:41,670 - Test - INFO - Model loading failed as expected and raised ValueError.
+2024-08-18 04:14:41,675 - Test - INFO - Prediction failed as expected and raised an exception.
+2024-08-18 04:14:41,680 - Test - INFO - Prediction was successful and returned the expected results.
+2024-08-18 04:15:04,815 - Test - INFO - Model correctly not found as expected.
+2024-08-18 04:15:04,817 - Test - INFO - Model load failed as expected due to an exception.
+2024-08-18 04:15:04,819 - Test - INFO - Model loaded successfully and is an instance of BaseEstimator.
+2024-08-18 04:15:04,822 - Test - INFO - Model loading failed as expected and raised ValueError.
+2024-08-18 04:15:04,827 - Test - INFO - Prediction failed as expected and raised an exception.
+2024-08-18 04:15:04,832 - Test - INFO - Prediction was successful and returned the expected results.
+2024-08-18 04:16:29,682 - Test - INFO - Model correctly not found as expected.
+2024-08-18 04:16:29,684 - Test - INFO - Model load failed as expected due to an exception.
+2024-08-18 04:16:29,686 - Test - INFO - Model loaded successfully and is an instance of BaseEstimator.
+2024-08-18 04:16:29,693 - Test - INFO - Model loading failed as expected and raised ValueError.
+2024-08-18 04:16:29,698 - Test - INFO - Prediction failed as expected and raised an exception.
+2024-08-18 04:16:29,704 - Test - INFO - Prediction was successful and returned the expected results.
+2024-08-18 04:19:34,607 - Test - INFO - Model correctly not found as expected.
+2024-08-18 04:19:34,608 - Test - INFO - Model load failed as expected due to an exception.
+2024-08-18 04:19:34,610 - Test - INFO - Model loaded successfully and is an instance of BaseEstimator.
+2024-08-18 04:19:34,614 - Test - INFO - Model loading failed as expected and raised ValueError.
+2024-08-18 04:19:34,619 - Test - INFO - Prediction failed as expected and raised an exception.
+2024-08-18 04:19:34,624 - Test - INFO - Prediction was successful and returned the expected results.
+2024-08-18 04:20:14,180 - Test - INFO - Model correctly not found as expected.
+2024-08-18 04:20:14,183 - Test - INFO - Model load failed as expected due to an exception.
+2024-08-18 04:20:14,185 - Test - INFO - Model loaded successfully and is an instance of BaseEstimator.
+2024-08-18 04:20:14,192 - Test - INFO - Model loading failed as expected and raised ValueError.
+2024-08-18 04:20:14,199 - Test - INFO - Prediction failed as expected and raised an exception.
+2024-08-18 04:20:14,206 - Test - INFO - Prediction was successful and returned the expected results.
+2024-08-18 04:21:17,306 - Test - INFO - Model correctly not found as expected.
+2024-08-18 04:21:17,308 - Test - INFO - Model load failed as expected due to an exception.
+2024-08-18 04:21:17,309 - Test - INFO - Model loaded successfully and is an instance of BaseEstimator.
+2024-08-18 04:21:17,314 - Test - INFO - Model loading failed as expected and raised ValueError.
+2024-08-18 04:21:17,318 - Test - INFO - Prediction failed as expected and raised an exception.
+2024-08-18 04:21:17,323 - Test - INFO - Prediction was successful and returned the expected results.
+2024-08-18 04:27:06,449 - Test - DEBUG - Starting test: test_model_file_not_found
+2024-08-18 04:27:06,451 - Test - INFO - Model correctly not found as expected.
+2024-08-18 04:27:06,452 - Test - DEBUG - Finished test: test_model_file_not_found
+2024-08-18 04:27:06,453 - Test - DEBUG - Starting test: test_model_load_exception
+2024-08-18 04:27:06,454 - Test - INFO - Model load failed as expected due to an exception.
+2024-08-18 04:27:06,454 - Test - DEBUG - Finished test: test_model_load_exception
+2024-08-18 04:27:06,455 - Test - DEBUG - Starting test: test_successful_model_load
+2024-08-18 04:27:06,456 - Test - INFO - Model loaded successfully and is an instance of BaseEstimator.
+2024-08-18 04:27:06,456 - Test - DEBUG - Finished test: test_successful_model_load
+2024-08-18 04:27:06,457 - Test - DEBUG - Setting up TestModelPredictor
+2024-08-18 04:27:06,460 - Test - DEBUG - Starting test: test_model_not_loaded
+2024-08-18 04:27:06,462 - Test - INFO - Model loading failed as expected and raised ValueError.
+2024-08-18 04:27:06,463 - Test - DEBUG - Finished test: test_model_not_loaded
+2024-08-18 04:27:06,463 - Test - DEBUG - Setting up TestModelPredictor
+2024-08-18 04:27:06,465 - Test - DEBUG - Starting test: test_prediction_failure
+2024-08-18 04:27:06,468 - Test - INFO - Prediction failed as expected and raised an exception.
+2024-08-18 04:27:06,468 - Test - DEBUG - Finished test: test_prediction_failure
+2024-08-18 04:27:06,469 - Test - DEBUG - Setting up TestModelPredictor
+2024-08-18 04:27:06,471 - Test - DEBUG - Starting test: test_successful_prediction
+2024-08-18 04:27:06,474 - Test - INFO - Prediction was successful and returned the expected results.
+2024-08-18 04:27:06,474 - Test - DEBUG - Finished test: test_successful_prediction
+2024-08-18 04:32:59,051 - Test - INFO - Testing Decision Tree Model Training
+2024-08-18 04:32:59,052 - Test - INFO - Decision Tree model trained and saved successfully
+2024-08-18 04:32:59,055 - Test - INFO - Testing Gradient Boosting Model Training
+2024-08-18 04:32:59,055 - Test - INFO - Gradient Boosting model trained and saved successfully
+2024-08-18 04:32:59,059 - Test - INFO - Testing K-Nearest Neighbors Model Training
+2024-08-18 04:32:59,059 - Test - INFO - K-Nearest Neighbors model trained and saved successfully
+2024-08-18 04:32:59,063 - Test - INFO - Testing Logistic Regression Model Training
+2024-08-18 04:32:59,064 - Test - INFO - Logistic Regression model trained and saved successfully
+2024-08-18 04:32:59,068 - Test - ERROR - Error occurred during Logistic Regression model training
+2024-08-18 04:32:59,068 - Test - CRITICAL - Logistic Regression training raised an exception as expected
+2024-08-18 04:32:59,072 - Test - INFO - Testing Naive Bayes Model Training
+2024-08-18 04:32:59,072 - Test - INFO - Naive Bayes model trained and saved successfully
+2024-08-18 04:32:59,076 - Test - INFO - Testing Random Forest Model Training
+2024-08-18 04:32:59,076 - Test - INFO - Random Forest model trained and saved successfully
+2024-08-18 04:32:59,079 - Test - INFO - Testing SVC Model Training
+2024-08-18 04:32:59,080 - Test - INFO - SVC model trained and saved successfully
