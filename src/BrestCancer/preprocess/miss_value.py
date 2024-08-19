@@ -24,7 +24,10 @@ class IMissingValueHandler(ABC):
     """
 
     @abstractmethod
-    def call(self, df: pd.DataFrame, columns: Union[List[str], None] = None, method: str = 'mean') -> pd.DataFrame:
+    def call(self, 
+             df: pd.DataFrame, 
+             columns: Union[List[str], None] = None, 
+             method: str = 'mean') -> pd.DataFrame:
         """
         Abstract method to handle missing values in the provided DataFrame.
         
