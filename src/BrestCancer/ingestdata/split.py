@@ -6,10 +6,10 @@ from abc import ABC, abstractmethod
 from typing import Tuple, List, Any
 from sklearn.model_selection import train_test_split
 
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
 
-from src.BrestCancer.ingestdata.ingesting import Ingest
-from src.BrestCancer.ingestdata import ingest_critical, ingest_debug, ingest_error, ingest_info, ingest_warning
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
+from BrestCancer import BrestCancer_critical, BrestCancer_debug, BrestCancer_error, BrestCancer_warning
+
 
 class ISplit(ABC):
     """
@@ -99,13 +99,13 @@ class Split(ISplit):
         """
         try:
             if df.empty:
-                ingest_warning("The dataset is empty.")
+                BrestCancer_warning("The dataset is empty.")
                 raise ValueError("The dataset is empty.")
             
             # Check if the target column exists in the DataFrame
             if target not in df.columns:
                 error_message = f"Target column '{target}' not found in the dataset."
-                ingest_error(error_message)
+                BrestCancer_error(error_message)
                 raise ValueError(error_message)
             
             # Split the data into features and target
@@ -115,24 +115,24 @@ class Split(ISplit):
             # Check if the DataFrame is empty
             if X.empty or y.empty:
                 error_message = "The dataset is empty."
-                ingest_warning(error_message)
+                BrestCancer_warning(error_message)
                 raise ValueError(error_message)
             
             # Split the data into training and testing sets
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
             
-            ingest_debug(f"Data split into training and testing sets.")
+            BrestCancer_debug(f"Data split into training and testing sets.")
             return [X_train, X_test, y_train, y_test]
 
         except pd.errors.EmptyDataError:
             error_message = "The Data Frame is empty."
-            ingest_warning(error_message)
+            BrestCancer_warning(error_message)
             raise ValueError(error_message)
         except pd.errors.ParserError:
             error_message = f"Error parsing the Data Frame."
-            ingest_error(error_message)
+            BrestCancer_error(error_message)
             raise ValueError(error_message)
         except Exception as e:
             critical_message = f"An unexpected error occurred: {str(e)}"
-            ingest_critical(critical_message)
+            BrestCancer_critical(critical_message)
             raise RuntimeError(critical_message)

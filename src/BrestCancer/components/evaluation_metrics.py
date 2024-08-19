@@ -6,8 +6,8 @@ from sklearn.metrics import (accuracy_score, precision_score, recall_score,
                              f1_score, roc_auc_score, confusion_matrix,
                              matthews_corrcoef, log_loss)
 
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
-from src import BrestCancer_critical, BrestCancer_error, BrestCancer_info, BrestCancer_warning
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
+from BrestCancer import BrestCancer_critical, BrestCancer_error, BrestCancer_info
 
 class IMetricsEvaluator(ABC):
     """
@@ -88,34 +88,3 @@ class MetricsEvaluator(IMetricsEvaluator):
             raise
 
         return metrics
-    
-
-import pandas as pd
-from sklearn.datasets import make_classification
-
-# Generate a sample dataset
-X, y = make_classification(n_samples=100, n_features=20, random_state=42)
-y_true = pd.Series(y)  # True labels
-
-# Simulate predictions (for demonstration purposes)
-y_pred = pd.Series(y)  # In a real scenario, these would be the predictions from your model
-
-# Instantiate the MetricsEvaluator
-evaluator = MetricsEvaluator()
-
-try:
-    # Calculate metrics
-    metrics = evaluator.call(y_true, y_pred)
-    
-    # Print the metrics
-    print("Metrics calculated:")
-    for key, value in metrics.items():
-        print(f"{key}: {value}")
-
-except ValueError as ve:
-    print(f"ValueError: {ve}")
-except TypeError as te:
-    print(f"TypeError: {te}")
-except Exception as e:
-    print(f"Unexpected error: {e}")
-

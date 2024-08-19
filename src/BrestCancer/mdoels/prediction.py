@@ -7,7 +7,7 @@ import joblib  # Assuming joblib is used for loading the model
 
 import sys
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
-from BrestCancer.mdoels import models_info, models_warning, models_error, models_debug, models_critical
+from BrestCancer import BrestCancer_critical, BrestCancer_error,BrestCancer_debug, BrestCancer_info, BrestCancer_warning
 
 class IPredict(ABC):
     """
@@ -41,21 +41,21 @@ class Predict(IPredict):
         :raises: Exception if the model could not be loaded or predictions fail.
         """
         try:
-            models_info(f"Starting prediction process with model.")
+            BrestCancer_info(f"Starting prediction process with model.")
             if model is None:
                 models_critical("Model could not be loaded; raising ValueError.")
                 raise ValueError("Model could not be loaded.")
 
-            models_debug("Model loaded successfully. Attempting to make predictions.")
+            BrestCancer_debug("Model loaded successfully. Attempting to make predictions.")
             predictions = model.predict(X)  # type: ignore
-            models_info("Model made predictions successfully.")
-            models_debug(f"Predictions: {predictions}")
+            BrestCancer_info("Model made predictions successfully.")
+            BrestCancer_debug(f"Predictions: {predictions}")
             return predictions
         except ValueError as ve:
-            models_warning(f"Prediction failed due to model loading issues: {ve}")
+            BrestCancer_warning(f"Prediction failed due to model loading issues: {ve}")
             raise
         except Exception as e:
-            models_error(f"Error during prediction: {e}")
+            BrestCancer_error(f"Error during prediction: {e}")
             raise
 
 class ILoadModel(ABC):
@@ -87,13 +87,13 @@ class LoadModel(ILoadModel):
         :return: Loaded model if successful, None otherwise.
         """
         try:
-            models_debug(f"Attempting to load model from {path_model}.")
+            BrestCancer_debug(f"Attempting to load model from {path_model}.")
             model = joblib.load(path_model)
-            models_info(f"Model loaded successfully from {path_model}.")
+            BrestCancer_info(f"Model loaded successfully from {path_model}.")
             return model
         except FileNotFoundError:
-            models_error(f"Model file not found at {path_model}.")
+            BrestCancer_error(f"Model file not found at {path_model}.")
         except Exception as e:
-            models_error(f"An error occurred while loading the model: {e}")
+            BrestCancer_error(f"An error occurred while loading the model: {e}")
         return None
 

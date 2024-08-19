@@ -4,10 +4,8 @@ import zipfile
 import os
 import sys
 
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
-
-from src.BrestCancer.ingestdata import ingest_critical, ingest_debug, ingest_error, ingest_info, ingest_warning
-
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
+from BrestCancer import BrestCancer_critical, BrestCancer_error, BrestCancer_info, BrestCancer_warning
 
 class IUnzip(ABC):
     """
@@ -38,30 +36,30 @@ class Unzip(IUnzip):
         try:
             # Ensure the ZIP file exists
             if not os.path.exists(zip_path):
-                ingest_error(f"The ZIP file does not exist or is not a file: {zip_path}")
+                BrestCancer_error(f"The ZIP file does not exist or is not a file: {zip_path}")
                 raise FileNotFoundError(f"ZIP file does not exist or is not a file: {zip_path}")
 
             # Ensure the output directory exists
             if not os.path.exists(extract_to):
-                ingest_warning(f"Extraction directory does not exist. Creating: {extract_to}")
+                BrestCancer_warning(f"Extraction directory does not exist. Creating: {extract_to}")
 
             # Extract the ZIP file
-            ingest_info(f"Starting extraction of {zip_path} to {extract_to}")
+            BrestCancer_info(f"Starting extraction of {zip_path} to {extract_to}")
             with zipfile.ZipFile(zip_path, 'r') as zip_ref:
                 zip_ref.extractall(extract_to)
 
-            ingest_info(f"Extraction completed successfully to {extract_to}")
+            BrestCancer_info(f"Extraction completed successfully to {extract_to}")
 
         except zipfile.BadZipFile as bad_zip_error:
-            ingest_critical(f"BadZipFile error: The file is not a ZIP file or it is corrupted: {zip_path}")
+            BrestCancer_critical(f"BadZipFile error: The file is not a ZIP file or it is corrupted: {zip_path}")
             raise
 
         except FileNotFoundError as fnf_error:
-            ingest_error(f"FileNotFoundError: {fnf_error}")
+            BrestCancer_error(f"FileNotFoundError: {fnf_error}")
             raise
 
         except Exception as e:
-            ingest_critical(f"An unexpected error occurred during extraction: {e}")
+            BrestCancer_critical(f"An unexpected error occurred during extraction: {e}")
             raise
 
 

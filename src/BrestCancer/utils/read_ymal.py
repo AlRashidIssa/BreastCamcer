@@ -4,8 +4,9 @@ import sys
 from abc import ABC, abstractmethod
 from typing import Dict, Any
 
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
-from src import BrestCancer_error, BrestCancer_info
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
+from BrestCancer import BrestCancer_error, BrestCancer_info, BrestCancer_warning
+
 
 class IReadYaml(ABC):
     """

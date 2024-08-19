@@ -15,8 +15,8 @@ import pandas as pd
 import os
 
 import sys
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
-from src.BrestCancer.preprocess import preprocess_critical, preprocess_debug, preprocess_info, preprocess_warning, preprocess_error
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
+from BrestCancer import BrestCancer_critical, BrestCancer_error, BrestCancer_info, BrestCancer_warning
 
 class ISelction(ABC):
     """
@@ -65,24 +65,24 @@ class Selction(ISelction):
             # Check if all specified columns exist in the DataFrame
             missing_columns = [col for col in drop_columns if col not in df.columns]
             if missing_columns:
-                preprocess_critical(f"Columns not found in the DataFrame: {missing_columns}")
+                BrestCancer_critical(f"Columns not found in the DataFrame: {missing_columns}")
                 raise NameError(f"The following columns were not found in the DataFrame: {missing_columns}")
             
             # Drop the specified columns
             df = df.drop(columns=drop_columns)
-            preprocess_info(f"Columns {drop_columns} dropped successfully")
+            BrestCancer_info(f"Columns {drop_columns} dropped successfully")
             
             return df
         
         except FileNotFoundError as fnf_error:
-            preprocess_error(f"File not found error: {fnf_error}")
+            BrestCancer_error(f"File not found error: {fnf_error}")
             raise
         except NameError as name_error:
-            preprocess_error(f"Column name error: {name_error}")
+            BrestCancer_error(f"Column name error: {name_error}")
             raise
         except pd.errors.EmptyDataError as empty_data_error:
-            preprocess_error(f"Empty data error: {empty_data_error}")
+            BrestCancer_error(f"Empty data error: {empty_data_error}")
             raise
         except Exception as e:
-            preprocess_error(f"An unexpected error occurred: {e}")
+            BrestCancer_error(f"An unexpected error occurred: {e}")
             raise

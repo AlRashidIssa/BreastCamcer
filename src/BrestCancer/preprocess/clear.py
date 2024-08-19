@@ -3,10 +3,10 @@ import sys
 from abc import ABC, abstractmethod
 from typing import List, Union
 
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
+from BrestCancer import BrestCancer_critical, BrestCancer_error, BrestCancer_info, BrestCancer_warning
 
-from src.BrestCancer.preprocess import preprocess_info, preprocess_warning, preprocess_debug, preprocess_error
-from src.BrestCancer.preprocess.miss_value import FillMissingValues
+from BrestCancer.preprocess.miss_value import FillMissingValues
 
 class IClean(ABC):
     """
@@ -88,7 +88,7 @@ class Clean(IClean):
                 initial_row_count = df.shape[0]
                 df.drop_duplicates(inplace=True)
                 final_row_count = df.shape[0]
-                preprocess_info(f"Removed {initial_row_count - final_row_count} duplicate rows")
+                BrestCancer_info(f"Removed {initial_row_count - final_row_count} duplicate rows")
 
             # Step 2: Handle missing values using the provided strategy
             if handl_missing:
@@ -108,11 +108,11 @@ class Clean(IClean):
                     df = df[(df[column] >= lower_bound) & (df[column] <= upper_bound)]
                 
                 final_row_count = df.shape[0]
-                preprocess_info(f"Removed {initial_row_count - final_row_count} outlier rows using IQR method")
+                BrestCancer_info(f"Removed {initial_row_count - final_row_count} outlier rows using IQR method")
             
-            preprocess_info("Data cleaning process completed successfully.")
+            BrestCancer_info("Data cleaning process completed successfully.")
             return df
 
         except Exception as e:
-            preprocess_error(f"An error occurred during data cleaning: {e}")
+            BrestCancer_error(f"An error occurred during data cleaning: {e}")
             raise

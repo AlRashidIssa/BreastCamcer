@@ -4,7 +4,7 @@ from pathlib import Path
 from abc import ABC, abstractmethod
 
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
-from BrestCancer.ingestdata import ingest_critical, ingest_info
+from BrestCancer import BrestCancer_critical, BrestCancer_info
 from BrestCancer.utils.size import Size
 
 
@@ -47,13 +47,14 @@ class Download(IDownload):
             file_path = output_path / f"{name_dataset}.zip" # type: ignore
 
             # Download the file using gdown
-            ingest_info(f"Starting download from {download_url}")
+            BrestCancer_info(f"Starting download from {download_url}")
             gdown.download(download_url, str(file_path), quiet=False)
 
             # Check the size of the downloaded file
             file_size = Size().call(file_path)
-            ingest_info(f"Download completed. File size: {file_size}")
+            BrestCancer_info(f"Download completed. File size: {file_size}")
 
         except Exception as e:
-            ingest_critical(f"An error occurred during the download: {e}")
+            BrestCancer_critical(f"An error occurred during the download: {e}")
             raise
+ 

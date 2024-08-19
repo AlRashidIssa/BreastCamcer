@@ -11,8 +11,8 @@ from abc import ABC, abstractmethod
 from typing import Union, List
 
 import sys
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
-from src.BrestCancer.preprocess import preprocess_debug, preprocess_info, preprocess_warning, preprocess_error
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
+from BrestCancer import BrestCancer_debug, BrestCancer_critical, BrestCancer_error, BrestCancer_info, BrestCancer_warning
 
 
 class IMissingValueHandler(ABC):
@@ -82,12 +82,12 @@ class FillMissingValues(IMissingValueHandler):
                 columns = df.columns[df.isna().any()].tolist()
 
             for column in columns:
-                preprocess_info(f"Handling missing values for column: {column}")
+                BrestCancer_info(f"Handling missing values for column: {column}")
 
                 if self.fill_value is not None:
                     # Fill missing values with the specified value
                     df[column].fillna(self.fill_value, inplace=True)
-                    preprocess_debug(f"Filled missing values in column '{column}' with '{self.fill_value}'")
+                    BrestCancer_debug(f"Filled missing values in column '{column}' with '{self.fill_value}'")
                 else:
                     # Fill missing values based on the method
                     if method == 'mean':
@@ -97,23 +97,23 @@ class FillMissingValues(IMissingValueHandler):
                     elif method == 'mode':
                         fill_value = df[column].mode()[0]
                     else:
-                        preprocess_error(f"Unsupported fill method: {method}")
+                        BrestCancer_error(f"Unsupported fill method: {method}")
                         raise ValueError(f"Unsupported fill method: {method}")
 
                     df[column].fillna(fill_value, inplace=True)
-                    preprocess_debug(f"Filled missing values in column '{column}' using '{method}' method with value '{fill_value}'")
+                    BrestCancer_debug(f"Filled missing values in column '{column}' using '{method}' method with value '{fill_value}'")
 
             return df
 
         except ValueError as ve:
-            preprocess_error(f"ValueError occurred: {ve}")
+            BrestCancer_error(f"ValueError occurred: {ve}")
             raise
         except KeyError as ke:
-            preprocess_error(f"KeyError occurred: {ke}")
+            BrestCancer_error(f"KeyError occurred: {ke}")
             raise
         except TypeError as te:
-            preprocess_error(f"TypeError occurred: {te}")
+            BrestCancer_error(f"TypeError occurred: {te}")
             raise
         except Exception as e:
-            preprocess_error(f"An unexpected error occurred: {e}")
+            BrestCancer_error(f"An unexpected error occurred: {e}")
             raise

@@ -1,10 +1,12 @@
+import sys
 import pandas as pd
 from abc import ABC, abstractmethod
 from typing import List, Union
 from sklearn.preprocessing import StandardScaler as SklearnStandardScaler
 from sklearn.preprocessing import MinMaxScaler as SklearnMinMaxScaler
 
-from preprocess import preprocess_info, preprocess_debug, preprocess_warning, preprocess_error
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
+from BrestCancer import BrestCancer_debug, BrestCancer_critical, BrestCancer_error, BrestCancer_info, BrestCancer_warning
 
 class IScaler(ABC):
     """
@@ -61,30 +63,30 @@ class Scaler(IScaler):
         try:
             # Check if the DataFrame is empty
             if df.empty:
-                preprocess_warning("The DataFrame is empty.")
+                BrestCancer_warning("The DataFrame is empty.")
                 return df
 
             # Check if all specified columns are in the DataFrame
             missing_cols = [col for col in columns if col not in df.columns]
             if missing_cols:
-                preprocess_error(f"Columns not found in DataFrame: {missing_cols}")
+                BrestCancer_error(f"Columns not found in DataFrame: {missing_cols}")
                 raise ValueError(f"Columns not found: {', '.join(missing_cols)}")
 
             # Apply scaling method
             if method == "standard":
                 scaler = SklearnStandardScaler()
                 df[columns] = scaler.fit_transform(df[columns])
-                preprocess_info("Standard scaling applied.")
+                BrestCancer_info("Standard scaling applied.")
             elif method == "minmax":
                 scaler = SklearnMinMaxScaler()
                 df[columns] = scaler.fit_transform(df[columns])
-                preprocess_info("Min-max scaling applied.")
+                BrestCancer_info("Min-max scaling applied.")
             else:
-                preprocess_error(f"Unknown scaling method: {method}")
+                BrestCancer_error(f"Unknown scaling method: {method}")
                 raise ValueError(f"Unknown method: {method}")
 
             return df
         
         except Exception as e:
-            preprocess_error(f"An error occurred: {str(e)}")
+            BrestCancer_error(f"An error occurred: {str(e)}")
             raise

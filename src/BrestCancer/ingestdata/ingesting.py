@@ -4,8 +4,8 @@ import pandas as pd
 import os
 from typing import Dict, Tuple, Optional, Any
 
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
-from src.BrestCancer.ingestdata import ingest_critical, ingest_debug, ingest_error, ingest_info, ingest_warning
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
+from BrestCancer import BrestCancer_critical, BrestCancer_debug, BrestCancer_error, BrestCancer_info, BrestCancer_warning
 
 class IIngest(ABC):
     """
@@ -80,21 +80,21 @@ class Ingest(IIngest):
         """
         # Check if the file exists
         if not os.path.exists(path_csv):
-            ingest_error(f"File Ingest Data, Invalid Path: {path_csv}")
+            BrestCancer_error(f"File Ingest Data, Invalid Path: {path_csv}")
             raise FileNotFoundError(f"File not found: {path_csv}")
 
         try:
-            ingest_debug(f"Starting Ingest Data From {path_csv}")
+            BrestCancer_debug(f"Starting Ingest Data From {path_csv}")
             # Read the CSV file into a DataFrame
             df = pd.read_csv(path_csv)
-            ingest_info(f"Successfully ingested data from {path_csv}")
+            BrestCancer_info(f"Successfully ingested data from {path_csv}")
             return df
         except pd.errors.EmptyDataError:
-            ingest_warning(f"The file {path_csv} is empty.")
+            BrestCancer_warning(f"The file {path_csv} is empty.")
             raise ValueError(f"The file {path_csv} is empty.")
         except pd.errors.ParserError:
-            ingest_error(f"Error parsing the file {path_csv}.")
+            BrestCancer_error(f"Error parsing the file {path_csv}.")
             raise ValueError(f"Error parsing the file {path_csv}.")
         except Exception as e:
-            ingest_critical(f"An unexpected error occurred: {str(e)}")
+            BrestCancer_critical(f"An unexpected error occurred: {str(e)}")
             raise RuntimeError(f"An unexpected error occurred: {str(e)}")

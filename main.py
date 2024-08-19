@@ -1,6 +1,5 @@
+import pandas as pd
 import sys
-import os
-import logging
 
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
 
@@ -16,7 +15,8 @@ from src.BrestCancer.entity.config import CONFIG
 from src.BrestCancer.components.evaluation_metrics import MetricsEvaluator
 from src.BrestCancer.mdoels.prediction import Predict
 
-from src import BrestCancer_info, BrestCancer_critical
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
+from BrestCancer import  BrestCancer_critical, BrestCancer_info
 
 def __main__() -> None:
     try:
@@ -74,7 +74,8 @@ def __main__() -> None:
         
         # Predict
         BrestCancer_info("Making predictions.")
-        y_pred = Predict().call(model=model, X=X_test)
+        y_pred = pd.Series(Predict().call(model=model, X=X_test))
+        y_test = pd.Series(y_test)
         metrics = MetricsEvaluator().call(y_true=y_test, y_pred=y_pred)
         BrestCancer_info("Predictions completed.")
         
