@@ -12,8 +12,7 @@ class CONFIG:
     Attributes:
         dataset_config (Dict[str, Any]): Configuration related to the dataset, including paths and target column.
         model_config (Dict[str, Any]): Configuration related to the model, including paths to pre-trained models.
-        preprocess_config (Dict[str, Any]): Configuration related to data preprocessing, such as columns to drop,
-                                            scaling methods, and encodings.
+        preprocess_config (Dict[str, Any]): Configuration related to data preprocessing, such as columns to drop,scaling methods, and encodings.
         url (str): The URL of the dataset to be downloaded.
         zip_path (str): The path where the downloaded ZIP file will be saved.
         extract_to (str): The path where the dataset will be extracted.
