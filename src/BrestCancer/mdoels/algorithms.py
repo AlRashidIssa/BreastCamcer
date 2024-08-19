@@ -24,13 +24,13 @@ class IModel(ABC):
     Defines the contract for training using a machine learning model.
     """
     @abstractmethod
-    def train(self, X: np.ndarray, y: pd.Series, model_path: str) -> BaseEstimator:
+    def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
         """
         Train the model with the provided data and save it.
 
         :param X: Training features.
         :param y: Target labels.
-        :param model_path: Path where the model will be saved.
+        :param model_path_s: Path where the model will be saved.
         :return: The trained model.
         """
         pass
@@ -44,19 +44,19 @@ class LogisticRegressionModel(IModel):
             models_critical(f"Error initializing Logistic Regression model: {e}")
             raise
 
-    def train(self, X: np.ndarray, y: pd.Series, model_path: str) -> BaseEstimator:
+    def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
         """
         Train the Logistic Regression model and save it.
 
         :param X: Training features.
         :param y: Target labels.
-        :param model_path: Path where the model will be saved.
+        :param model_path_s: Path where the model will be saved.
         :return: The trained Logistic Regression model.
         """
         try:
             self.model.fit(X, y)
-            joblib.dump(self.model, model_path)
-            models_info(f"Logistic Regression model trained and saved to {model_path}.")
+            joblib.dump(self.model, model_path_s)
+            models_info(f"Logistic Regression model trained and saved to {model_path_s}.")
             return self.model
         except Exception as e:
             models_error(f"Error training Logistic Regression model: {e}")
@@ -71,19 +71,19 @@ class SVCModel(IModel):
             models_critical(f"Error initializing Support Vector Machine model: {e}")
             raise
 
-    def train(self, X: np.ndarray, y: pd.Series, model_path: str) -> BaseEstimator:
+    def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
         """
         Train the Support Vector Machine model and save it.
 
         :param X: Training features.
         :param y: Target labels.
-        :param model_path: Path where the model will be saved.
+        :param model_path_s: Path where the model will be saved.
         :return: The trained Support Vector Machine model.
         """
         try:
             self.model.fit(X, y)
-            joblib.dump(self.model, model_path)
-            models_info(f"Support Vector Machine model trained and saved to {model_path}.")
+            joblib.dump(self.model, model_path_s)
+            models_info(f"Support Vector Machine model trained and saved to {model_path_s}.")
             return self.model
         except Exception as e:
             models_error(f"Error training Support Vector Machine model: {e}")
@@ -98,19 +98,19 @@ class DecisionTreeModel(IModel):
             models_critical(f"Error initializing Decision Tree model: {e}")
             raise
 
-    def train(self, X: np.ndarray, y: pd.Series, model_path: str) -> BaseEstimator:
+    def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
         """
         Train the Decision Tree model and save it.
 
         :param X: Training features.
         :param y: Target labels.
-        :param model_path: Path where the model will be saved.
+        :param model_path_s: Path where the model will be saved.
         :return: The trained Decision Tree model.
         """
         try:
             self.model.fit(X, y)
-            joblib.dump(self.model, model_path)
-            models_info(f"Decision Tree model trained and saved to {model_path}.")
+            joblib.dump(self.model, model_path_s)
+            models_info(f"Decision Tree model trained and saved to {model_path_s}.")
             return self.model
         except Exception as e:
             models_error(f"Error training Decision Tree model: {e}")
@@ -125,19 +125,19 @@ class RandomForestModel(IModel):
             models_critical(f"Error initializing Random Forest model: {e}")
             raise
 
-    def train(self, X: np.ndarray, y: pd.Series, model_path: str) -> BaseEstimator:
+    def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
         """
         Train the Random Forest model and save it.
 
         :param X: Training features.
         :param y: Target labels.
-        :param model_path: Path where the model will be saved.
+        :param model_path_s: Path where the model will be saved.
         :return: The trained Random Forest model.
         """
         try:
             self.model.fit(X, y)
-            joblib.dump(self.model, model_path)
-            models_info(f"Random Forest model trained and saved to {model_path}.")
+            joblib.dump(self.model, model_path_s)
+            models_info(f"Random Forest model trained and saved to {model_path_s}.")
             return self.model
         except Exception as e:
             models_error(f"Error training Random Forest model: {e}")
@@ -152,19 +152,19 @@ class KNeighborsModel(IModel):
             models_critical(f"Error initializing K-Nearest Neighbors model: {e}")
             raise
 
-    def train(self, X: np.ndarray, y: pd.Series, model_path: str) -> BaseEstimator:
+    def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
         """
         Train the K-Nearest Neighbors model and save it.
 
         :param X: Training features.
         :param y: Target labels.
-        :param model_path: Path where the model will be saved.
+        :param model_path_s: Path where the model will be saved.
         :return: The trained K-Nearest Neighbors model.
         """
         try:
             self.model.fit(X, y)
-            joblib.dump(self.model, model_path)
-            models_info(f"K-Nearest Neighbors model trained and saved to {model_path}.")
+            joblib.dump(self.model, model_path_s)
+            models_info(f"K-Nearest Neighbors model trained and saved to {model_path_s}.")
             return self.model
         except Exception as e:
             models_error(f"Error training K-Nearest Neighbors model: {e}")
@@ -179,19 +179,19 @@ class NaiveBayesModel(IModel):
             models_critical(f"Error initializing Naive Bayes model: {e}")
             raise
 
-    def train(self, X: np.ndarray, y: pd.Series, model_path: str) -> BaseEstimator:
+    def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
         """
         Train the Naive Bayes model and save it.
 
         :param X: Training features.
         :param y: Target labels.
-        :param model_path: Path where the model will be saved.
+        :param model_path_s: Path where the model will be saved.
         :return: The trained Naive Bayes model.
         """
         try:
             self.model.fit(X, y)
-            joblib.dump(self.model, model_path)
-            models_info(f"Naive Bayes model trained and saved to {model_path}.")
+            joblib.dump(self.model, model_path_s)
+            models_info(f"Naive Bayes model trained and saved to {model_path_s}.")
             return self.model
         except Exception as e:
             models_error(f"Error training Naive Bayes model: {e}")
@@ -206,19 +206,19 @@ class GradientBoostingModel(IModel):
             models_critical(f"Error initializing Gradient Boosting model: {e}")
             raise
 
-    def train(self, X: np.ndarray, y: pd.Series, model_path: str) -> BaseEstimator:
+    def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
         """
         Train the Gradient Boosting model and save it.
 
         :param X: Training features.
         :param y: Target labels.
-        :param model_path: Path where the model will be saved.
+        :param model_path_s: Path where the model will be saved.
         :return: The trained Gradient Boosting model.
         """
         try:
             self.model.fit(X, y)
-            joblib.dump(self.model, model_path)
-            models_info(f"Gradient Boosting model trained and saved to {model_path}.")
+            joblib.dump(self.model, model_path_s)
+            models_info(f"Gradient Boosting model trained and saved to {model_path_s}.")
             return self.model
         except Exception as e:
             models_error(f"Error training Gradient Boosting model: {e}")
