@@ -1,0 +1,23 @@
+2024-08-19 17:57:51,387 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/config.yaml
+2024-08-19 17:57:51,389 - BrestCancer.ingestdata - INFO - Starting download from https://drive.google.com/uc?/export=download&id=1gCvzRbsBtPT-u1LinpEesTfN5YkjzXNn
+2024-08-19 17:57:55,380 - BrestCancer - INFO - File size: 0.00 MB
+2024-08-19 17:57:55,380 - BrestCancer.ingestdata - INFO - Download completed. File size: File size: 0.00 MB
+2024-08-19 17:58:11,496 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/config.yaml
+2024-08-19 17:58:11,497 - BrestCancer.ingestdata - INFO - Starting download from https://drive.google.com/uc?/export=download&id=1gCvzRbsBtPT-u1LinpEesTfN5YkjzXNn
+2024-08-19 17:58:15,740 - BrestCancer - INFO - File size: 0.00 MB
+2024-08-19 17:58:15,741 - BrestCancer.ingestdata - INFO - Download completed. File size: File size: 0.00 MB
+2024-08-19 17:59:29,482 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/config.yaml
+2024-08-19 17:59:29,484 - BrestCancer.ingestdata - INFO - Starting download from https://drive.google.com/uc?/export=download&id=1gCvzRbsBtPT-u1LinpEesTfN5YkjzXNn
+2024-08-19 17:59:33,768 - BrestCancer - INFO - File size: 0.00 MB
+2024-08-19 17:59:33,769 - BrestCancer.ingestdata - INFO - Download completed. File size: File size: 0.00 MB
+2024-08-19 18:05:32,875 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/config.yaml
+2024-08-19 18:06:09,996 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/config.yaml
+2024-08-19 18:06:09,998 - BrestCancer.ingestdata - CRITICAL - An error occurred during the download: unsupported operand type(s) for /: 'str' and 'str'
+2024-08-19 18:07:38,836 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/config.yaml
+2024-08-19 18:07:38,838 - BrestCancer.ingestdata - INFO - Starting download from https://drive.google.com/uc?id=1gCvzRbsBtPT-u1LinpEesTfN5YkjzXNn
+2024-08-19 18:07:43,259 - BrestCancer - INFO - File size: 0.05 MB
+2024-08-19 18:07:43,260 - BrestCancer.ingestdata - INFO - Download completed. File size: File size: 0.05 MB
+2024-08-19 18:08:34,131 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/config.yaml
+2024-08-19 18:08:34,133 - BrestCancer.ingestdata - INFO - Starting download from https://drive.google.com/uc?id=1gCvzRbsBtPT-u1LinpEesTfN5YkjzXNn
+2024-08-19 18:08:38,102 - BrestCancer - INFO - File size: 0.05 MB
+2024-08-19 18:08:38,103 - BrestCancer.ingestdata - INFO - Download completed. File size: File size: 0.05 MB

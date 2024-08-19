@@ -1,35 +1,10 @@
-2024-08-18 04:27:06,450 - Models - DEBUG - Attempting to load model from path_to_nonexistent_model.pkl.
-2024-08-18 04:27:06,451 - Models - ERROR - Model file not found at path_to_nonexistent_model.pkl.
-2024-08-18 04:27:06,453 - Models - DEBUG - Attempting to load model from path_to_model.pkl.
-2024-08-18 04:27:06,454 - Models - ERROR - An error occurred while loading the model: Load error
-2024-08-18 04:27:06,455 - Models - DEBUG - Attempting to load model from path_to_model.pkl.
-2024-08-18 04:27:06,456 - Models - INFO - Model loaded successfully from path_to_model.pkl.
-2024-08-18 04:27:06,460 - Models - DEBUG - Initializing ModelPredictor with a model loader.
-2024-08-18 04:27:06,461 - Models - INFO - Starting prediction process with model from path_to_model.pkl.
-2024-08-18 04:27:06,462 - Models - CRITICAL - Model could not be loaded; raising ValueError.
-2024-08-18 04:27:06,462 - Models - WARNING - Prediction failed due to model loading issues: Model could not be loaded.
-2024-08-18 04:27:06,465 - Models - DEBUG - Initializing ModelPredictor with a model loader.
-2024-08-18 04:27:06,467 - Models - INFO - Starting prediction process with model from path_to_model.pkl.
-2024-08-18 04:27:06,467 - Models - DEBUG - Model loaded successfully. Attempting to make predictions.
-2024-08-18 04:27:06,468 - Models - ERROR - Error during prediction: Prediction error
-2024-08-18 04:27:06,471 - Models - DEBUG - Initializing ModelPredictor with a model loader.
-2024-08-18 04:27:06,472 - Models - INFO - Starting prediction process with model from path_to_model.pkl.
-2024-08-18 04:27:06,472 - Models - DEBUG - Model loaded successfully. Attempting to make predictions.
-2024-08-18 04:27:06,472 - Models - INFO - Model made predictions successfully.
-2024-08-18 04:27:06,473 - Models - DEBUG - Predictions: [1 1]
-2024-08-18 04:32:59,048 - Models - INFO - Decision Tree model initialized.
-2024-08-18 04:32:59,051 - Models - INFO - Decision Tree model trained and saved to /path/to/model.pkl.
-2024-08-18 04:32:59,054 - Models - INFO - Gradient Boosting model initialized.
-2024-08-18 04:32:59,054 - Models - INFO - Gradient Boosting model trained and saved to /path/to/model.pkl.
-2024-08-18 04:32:59,057 - Models - INFO - K-Nearest Neighbors model initialized.
-2024-08-18 04:32:59,059 - Models - INFO - K-Nearest Neighbors model trained and saved to /path/to/model.pkl.
-2024-08-18 04:32:59,062 - Models - INFO - Logistic Regression model initialized.
-2024-08-18 04:32:59,063 - Models - INFO - Logistic Regression model trained and saved to /path/to/model.pkl.
-2024-08-18 04:32:59,066 - Models - INFO - Logistic Regression model initialized.
-2024-08-18 04:32:59,067 - Models - ERROR - Error training Logistic Regression model: Training error
-2024-08-18 04:32:59,070 - Models - INFO - Naive Bayes model initialized.
-2024-08-18 04:32:59,071 - Models - INFO - Naive Bayes model trained and saved to /path/to/model.pkl.
-2024-08-18 04:32:59,074 - Models - INFO - Random Forest model initialized.
-2024-08-18 04:32:59,076 - Models - INFO - Random Forest model trained and saved to /path/to/model.pkl.
-2024-08-18 04:32:59,078 - Models - INFO - Support Vector Machine model initialized.
-2024-08-18 04:32:59,079 - Models - INFO - Support Vector Machine model trained and saved to /path/to/model.pkl.
+2024-08-19 17:57:55,774 - Models - INFO - Gradient Boosting model initialized.
+2024-08-19 17:57:57,203 - Models - INFO - Gradient Boosting model trained and saved to /home/alrashidissa/Desktop/BreastCancer/PreTrainModel.
+2024-08-19 17:58:16,038 - Models - INFO - Gradient Boosting model initialized.
+2024-08-19 17:58:16,985 - Models - INFO - Gradient Boosting model trained and saved to /home/alrashidissa/Desktop/BreastCancer/PreTrainModel.
+2024-08-19 17:59:34,040 - Models - INFO - Gradient Boosting model initialized.
+2024-08-19 17:59:34,923 - Models - INFO - Gradient Boosting model trained and saved to /home/alrashidissa/Desktop/BreastCancer/PreTrainModel.
+2024-08-19 18:07:43,578 - Models - INFO - Gradient Boosting model initialized.
+2024-08-19 18:07:44,584 - Models - INFO - Gradient Boosting model trained and saved to /home/alrashidissa/Desktop/BreastCancer/PreTrainModel.
+2024-08-19 18:08:38,446 - Models - INFO - Gradient Boosting model initialized.
+2024-08-19 18:08:39,609 - Models - INFO - Gradient Boosting model trained and saved to /home/alrashidissa/Desktop/BreastCancer/PreTrainModel.

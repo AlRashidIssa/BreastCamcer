@@ -2,9 +2,11 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 import zipfile
 import os
+import sys
 
-from ingestdata import ingest_critical, ingest_debug, ingest_error, ingest_info, ingest_warning
-from utils.size import Size
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
+
+from src.BrestCancer.ingestdata import ingest_critical, ingest_debug, ingest_error, ingest_info, ingest_warning
 
 
 class IUnzip(ABC):
@@ -12,7 +14,7 @@ class IUnzip(ABC):
     Interface for unzipping files.
     """
     @abstractmethod
-    def call(self, zip_path: Path, extract_to: Path) -> None:
+    def call(self, zip_path: str, extract_to: str) -> None:
         """
         Abstract method to unzip a file.
 
@@ -26,7 +28,7 @@ class Unzip(IUnzip):
     """
     Concrete implementation of IUnzip interface to unzip files.
     """
-    def call(self, zip_path: Path, extract_to: Path) -> None:
+    def call(self, zip_path: str, extract_to: str) -> None:
         """
         Unzips a file from the given ZIP path to the specified extraction directory.
 
@@ -35,14 +37,13 @@ class Unzip(IUnzip):
         """
         try:
             # Ensure the ZIP file exists
-            if not zip_path.exists() or not zip_path.is_file():
+            if not os.path.exists(zip_path):
                 ingest_error(f"The ZIP file does not exist or is not a file: {zip_path}")
                 raise FileNotFoundError(f"ZIP file does not exist or is not a file: {zip_path}")
 
             # Ensure the output directory exists
-            if not extract_to.exists():
+            if not os.path.exists(extract_to):
                 ingest_warning(f"Extraction directory does not exist. Creating: {extract_to}")
-                extract_to.mkdir(parents=True, exist_ok=True)
 
             # Extract the ZIP file
             ingest_info(f"Starting extraction of {zip_path} to {extract_to}")

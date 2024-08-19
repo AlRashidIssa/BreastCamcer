@@ -43,6 +43,8 @@ class CONFIG:
 
     # Dataset configuration attributes
     url: str = dataset_config["url"]
+    name_dataset: str = dataset_config["name_dataset"]
+    download: str = dataset_config["download"]
     zip_path: str = dataset_config["zip_path"]
     extract_to: str = dataset_config["extract_to"]
     DFP: str = dataset_config["DFP"]
@@ -53,6 +55,8 @@ class CONFIG:
     path_model: str = model_config["path_model"]
 
     # Preprocessing configuration attributes
+    handl_missing: bool = preprocess_config["handl_missing"]
+    fill_value: float = preprocess_config["fill_value"]
     drop_columns: list = preprocess_config["drop_columns"]
     drop_duplicates: bool = preprocess_config["drop_duplicates"]
     drop_outliers: bool = preprocess_config["drop_outliers"]

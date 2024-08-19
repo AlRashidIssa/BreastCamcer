@@ -69,7 +69,7 @@ class Split(ISplit):
         Splits the data from the provided CSV file into training and testing sets.
     """
     
-    def call(self, target: str, path_csv: str) -> List[Any]:
+    def call(self, target: str, df: pd.DataFrame) -> List[Any]:
         """
         Reads data from a CSV file, splits it into training and testing sets, and returns the
         feature and target variables.
@@ -97,17 +97,7 @@ class Split(ISplit):
         ValueError
             If the target column is not found in the dataset or the dataset is empty.
         """
-        # Check if the file exists
-        if not os.path.exists(path_csv):
-            error_message = f"File not found: {path_csv}"
-            ingest_critical(error_message)
-            raise FileNotFoundError(error_message)
-
         try:
-            ingest_info(f"Reading data from {path_csv}")
-            # Read the CSV file into a DataFrame
-            df = Ingest().call(path_csv)
-
             if df.empty:
                 ingest_warning("The dataset is empty.")
                 raise ValueError("The dataset is empty.")
@@ -135,20 +125,14 @@ class Split(ISplit):
             return [X_train, X_test, y_train, y_test]
 
         except pd.errors.EmptyDataError:
-            error_message = f"The file {path_csv} is empty."
+            error_message = "The Data Frame is empty."
             ingest_warning(error_message)
             raise ValueError(error_message)
         except pd.errors.ParserError:
-            error_message = f"Error parsing the file {path_csv}."
+            error_message = f"Error parsing the Data Frame."
             ingest_error(error_message)
             raise ValueError(error_message)
         except Exception as e:
             critical_message = f"An unexpected error occurred: {str(e)}"
             ingest_critical(critical_message)
             raise RuntimeError(critical_message)
-        
-
-if __name__ == "__main__":
-    spliter = Split()
-    x_train, x_test, y_train, y_test = spliter.call("diagnosis",
-                                                     "/home/alrashidissa/Desktop/BreastCancer/Test/breast-cancer.csv")

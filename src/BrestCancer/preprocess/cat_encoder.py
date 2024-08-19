@@ -1,10 +1,20 @@
+import warnings
+warnings.filterwarnings(action="ignore")
+warnings.filterwarnings(action="ignore")
+warnings.filterwarnings(action="ignore")
+warnings.filterwarnings(action="ignore")
+
+
 import pandas as pd
+import sys
 from abc import ABC, abstractmethod
 from typing import List, Union
 from sklearn.preprocessing import LabelEncoder as SklearnLabelEncoder
 from sklearn.preprocessing import OneHotEncoder as SklearnOneHotEncoder
 
-from preprocess import preprocess_info, preprocess_debug, preprocess_warning, preprocess_error
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
+
+from BrestCancer.preprocess import preprocess_info, preprocess_debug, preprocess_warning, preprocess_error
 
 class IEncoder(ABC):
     """

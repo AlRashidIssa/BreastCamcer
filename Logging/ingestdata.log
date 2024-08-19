@@ -1,127 +1,81 @@
-2024-08-17 06:29:10,737 - ingestdata - INFO - Starting data download from URL: https://drive.google.com/file/d/1Ywp1-NctzM7BllvMvMe9eQLRGVZgZqAd/view?usp=drive_link
-2024-08-17 06:29:10,738 - ingestdata - INFO - Starting download from https://drive.google.com/uc?/export=download&id=1Ywp1-NctzM7BllvMvMe9eQLRGVZgZqAd
-2024-08-17 06:29:14,841 - ingestdata - INFO - File size: 0.05 MB
-2024-08-17 06:29:14,842 - ingestdata - INFO - Download completed. File size: 0.05 MB
-2024-08-17 06:29:14,842 - ingestdata - INFO - Download completed. File saved to: /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip
-2024-08-17 06:29:14,843 - ingestdata - INFO - Starting extraction of ZIP file: /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip
-2024-08-17 06:29:14,843 - ingestdata - INFO - Starting extraction of /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
-2024-08-17 06:29:14,859 - ingestdata - INFO - Extraction completed successfully to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
-2024-08-17 06:29:14,860 - ingestdata - INFO - Extraction completed. Files extracted to: /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
-2024-08-18 05:01:11,683 - Test - ERROR - Error parsing the file
-2024-08-18 05:04:36,201 - src.BrestCancer.ingestdata - WARNING - The file empty_file.csv is empty.
-2024-08-18 05:04:36,206 - src.BrestCancer.ingestdata - ERROR - File Ingest Data, Invalid Path: invalid_path.csv
-2024-08-18 05:04:36,213 - src.BrestCancer.ingestdata - ERROR - Error parsing the file parser_error_file.csv.
-2024-08-18 05:04:36,223 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from valid_path.csv
-2024-08-18 05:04:36,231 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Unexpected error
-2024-08-18 15:06:58,225 - src.BrestCancer.ingestdata - CRITICAL - File not found: invalid_file.csv
-2024-08-18 15:09:41,585 - src.BrestCancer.ingestdata - INFO - Reading data from empty_file.csv
-2024-08-18 15:09:41,595 - src.BrestCancer.ingestdata - WARNING - The dataset is empty.
-2024-08-18 15:09:41,595 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: The dataset is empty.
-2024-08-18 15:09:41,601 - src.BrestCancer.ingestdata - CRITICAL - File not found: invalid_file.csv
-2024-08-18 15:09:41,606 - src.BrestCancer.ingestdata - INFO - Reading data from invalid_file.csv
-2024-08-18 15:09:41,607 - src.BrestCancer.ingestdata - ERROR - Error parsing the file invalid_file.csv.
-2024-08-18 15:09:41,614 - src.BrestCancer.ingestdata - INFO - Reading data from valid_file.csv
-2024-08-18 15:09:41,617 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: [Errno 2] No such file or directory: 'valid_file.csv'
-2024-08-18 15:09:41,618 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: An unexpected error occurred: [Errno 2] No such file or directory: 'valid_file.csv'
-2024-08-18 15:09:41,634 - src.BrestCancer.ingestdata - INFO - Reading data from valid_file.csv
-2024-08-18 15:09:41,635 - src.BrestCancer.ingestdata - ERROR - Target column 'target' not found in the dataset.
-2024-08-18 15:09:41,635 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Target column 'target' not found in the dataset.
-2024-08-18 15:09:41,642 - src.BrestCancer.ingestdata - INFO - Reading data from unexpected_error_file.csv
-2024-08-18 15:09:41,643 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Unexpected error
-2024-08-18 15:17:42,445 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
-2024-08-18 15:17:42,446 - src.BrestCancer.ingestdata - WARNING - The file mock_data.csv is empty.
-2024-08-18 15:17:42,447 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: The file mock_data.csv is empty.
-2024-08-18 15:17:42,463 - src.BrestCancer.ingestdata - CRITICAL - File not found: non_existent_file.csv
-2024-08-18 15:17:42,470 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
-2024-08-18 15:17:42,475 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
-2024-08-18 15:17:42,476 - src.BrestCancer.ingestdata - ERROR - Target column 'target' not found in the dataset.
-2024-08-18 15:17:42,477 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Target column 'target' not found in the dataset.
-2024-08-18 15:17:42,484 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
-2024-08-18 15:17:42,488 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
-2024-08-18 15:17:42,507 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
-2024-08-18 15:17:42,512 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
-2024-08-18 15:17:42,512 - src.BrestCancer.ingestdata - ERROR - Target column 'target' not found in the dataset.
-2024-08-18 15:17:42,513 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Target column 'target' not found in the dataset.
-2024-08-18 15:19:27,804 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
-2024-08-18 15:19:27,806 - src.BrestCancer.ingestdata - WARNING - The file mock_data.csv is empty.
-2024-08-18 15:19:27,806 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: The file mock_data.csv is empty.
-2024-08-18 15:19:27,819 - src.BrestCancer.ingestdata - CRITICAL - File not found: non_existent_file.csv
-2024-08-18 15:19:27,826 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
-2024-08-18 15:19:27,832 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
-2024-08-18 15:19:27,833 - src.BrestCancer.ingestdata - ERROR - Target column 'target' not found in the dataset.
-2024-08-18 15:19:27,833 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Target column 'target' not found in the dataset.
-2024-08-18 15:19:27,842 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
-2024-08-18 15:19:27,848 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
-2024-08-18 15:19:27,871 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
-2024-08-18 15:19:27,876 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
-2024-08-18 15:19:27,876 - src.BrestCancer.ingestdata - ERROR - Target column 'target' not found in the dataset.
-2024-08-18 15:19:27,877 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Target column 'target' not found in the dataset.
-2024-08-18 15:21:51,774 - Test - INFO - Setting up the test environment.
-2024-08-18 15:21:51,784 - Test - INFO - Test data written to mock_data.csv
-2024-08-18 15:21:51,785 - Test - INFO - Starting test for empty dataset.
-2024-08-18 15:21:51,788 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
-2024-08-18 15:21:51,790 - src.BrestCancer.ingestdata - WARNING - The file mock_data.csv is empty.
-2024-08-18 15:21:51,790 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: The file mock_data.csv is empty.
-2024-08-18 15:21:51,790 - Test - CRITICAL - Critical error during empty dataset test: An unexpected error occurred: The file mock_data.csv is empty.
-2024-08-18 15:21:51,797 - Test - INFO - Cleaning up the test environment.
-2024-08-18 15:21:51,798 - Test - INFO - Test data file mock_data.csv removed.
-2024-08-18 15:21:51,799 - Test - INFO - Setting up the test environment.
-2024-08-18 15:21:51,802 - Test - INFO - Test data written to mock_data.csv
-2024-08-18 15:21:51,803 - Test - INFO - Starting test for file not found scenario.
-2024-08-18 15:21:51,803 - src.BrestCancer.ingestdata - CRITICAL - File not found: non_existent_file.csv
-2024-08-18 15:21:51,804 - Test - INFO - File not found scenario test completed.
-2024-08-18 15:21:51,804 - Test - INFO - Cleaning up the test environment.
-2024-08-18 15:21:51,805 - Test - INFO - Test data file mock_data.csv removed.
-2024-08-18 15:21:51,806 - Test - INFO - Setting up the test environment.
-2024-08-18 15:21:51,810 - Test - INFO - Test data written to mock_data.csv
-2024-08-18 15:21:51,810 - Test - INFO - Starting test for file parsing error.
-2024-08-18 15:21:51,811 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
-2024-08-18 15:21:51,816 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
-2024-08-18 15:21:51,817 - src.BrestCancer.ingestdata - ERROR - Target column 'target' not found in the dataset.
-2024-08-18 15:21:51,817 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Target column 'target' not found in the dataset.
-2024-08-18 15:21:51,817 - Test - CRITICAL - Critical error during file parsing test: An unexpected error occurred: Target column 'target' not found in the dataset.
-2024-08-18 15:21:51,820 - Test - INFO - Cleaning up the test environment.
-2024-08-18 15:21:51,820 - Test - INFO - Test data file mock_data.csv removed.
-2024-08-18 15:21:51,821 - Test - INFO - Setting up the test environment.
-2024-08-18 15:21:51,824 - Test - INFO - Test data written to mock_data.csv
-2024-08-18 15:21:51,824 - Test - INFO - Starting test for successful data split.
-2024-08-18 15:21:51,825 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
-2024-08-18 15:21:51,830 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
-2024-08-18 15:21:51,843 - Test - DEBUG - Data split into X_train: (4, 2), X_test: (1, 2), y_train: 4, y_test: 1
-2024-08-18 15:21:51,844 - Test - INFO - Test for successful data split completed.
-2024-08-18 15:21:51,844 - Test - INFO - Cleaning up the test environment.
-2024-08-18 15:21:51,845 - Test - INFO - Test data file mock_data.csv removed.
-2024-08-18 15:21:51,846 - Test - INFO - Setting up the test environment.
-2024-08-18 15:21:51,850 - Test - INFO - Test data written to mock_data.csv
-2024-08-18 15:21:51,851 - Test - INFO - Starting test for target column not found.
-2024-08-18 15:21:51,854 - src.BrestCancer.ingestdata - INFO - Reading data from mock_data.csv
-2024-08-18 15:21:51,858 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from mock_data.csv
-2024-08-18 15:21:51,859 - src.BrestCancer.ingestdata - ERROR - Target column 'target' not found in the dataset.
-2024-08-18 15:21:51,859 - src.BrestCancer.ingestdata - CRITICAL - An unexpected error occurred: Target column 'target' not found in the dataset.
-2024-08-18 15:21:51,860 - Test - CRITICAL - Critical error during target column not found test: An unexpected error occurred: Target column 'target' not found in the dataset.
-2024-08-18 15:21:51,862 - Test - INFO - Cleaning up the test environment.
-2024-08-18 15:21:51,863 - Test - INFO - Test data file mock_data.csv removed.
-2024-08-18 15:32:39,185 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:32:39,195 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:32:39,200 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:32:39,205 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:32:39,209 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:33:40,760 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:33:40,769 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:33:40,774 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:33:40,781 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:33:40,786 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:34:58,886 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:34:58,896 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:34:58,901 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:34:58,907 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:34:58,912 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:37:07,893 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:37:07,903 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:37:07,908 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:37:07,914 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:37:07,918 - src.BrestCancer.ingestdata - CRITICAL - File not found: fake_path.csv
-2024-08-18 15:58:22,115 - src.BrestCancer.ingestdata - INFO - Reading data from /home/alrashidissa/Desktop/BreastCancer/Test/breast-cancer.csv
-2024-08-18 15:58:22,186 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from /home/alrashidissa/Desktop/BreastCancer/Test/breast-cancer.csv
-2024-08-18 16:04:54,884 - src.BrestCancer.ingestdata - INFO - Reading data from /home/alrashidissa/Desktop/BreastCancer/Test/breast-cancer.csv
-2024-08-18 16:04:54,902 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from /home/alrashidissa/Desktop/BreastCancer/Test/breast-cancer.csv
+2024-08-19 17:57:51,387 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/config.yaml
+2024-08-19 17:57:51,388 - __main__ - INFO - Downloading dataset...
+2024-08-19 17:57:51,389 - BrestCancer.ingestdata - INFO - Starting download from https://drive.google.com/uc?/export=download&id=1gCvzRbsBtPT-u1LinpEesTfN5YkjzXNn
+2024-08-19 17:57:55,380 - BrestCancer - INFO - File size: 0.00 MB
+2024-08-19 17:57:55,380 - BrestCancer.ingestdata - INFO - Download completed. File size: File size: 0.00 MB
+2024-08-19 17:57:55,381 - __main__ - INFO - Unzipping dataset...
+2024-08-19 17:57:55,381 - src.BrestCancer.ingestdata - INFO - Starting extraction of /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-19 17:57:55,396 - src.BrestCancer.ingestdata - INFO - Extraction completed successfully to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-19 17:57:55,404 - __main__ - INFO - Ingesting dataset...
+2024-08-19 17:57:55,453 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from /home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv
+2024-08-19 17:57:55,454 - __main__ - INFO - Selecting features...
+2024-08-19 17:57:55,476 - preprocess - INFO - Columns ['id'] dropped successfully
+2024-08-19 17:57:55,478 - __main__ - INFO - Cleaning data...
+2024-08-19 17:57:55,511 - preprocess - INFO - Removed 0 duplicate rows
+2024-08-19 17:57:55,756 - preprocess - INFO - Removed 292 outlier rows using IQR method
+2024-08-19 17:57:55,757 - preprocess - INFO - Data cleaning process completed successfully.
+2024-08-19 17:57:55,758 - __main__ - INFO - Encoding data...
+2024-08-19 17:57:55,763 - preprocess - INFO - Values replaced according to the provided dictionary.
+2024-08-19 17:57:55,764 - __main__ - INFO - Splitting data...
+2024-08-19 17:57:55,773 - __main__ - INFO - Training model...
+2024-08-19 17:57:55,774 - Models - INFO - Gradient Boosting model initialized.
+2024-08-19 17:57:57,203 - Models - INFO - Gradient Boosting model trained and saved to /home/alrashidissa/Desktop/BreastCancer/PreTrainModel.
+2024-08-19 17:58:11,496 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/config.yaml
+2024-08-19 17:58:11,497 - BrestCancer.ingestdata - INFO - Starting download from https://drive.google.com/uc?/export=download&id=1gCvzRbsBtPT-u1LinpEesTfN5YkjzXNn
+2024-08-19 17:58:15,740 - BrestCancer - INFO - File size: 0.00 MB
+2024-08-19 17:58:15,741 - BrestCancer.ingestdata - INFO - Download completed. File size: File size: 0.00 MB
+2024-08-19 17:58:15,741 - src.BrestCancer.ingestdata - INFO - Starting extraction of /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-19 17:58:15,761 - src.BrestCancer.ingestdata - INFO - Extraction completed successfully to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-19 17:58:15,786 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from /home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv
+2024-08-19 17:58:15,791 - preprocess - INFO - Columns ['id'] dropped successfully
+2024-08-19 17:58:15,820 - preprocess - INFO - Removed 0 duplicate rows
+2024-08-19 17:58:16,020 - preprocess - INFO - Removed 292 outlier rows using IQR method
+2024-08-19 17:58:16,020 - preprocess - INFO - Data cleaning process completed successfully.
+2024-08-19 17:58:16,028 - preprocess - INFO - Values replaced according to the provided dictionary.
+2024-08-19 17:58:16,038 - Models - INFO - Gradient Boosting model initialized.
+2024-08-19 17:58:16,985 - Models - INFO - Gradient Boosting model trained and saved to /home/alrashidissa/Desktop/BreastCancer/PreTrainModel.
+2024-08-19 17:59:29,482 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/config.yaml
+2024-08-19 17:59:29,484 - BrestCancer.ingestdata - INFO - Starting download from https://drive.google.com/uc?/export=download&id=1gCvzRbsBtPT-u1LinpEesTfN5YkjzXNn
+2024-08-19 17:59:33,768 - BrestCancer - INFO - File size: 0.00 MB
+2024-08-19 17:59:33,769 - BrestCancer.ingestdata - INFO - Download completed. File size: File size: 0.00 MB
+2024-08-19 17:59:33,770 - src.BrestCancer.ingestdata - INFO - Starting extraction of /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-19 17:59:33,780 - src.BrestCancer.ingestdata - INFO - Extraction completed successfully to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-19 17:59:33,813 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from /home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv
+2024-08-19 17:59:33,829 - preprocess - INFO - Columns ['id'] dropped successfully
+2024-08-19 17:59:33,853 - preprocess - INFO - Removed 0 duplicate rows
+2024-08-19 17:59:34,028 - preprocess - INFO - Removed 292 outlier rows using IQR method
+2024-08-19 17:59:34,029 - preprocess - INFO - Data cleaning process completed successfully.
+2024-08-19 17:59:34,031 - preprocess - INFO - Values replaced according to the provided dictionary.
+2024-08-19 17:59:34,040 - Models - INFO - Gradient Boosting model initialized.
+2024-08-19 17:59:34,923 - Models - INFO - Gradient Boosting model trained and saved to /home/alrashidissa/Desktop/BreastCancer/PreTrainModel.
+2024-08-19 18:05:32,875 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/config.yaml
+2024-08-19 18:06:09,996 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/config.yaml
+2024-08-19 18:06:09,998 - BrestCancer.ingestdata - CRITICAL - An error occurred during the download: unsupported operand type(s) for /: 'str' and 'str'
+2024-08-19 18:07:38,836 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/config.yaml
+2024-08-19 18:07:38,838 - BrestCancer.ingestdata - INFO - Starting download from https://drive.google.com/uc?id=1gCvzRbsBtPT-u1LinpEesTfN5YkjzXNn
+2024-08-19 18:07:43,259 - BrestCancer - INFO - File size: 0.05 MB
+2024-08-19 18:07:43,260 - BrestCancer.ingestdata - INFO - Download completed. File size: File size: 0.05 MB
+2024-08-19 18:07:43,260 - src.BrestCancer.ingestdata - INFO - Starting extraction of /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-19 18:07:43,268 - src.BrestCancer.ingestdata - INFO - Extraction completed successfully to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-19 18:07:43,298 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from /home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv
+2024-08-19 18:07:43,313 - preprocess - INFO - Columns ['id'] dropped successfully
+2024-08-19 18:07:43,348 - preprocess - INFO - Removed 0 duplicate rows
+2024-08-19 18:07:43,562 - preprocess - INFO - Removed 292 outlier rows using IQR method
+2024-08-19 18:07:43,563 - preprocess - INFO - Data cleaning process completed successfully.
+2024-08-19 18:07:43,567 - preprocess - INFO - Values replaced according to the provided dictionary.
+2024-08-19 18:07:43,578 - Models - INFO - Gradient Boosting model initialized.
+2024-08-19 18:07:44,584 - Models - INFO - Gradient Boosting model trained and saved to /home/alrashidissa/Desktop/BreastCancer/PreTrainModel.
+2024-08-19 18:08:34,131 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/config.yaml
+2024-08-19 18:08:34,133 - BrestCancer.ingestdata - INFO - Starting download from https://drive.google.com/uc?id=1gCvzRbsBtPT-u1LinpEesTfN5YkjzXNn
+2024-08-19 18:08:38,102 - BrestCancer - INFO - File size: 0.05 MB
+2024-08-19 18:08:38,103 - BrestCancer.ingestdata - INFO - Download completed. File size: File size: 0.05 MB
+2024-08-19 18:08:38,103 - src.BrestCancer.ingestdata - INFO - Starting extraction of /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-19 18:08:38,113 - src.BrestCancer.ingestdata - INFO - Extraction completed successfully to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-19 18:08:38,144 - src.BrestCancer.ingestdata - INFO - Successfully ingested data from /home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv
+2024-08-19 18:08:38,162 - preprocess - INFO - Columns ['id'] dropped successfully
+2024-08-19 18:08:38,198 - preprocess - INFO - Removed 0 duplicate rows
+2024-08-19 18:08:38,421 - preprocess - INFO - Removed 292 outlier rows using IQR method
+2024-08-19 18:08:38,421 - preprocess - INFO - Data cleaning process completed successfully.
+2024-08-19 18:08:38,432 - preprocess - INFO - Values replaced according to the provided dictionary.
+2024-08-19 18:08:38,446 - Models - INFO - Gradient Boosting model initialized.
+2024-08-19 18:08:39,609 - Models - INFO - Gradient Boosting model trained and saved to /home/alrashidissa/Desktop/BreastCancer/PreTrainModel.

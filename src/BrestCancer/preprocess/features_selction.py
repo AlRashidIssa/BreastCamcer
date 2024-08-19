@@ -27,7 +27,7 @@ class ISelction(ABC):
     """
 
     @abstractmethod
-    def call(self, path_data: str, drop_columns: List[str]) -> pd.DataFrame:
+    def call(self, drop_columns: List[str]) -> pd.DataFrame:
         """
         Abstract method to be implemented by subclasses.
         
@@ -35,15 +35,10 @@ class ISelction(ABC):
         and return the modified DataFrame.
 
         Parameters:
-        - path_data (str): The file path to the dataset (CSV file).
         - drop_columns (list of str): The list of column names to drop from the DataFrame.
 
         Returns:
         - pd.DataFrame: The DataFrame with the specified columns dropped.
-
-        Raises:
-        - FileNotFoundError: If the file at `path_data` does not exist.
-        - NameError: If any of the columns in `drop_columns` do not exist in the DataFrame.
         """
         pass
 
@@ -55,32 +50,18 @@ class Selction(ISelction):
     drops specified columns, and handles exceptions that may occur during the process.
     """
 
-    def call(self, path_data: str, drop_columns: List[str]) -> pd.DataFrame:
+    def call(self, df: pd.DataFrame, drop_columns: List[str]) -> pd.DataFrame:
         """
         Loads data from the specified file path, drops the given columns, and returns the modified DataFrame.
         
         Parameters:
-        - path_data (str): The file path to the dataset (CSV file).
         - drop_columns (list of str): The list of column names to drop from the DataFrame.
 
         Returns:
         - pd.DataFrame: The DataFrame with the specified columns dropped.
-
-        Raises:
-        - FileNotFoundError: If the file at `path_data` does not exist.
-        - NameError: If any of the columns in `drop_columns` do not exist in the DataFrame.
         """
 
         try:
-            # Check if the file exists
-            if not os.path.exists(path_data):
-                preprocess_critical(f"No such file in directory or the directory has changed: {path_data}")
-                raise FileNotFoundError(f"File not found: {path_data}")
-            
-            # Load the data into a DataFrame
-            df = pd.read_csv(path_data)
-            preprocess_info(f"Data loaded successfully from {path_data}")
-
             # Check if all specified columns exist in the DataFrame
             missing_columns = [col for col in drop_columns if col not in df.columns]
             if missing_columns:

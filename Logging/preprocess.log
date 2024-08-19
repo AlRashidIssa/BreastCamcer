@@ -1,0 +1,50 @@
+2024-08-19 17:57:55,476 - preprocess - INFO - Columns ['id'] dropped successfully
+2024-08-19 17:57:55,476 - preprocess - INFO - Columns ['id'] dropped successfully
+2024-08-19 17:57:55,511 - preprocess - INFO - Removed 0 duplicate rows
+2024-08-19 17:57:55,511 - preprocess - INFO - Removed 0 duplicate rows
+2024-08-19 17:57:55,756 - preprocess - INFO - Removed 292 outlier rows using IQR method
+2024-08-19 17:57:55,756 - preprocess - INFO - Removed 292 outlier rows using IQR method
+2024-08-19 17:57:55,757 - preprocess - INFO - Data cleaning process completed successfully.
+2024-08-19 17:57:55,757 - preprocess - INFO - Data cleaning process completed successfully.
+2024-08-19 17:57:55,763 - preprocess - INFO - Values replaced according to the provided dictionary.
+2024-08-19 17:57:55,763 - preprocess - INFO - Values replaced according to the provided dictionary.
+2024-08-19 17:58:15,791 - preprocess - INFO - Columns ['id'] dropped successfully
+2024-08-19 17:58:15,791 - preprocess - INFO - Columns ['id'] dropped successfully
+2024-08-19 17:58:15,820 - preprocess - INFO - Removed 0 duplicate rows
+2024-08-19 17:58:15,820 - preprocess - INFO - Removed 0 duplicate rows
+2024-08-19 17:58:16,020 - preprocess - INFO - Removed 292 outlier rows using IQR method
+2024-08-19 17:58:16,020 - preprocess - INFO - Removed 292 outlier rows using IQR method
+2024-08-19 17:58:16,020 - preprocess - INFO - Data cleaning process completed successfully.
+2024-08-19 17:58:16,020 - preprocess - INFO - Data cleaning process completed successfully.
+2024-08-19 17:58:16,028 - preprocess - INFO - Values replaced according to the provided dictionary.
+2024-08-19 17:58:16,028 - preprocess - INFO - Values replaced according to the provided dictionary.
+2024-08-19 17:59:33,829 - preprocess - INFO - Columns ['id'] dropped successfully
+2024-08-19 17:59:33,829 - preprocess - INFO - Columns ['id'] dropped successfully
+2024-08-19 17:59:33,853 - preprocess - INFO - Removed 0 duplicate rows
+2024-08-19 17:59:33,853 - preprocess - INFO - Removed 0 duplicate rows
+2024-08-19 17:59:34,028 - preprocess - INFO - Removed 292 outlier rows using IQR method
+2024-08-19 17:59:34,028 - preprocess - INFO - Removed 292 outlier rows using IQR method
+2024-08-19 17:59:34,029 - preprocess - INFO - Data cleaning process completed successfully.
+2024-08-19 17:59:34,029 - preprocess - INFO - Data cleaning process completed successfully.
+2024-08-19 17:59:34,031 - preprocess - INFO - Values replaced according to the provided dictionary.
+2024-08-19 17:59:34,031 - preprocess - INFO - Values replaced according to the provided dictionary.
+2024-08-19 18:07:43,313 - preprocess - INFO - Columns ['id'] dropped successfully
+2024-08-19 18:07:43,313 - preprocess - INFO - Columns ['id'] dropped successfully
+2024-08-19 18:07:43,348 - preprocess - INFO - Removed 0 duplicate rows
+2024-08-19 18:07:43,348 - preprocess - INFO - Removed 0 duplicate rows
+2024-08-19 18:07:43,562 - preprocess - INFO - Removed 292 outlier rows using IQR method
+2024-08-19 18:07:43,562 - preprocess - INFO - Removed 292 outlier rows using IQR method
+2024-08-19 18:07:43,563 - preprocess - INFO - Data cleaning process completed successfully.
+2024-08-19 18:07:43,563 - preprocess - INFO - Data cleaning process completed successfully.
+2024-08-19 18:07:43,567 - preprocess - INFO - Values replaced according to the provided dictionary.
+2024-08-19 18:07:43,567 - preprocess - INFO - Values replaced according to the provided dictionary.
+2024-08-19 18:08:38,162 - preprocess - INFO - Columns ['id'] dropped successfully
+2024-08-19 18:08:38,162 - preprocess - INFO - Columns ['id'] dropped successfully
+2024-08-19 18:08:38,198 - preprocess - INFO - Removed 0 duplicate rows
+2024-08-19 18:08:38,198 - preprocess - INFO - Removed 0 duplicate rows
+2024-08-19 18:08:38,421 - preprocess - INFO - Removed 292 outlier rows using IQR method
+2024-08-19 18:08:38,421 - preprocess - INFO - Removed 292 outlier rows using IQR method
+2024-08-19 18:08:38,421 - preprocess - INFO - Data cleaning process completed successfully.
+2024-08-19 18:08:38,421 - preprocess - INFO - Data cleaning process completed successfully.
+2024-08-19 18:08:38,432 - preprocess - INFO - Values replaced according to the provided dictionary.
+2024-08-19 18:08:38,432 - preprocess - INFO - Values replaced according to the provided dictionary.

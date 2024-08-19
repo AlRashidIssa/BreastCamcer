@@ -23,10 +23,12 @@
 ## value_replce: Dictionary specifying values to replace (e.g., {'M': 1, 'B': 0} for encoding diagnosis).
 
 dataset:
-  url: https://drive.google.com/file/d/your_file_id/view?usp=sharing
-  zip_path: /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads
-  extract_to: /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
-  DFP: /home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv
+  url: "https://drive.google.com/file/d/1gCvzRbsBtPT-u1LinpEesTfN5YkjzXNn/view?usp=sharing"
+  download: "/home/alrashidissa/Desktop/BreastCancer/Dataset/downloads"
+  name_dataset: "brestcancerset"
+  zip_path: "/home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip"
+  extract_to: "/home/alrashidissa/Desktop/BreastCancer/Dataset/extract"
+  DFP: "/home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv"
   target: "diagnosis"
 
 model:
@@ -34,13 +36,22 @@ model:
   path_model: /home/alrashidissa/Desktop/BreastCancer/PreTrainModel/gradient_boosting.pkl
 
 preprocess:
+  handl_missing: "False"
+  fill_value: None
   drop_columns: ["id"]
   drop_duplicates: True
   drop_outliers: True
   missing_columns: ["None"]
   missing_method: "mean"
   scaler_method: "minmax"
-  scaler_columns: ["radius_mean","texture_mean","perimeter_mean","area_mean","smoothness_mean","compactness_mean","concavity_mean","concave" "points_mean","symmetry_mean","fractal_dimension_mean","radius_se","texture_se","perimeter_se","area_se","smoothness_se","compactness_se","concavity_se",concave points_se,symmetry_se,fractal_dimension_se,radius_worst,texture_worst,perimeter_worst,area_worst,smoothness_worst,compactness_worst,concavity_worst,concave points_worst,symmetry_worst,fractal_dimension_worst]
+  scaler_columns: [
+  "radius_mean", "texture_mean", "perimeter_mean", "area_mean", "smoothness_mean", 
+  "compactness_mean", "concavity_mean", "concave", "points_mean", "symmetry_mean", 
+  "fractal_dimension_mean", "radius_se", "texture_se", "perimeter_se", "area_se", 
+  "smoothness_se", "compactness_se", "concavity_se", "concave points_se", 
+  "symmetry_se", "fractal_dimension_se", "radius_worst", "texture_worst", 
+  "perimeter_worst", "area_worst", "smoothness_worst", "compactness_worst", 
+  "concavity_worst", "concave points_worst", "symmetry_worst", "fractal_dimension_worst"]  
   encoder_columns: ["diagnosis"]
   method: None
   replce: True

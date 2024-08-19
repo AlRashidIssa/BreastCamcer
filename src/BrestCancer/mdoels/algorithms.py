@@ -217,7 +217,7 @@ class GradientBoostingModel(IModel):
         """
         try:
             self.model.fit(X, y)
-            joblib.dump(self.model, model_path_s)
+            joblib.dump(self.model, f"{model_path_s}/GradientBoostingModel.pkl")
             models_info(f"Gradient Boosting model trained and saved to {model_path_s}.")
             return self.model
         except Exception as e:

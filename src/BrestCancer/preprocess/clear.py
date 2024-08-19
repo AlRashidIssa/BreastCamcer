@@ -22,6 +22,7 @@ class IClean(ABC):
              df: pd.DataFrame, 
              drop_duplicates: bool = True, 
              outliers: bool = True, 
+             handl_missing: bool = False,
              missing_columns: Union[List[str], None] = None, 
              method: str = "mean") -> pd.DataFrame:
         """
@@ -42,7 +43,7 @@ class IClean(ABC):
         pass
 
 
-class Clean(IClean, FillMissingValues):
+class Clean(IClean):
     """
     Concrete implementation of IClean that performs various data cleaning operations.
     
@@ -59,12 +60,13 @@ class Clean(IClean, FillMissingValues):
         Parameters:
         - fill_value (str, int, float, or None): The value to fill missing values with. If None, use the method specified in the `call` method.
         """
-        super().__init__(fill_value)
+        self.fill_value = fill_value
 
     def call(self, 
              df: pd.DataFrame,
              drop_duplicates: bool = True,
-             outliers: bool = True, 
+             outliers: bool = True,
+             handl_missing: bool = False,
              missing_columns: Union[List[str], None] = None, 
              method: str = "mean") -> pd.DataFrame:
         """
@@ -89,7 +91,8 @@ class Clean(IClean, FillMissingValues):
                 preprocess_info(f"Removed {initial_row_count - final_row_count} duplicate rows")
 
             # Step 2: Handle missing values using the provided strategy
-            df = super().call(df, columns=missing_columns, method=method) # type: ignore
+            if handl_missing:
+                df = FillMissingValues(fill_value=self.fill_value).call(df, columns=missing_columns, method=method) # type: ignore
 
             # Step 3: Detect and remove outliers using the IQR method
             if outliers:
