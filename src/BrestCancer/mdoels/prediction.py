@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import pandas as pd
 from sklearn.base import BaseEstimator
 from typing import Any, Optional
 import numpy as np
@@ -15,7 +16,7 @@ class IPredict(ABC):
     Defines the contract for predicting using a trained machine learning model.
     """
     @abstractmethod
-    def call(self, model: BaseEstimator, X: Any) -> np.ndarray:
+    def call(self, model: BaseEstimator, X: np.ndarray) -> pd.Series:
         """
         Make predictions with the provided model.
 
@@ -24,6 +25,38 @@ class IPredict(ABC):
         :return: Predicted labels as a NumPy array.
         """
         pass
+
+class Predict(IPredict):
+    """
+    Class that handles model predictions.
+
+    Combines model loading and prediction functionalities.
+    """
+    def call(self, model: BaseEstimator, X: np.ndarray) -> pd.Series:
+        """
+        Make predictions.
+
+        :param X(np.ndarray): Data for prediction.
+        :return(pd.Series): Predicted labels as a pandas Series
+        :raises: Exception if the model could not be loaded or predictions fail.
+        """
+        try:
+            models_info(f"Starting prediction process with model.")
+            if model is None:
+                models_critical("Model could not be loaded; raising ValueError.")
+                raise ValueError("Model could not be loaded.")
+
+            models_debug("Model loaded successfully. Attempting to make predictions.")
+            predictions = model.predict(X)  # type: ignore
+            models_info("Model made predictions successfully.")
+            models_debug(f"Predictions: {predictions}")
+            return predictions
+        except ValueError as ve:
+            models_warning(f"Prediction failed due to model loading issues: {ve}")
+            raise
+        except Exception as e:
+            models_error(f"Error during prediction: {e}")
+            raise
 
 class ILoadModel(ABC):
     """
@@ -64,46 +97,3 @@ class LoadModel(ILoadModel):
             models_error(f"An error occurred while loading the model: {e}")
         return None
 
-class ModelPredictor(IPredict):
-    """
-    Class that handles model predictions.
-
-    Combines model loading and prediction functionalities.
-    """
-
-    def __init__(self, model_loader: ILoadModel):
-        """
-        Initialize with a model loader.
-
-        :param model_loader: An instance of a class that implements ILoadModel.
-        """
-        models_debug("Initializing ModelPredictor with a model loader.")
-        self.model_loader = model_loader
-
-    def call(self, path_model: str, X: Any) -> np.ndarray:
-        """
-        Make predictions with the loaded model.
-
-        :param path_model: Path to the model file.
-        :param X: Data for prediction.
-        :return: Predicted labels as a NumPy array.
-        :raises: Exception if the model could not be loaded or predictions fail.
-        """
-        try:
-            models_info(f"Starting prediction process with model from {path_model}.")
-            model = self.model_loader.call(path_model)
-            if model is None:
-                models_critical("Model could not be loaded; raising ValueError.")
-                raise ValueError("Model could not be loaded.")
-
-            models_debug("Model loaded successfully. Attempting to make predictions.")
-            predictions = model.predict(X)  # type: ignore
-            models_info("Model made predictions successfully.")
-            models_debug(f"Predictions: {predictions}")
-            return predictions
-        except ValueError as ve:
-            models_warning(f"Prediction failed due to model loading issues: {ve}")
-            raise
-        except Exception as e:
-            models_error(f"Error during prediction: {e}")
-            raise
