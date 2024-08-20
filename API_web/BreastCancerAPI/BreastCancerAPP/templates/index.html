@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Prediction - Index</title>
+</head>
+<body>
+    <h1>Breast Cancer Prediction</h1>
+    <p>Upload a CSV file or enter the input values manually.</p>
+    
+    <h2>Upload CSV File</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="csv-file">Choose CSV file:</label>
+        <input type="file" id="csv-file" name="csv-file" accept=".csv" required>
+        <button type="submit">Upload</button>
+    </form>
+    
+    <h2>Enter Input Values</h2>
+    <form action="/predict" method="post">
+        <label for="input-values">Enter input values:</label>
+        <textarea id="input-values" name="input-values" rows="10" cols="50" placeholder="id,radius_mean,...,fractal_dimension_worst" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+    
+    <footer>
+        <a href="/login">Login</a> | <a href="/register">Register</a>
+    </footer>
+</body>
+</html>

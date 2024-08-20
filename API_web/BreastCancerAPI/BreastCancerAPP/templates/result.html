@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results - Breast Cancer Prediction</title>
+</head>
+<body>
+    <h1>Prediction Results</h1>
+    
+    {% if predictions %}
+        <h2>Predictions:</h2>
+        <ul>
+            {% for prediction in predictions %}
+                <li>{{ prediction }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No predictions available.</p>
+    {% endif %}
+    
+    {% if massage_promet %}
+        <h2>Diagnosis Explanation:</h2>
+        <div>
+            {{ massage_promet|safe }}  <!-- Render HTML safely -->
+        </div>
+    {% else %}
+        <p>No explanation available.</p>
+    {% endif %}
+    
+    <footer>
+        <a href="/">Back to Home</a>
+    </footer>
+</body>
+</html>
