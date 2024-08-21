@@ -4,32 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prediction Results - Breast Cancer Prediction</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1, h2 {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #diagnosis-content {
+            margin-top: 20px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
 </head>
 <body>
-    <h1>Prediction Results</h1>
-    
-    {% if predictions %}
-        <h2>Predictions:</h2>
-        <ul>
-            {% for prediction in predictions %}
-                <li>{{ prediction }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No predictions available.</p>
-    {% endif %}
-    
-    {% if massage_promet %}
-        <h2>Diagnosis Explanation:</h2>
-        <div>
-            {{ massage_promet|safe }}  <!-- Render HTML safely -->
-        </div>
-    {% else %}
-        <p>No explanation available.</p>
-    {% endif %}
-    
+    <header>
+        <h1>Prediction Results</h1>
+    </header>
+    <div class="container">
+        {% if predictions %}
+            <h2>Predictions:</h2>
+            <ul>
+                <li>{{ predictions }}</li>
+            </ul>
+        {% else %}
+            <p>No predictions available.</p>
+        {% endif %}
+        
+        {% if massage_promet %}
+            <h2>Diagnosis Explanation:</h2>
+            <div id="diagnosis-content"></div>
+        {% else %}
+            <p>No explanation available.</p>
+        {% endif %}
+    </div>
     <footer>
         <a href="/">Back to Home</a>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var converter = new showdown.Converter();
+            var markdownContent = `{{ massage_promet|escapejs }}`;
+            var htmlContent = converter.makeHtml(markdownContent);
+            document.getElementById("diagnosis-content").innerHTML = htmlContent;
+        });
+    </script>
 </body>
 </html>

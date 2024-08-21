@@ -4,25 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Breast Cancer Prediction - Index</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1, h2 {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="file"],
+        textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Breast Cancer Prediction</h1>
-    <p>Upload a CSV file or enter the input values manually.</p>
-    
-    <h2>Upload CSV File</h2>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <label for="csv-file">Choose CSV file:</label>
-        <input type="file" id="csv-file" name="csv-file" accept=".csv" required>
-        <button type="submit">Upload</button>
-    </form>
-    
-    <h2>Enter Input Values</h2>
-    <form action="/predict" method="post">
-        <label for="input-values">Enter input values:</label>
-        <textarea id="input-values" name="input-values" rows="10" cols="50" placeholder="id,radius_mean,...,fractal_dimension_worst" required></textarea>
-        <button type="submit">Submit</button>
-    </form>
-    
+    <header>
+        <h1>Breast Cancer Prediction</h1>
+    </header>
+    <div class="container">
+        <h2>Upload CSV File</h2>
+        <form action="/index/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="csv-file">Choose CSV file:</label>
+            <input type="file" id="csv-file" name="csv-file" accept=".csv" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        <h2>Enter Input Values</h2>
+        <form action="/index/" method="post">
+            {% csrf_token %}
+            <label for="input-values">Enter input values:</label>
+            <textarea id="input-values" name="input-values" rows="10" cols="50" placeholder="id,radius_mean,...,fractal_dimension_worst" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
     <footer>
         <a href="/login">Login</a> | <a href="/register">Register</a>
     </footer>
