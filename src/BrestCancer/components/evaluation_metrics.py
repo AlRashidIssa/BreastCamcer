@@ -75,7 +75,14 @@ class MetricsEvaluator(IMetricsEvaluator):
             metrics['confusion_matrix'] = confusion_matrix(y_true, y_pred).tolist()  # Convert to list for easier JSON serialization
             metrics['matthews_corrcoef'] = matthews_corrcoef(y_true, y_pred)
             metrics['log_loss'] = log_loss(y_true, y_pred)
-
+            BrestCancer_info(f"Accurcy Model :{metrics['accuracy']}")
+            BrestCancer_info(f"Precision Score :{metrics['precision']}")
+            BrestCancer_info(f"Recall Score :{metrics['recall']}")
+            BrestCancer_info(f"F1_Score :{metrics['f1']}")
+            BrestCancer_info(f"ROC AUC :{metrics['roc_auc']}")
+            BrestCancer_info(f"Confusion Matrix :{metrics['confusion_matrix']}")
+            BrestCancer_info(f"Matthews Corrcoef :{metrics['matthews_corrcoef']}")
+            BrestCancer_info(f"Log Loss :{metrics['log_loss']}")
             BrestCancer_info("Metrics calculated successfully.")
         except ValueError as ve:
             BrestCancer_error(f"Value error occurred: {ve}")

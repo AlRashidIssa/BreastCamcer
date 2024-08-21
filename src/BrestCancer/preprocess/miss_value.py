@@ -27,7 +27,8 @@ class IMissingValueHandler(ABC):
     def call(self, 
              df: pd.DataFrame, 
              columns: Union[List[str], None] = None, 
-             method: str = 'mean') -> pd.DataFrame:
+             method: str = 'mean',
+             fill_value: Union[str, int, float, None] = None) -> pd.DataFrame:
         """
         Abstract method to handle missing values in the provided DataFrame.
         
@@ -37,6 +38,7 @@ class IMissingValueHandler(ABC):
         - df (pd.DataFrame): The DataFrame to process.
         - columns (list of str or None): List of columns to handle. If None, all columns with missing values will be processed.
         - method (str): The method to use for filling missing values. Supported values are 'mean', 'median', and 'mode'.
+        - fill_value (str, int, float, or None): The value to fill missing values with. If None, the method parameter is used to determine the fill value.
         
         Returns:
         - pd.DataFrame: The DataFrame with missing values handled.
@@ -51,23 +53,21 @@ class FillMissingValues(IMissingValueHandler):
     This class provides functionality to fill missing values in specified columns using a given strategy.
     """
 
-    def __init__(self, fill_value: Union[str, int, float, None] = None):
-        """
-        Initializes the FillMissingValues handler with an optional fill value.
-        
-        Parameters:
-        - fill_value (str, int, float, or None): The value to fill missing values with. If None, use the method specified in the `call` method.
-        """
-        self.fill_value = fill_value
-
-    def call(self, df: pd.DataFrame, columns: Union[List[str], None] = None, method: str = "mean") -> pd.DataFrame:
+    def call(self,
+             df: pd.DataFrame, 
+             handling: bool = False,
+             column: Union[str, None] = None,
+             method: str = "mean",
+             fill_value: Union[str, int, float, None] = None) -> pd.DataFrame:
         """
         Handles missing values in the provided DataFrame by filling them with a specified strategy.
         
         Parameters:
         - df (pd.DataFrame): The DataFrame to process.
-        - columns (list of str or None): List of columns to handle. If None, all columns with missing values will be processed.
+        - handling (bool): Flag to determine if missing values should be handled. If False, the DataFrame is returned as-is.
+        - column (str or None): Column to handle. If None, all columns with missing values will be processed.
         - method (str): The method to use for filling missing values. Supported values are 'mean', 'median', and 'mode'.
+        - fill_value (str, int, float, or None): The value to fill missing values with. If None, the method parameter is used to determine the fill value.
 
         Returns:
         - pd.DataFrame: The DataFrame with missing values filled.
@@ -77,33 +77,31 @@ class FillMissingValues(IMissingValueHandler):
         - Exception: Catches other exceptions to log and raise errors during the process.
         """
         try:
-            if columns is None:
-                # Find all columns with missing values
-                columns = df.columns[df.isna().any()].tolist()
-
-            for column in columns:
-                BrestCancer_info(f"Handling missing values for column: {column}")
-
-                if self.fill_value is not None:
-                    # Fill missing values with the specified value
-                    df[column].fillna(self.fill_value, inplace=True)
-                    BrestCancer_debug(f"Filled missing values in column '{column}' with '{self.fill_value}'")
+            if handling:
+                # If column is None, apply the filling operation to all columns with missing values
+                if column is None:
+                    columns_to_fill = df.columns[df.isnull().any()]
                 else:
-                    # Fill missing values based on the method
+                    columns_to_fill = [column]
+
+                BrestCancer_info(f"Handling missing values for columns: {columns_to_fill}")
+
+                # Fill missing values based on the method for each column
+                for col in columns_to_fill:
                     if method == 'mean':
-                        fill_value = df[column].mean()
+                        fill_value = df[col].mean()
                     elif method == 'median':
-                        fill_value = df[column].median()
+                        fill_value = df[col].median()
                     elif method == 'mode':
-                        fill_value = df[column].mode()[0]
+                        fill_value = df[col].mode()[0]
                     else:
                         BrestCancer_error(f"Unsupported fill method: {method}")
                         raise ValueError(f"Unsupported fill method: {method}")
-
-                    df[column].fillna(fill_value, inplace=True)
-                    BrestCancer_debug(f"Filled missing values in column '{column}' using '{method}' method with value '{fill_value}'")
-
-            return df
+                    df[col].fillna(fill_value, inplace=True)
+                    BrestCancer_debug(f"Filled missing values in column '{col}' using '{method}' method with value '{fill_value}'")
+                return df
+            else:
+                return df
 
         except ValueError as ve:
             BrestCancer_error(f"ValueError occurred: {ve}")

@@ -72,44 +72,24 @@ class Scaler(IScaler):
                 BrestCancer_error(f"Columns not found in DataFrame: {missing_cols}")
                 raise ValueError(f"Columns not found: {', '.join(missing_cols)}")
 
+            # Copy the DataFrame to avoid modifying the original one
+            df_scaled = df.copy()
+
             # Apply scaling method
             if method == "standard":
                 scaler = SklearnStandardScaler()
-                df[columns] = scaler.fit_transform(df[columns])
+                df_scaled[columns] = scaler.fit_transform(df[columns])
                 BrestCancer_info("Standard scaling applied.")
             elif method == "minmax":
                 scaler = SklearnMinMaxScaler()
-                df[columns] = scaler.fit_transform(df[columns])
+                df_scaled[columns] = scaler.fit_transform(df[columns])
                 BrestCancer_info("Min-max scaling applied.")
             else:
                 BrestCancer_error(f"Unknown scaling method: {method}")
                 raise ValueError(f"Unknown method: {method}")
 
-            return df
+            return df_scaled
         
         except Exception as e:
-            BrestCancer_error(f"An error occurred: {str(e)}")
+            BrestCancer_error(f"An error occurred during scaling: {str(e)}")
             raise
-
-
-if __name__ == "__main__":
-    import pandas as pd
-    # Sample DataFrame
-    data = pd.DataFrame({
-        'feature1': [1, 2, 3, 4, 5],
-        'feature2': [10, 20, 30, 40, 50]
-    })
-
-    # Create Scaler instance
-    scaler = Scaler()
-
-    # Apply standard scaling
-    scaled_data_standard = scaler.call(data, columns=['feature1', 'feature2'], method='standard')
-    print("Standard Scaled Data:")
-    print(scaled_data_standard)
-
-    # Apply min-max scaling
-    scaled_data_minmax = scaler.call(data, columns=['feature1', 'feature2'], method='minmax')
-    print("Min-Max Scaled Data:")
-    print(scaled_data_minmax)
-

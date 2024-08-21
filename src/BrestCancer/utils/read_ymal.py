@@ -39,7 +39,7 @@ class ReadYaml(IReadYaml):
     """
 
     def call(self, 
-             path_yaml: str = "/home/alrashidissa/Desktop/BreastCancer/config.yaml"
+             path_yaml: str = "/home/alrashidissa/Desktop/BreastCancer/ConfigrationYaml/config.yaml"
              ) -> Dict[str, Any]:
         """
         Reads a YAML file and returns its contents as a dictionary.

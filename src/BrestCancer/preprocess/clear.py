@@ -52,38 +52,57 @@ class Clean(IClean):
     - Handling missing values using the FillMissingValues strategy
     - Detecting and removing outliers using the IQR (Interquartile Range) method
     """
-    
-    def __init__(self, fill_value: Union[str, int, float, None] = None):
-        """
-        Initializes the Clean class with a fill strategy for handling missing values.
-        
-        Parameters:
-        - fill_value (str, int, float, or None): The value to fill missing values with. If None, use the method specified in the `call` method.
-        """
-        self.fill_value = fill_value
 
     def call(self, 
              df: pd.DataFrame,
              drop_duplicates: bool = True,
              outliers: bool = True,
+             handling: bool = False,
              fill_na: bool = False,
              handl_missing: bool = False,
-             missing_columns: Union[List[str], None] = None, 
-             method: str = "mean") -> pd.DataFrame:
+             missing_column: Union[str, None] = None, 
+             method: str = "mean",
+             fill_value: Union[str, int, float, None] = None) -> pd.DataFrame:
         """
-        Cleans the DataFrame by removing duplicates, handling missing values, and detecting/removing outliers.
-        
+        Cleans the DataFrame by performing various data preprocessing tasks, including removing duplicates,
+        handling missing values, and detecting/removing outliers.
+
         Parameters:
-        - df (pd.DataFrame): The DataFrame to clean.
-        - drop_duplicates (bool): If True, duplicates will be removed. Default is True.
-        - outliers (bool): If True, outliers will be detected and removed using the IQR method. Default is True.
-        - fill_na: bool = False,
-        - handl_missing: bool = False,
-        - missing_columns (list of str or None): List of columns to handle missing values. If None, all columns with missing values will be processed.
-        - method (str): The method to use for filling missing values. Supported values are 'mean', 'median', and 'mode'. Default is 'mean'.
-        
+        ----------
+        df : pd.DataFrame
+            The DataFrame to be cleaned.
+
+        drop_duplicates : bool, optional, default=True
+            If True, duplicate rows in the DataFrame will be removed.
+
+        outliers : bool, optional, default=True
+            If True, outliers will be detected and removed using the Interquartile Range (IQR) method.
+
+        handling : bool, optional, default=False
+            Controls whether the handling of missing values should be done.
+
+        fill_na : bool, optional, default=False
+            If True, missing values will be filled in the DataFrame with zeroes.
+
+        handl_missing : bool, optional, default=False
+            If True, missing values will be handled (imputed) in specified columns. The method of imputation is determined by the `method` parameter.
+
+        missing_column : str or None, optional, default=None
+            A  column where missing values should be handled. If None, missing values in all columns will be processed.
+
+        method : str, optional, default='mean'
+            The method to use for filling missing values. Supported options include:
+            - 'mean': Replace missing values with the mean of the column.
+            - 'median': Replace missing values with the median of the column.
+            - 'mode': Replace missing values with the mode (most frequent value) of the column.
+
+        fill_value : str, int, float, or None, optional, default=None
+            The value to fill missing values with. If None, the method parameter is used to determine the fill value.
+
         Returns:
-        - pd.DataFrame: The cleaned DataFrame.
+        -------
+        pd.DataFrame
+            The cleaned DataFrame with duplicates removed, outliers handled, and missing values filled as specified.
         """
         try:
             # Step 1: Remove duplicates if specified
@@ -95,15 +114,20 @@ class Clean(IClean):
 
             # Step 2: Handle missing values using the provided strategy
             if handl_missing:
-                df = FillMissingValues(fill_value=self.fill_value).call(df, columns=missing_columns, method=method) # type: ignore
+                df = FillMissingValues().call(df, 
+                                              handling=handling,
+                                              column=missing_column, 
+                                              method=method,
+                                              fill_value=fill_value)
             
             if fill_na:
-                df = df.fillna(0)
+                df.fillna(0, inplace=True)
+            
             # Step 3: Detect and remove outliers using the IQR method
             if outliers:
                 initial_row_count = df.shape[0]
                 
-                for column in df.select_dtypes(include=['float64', 'int64']).columns: # type: ignore
+                for column in df.select_dtypes(include=['float64', 'int64']).columns:
                     Q1 = df[column].quantile(0.25)
                     Q3 = df[column].quantile(0.75)
                     IQR = Q3 - Q1

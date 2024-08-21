@@ -32,11 +32,13 @@ dataset:
   target: "diagnosis"
 
 model:
+  name_model: "GBM"
   model_path_s: /home/alrashidissa/Desktop/BreastCancer/PreTrainModel
   path_model: /home/alrashidissa/Desktop/BreastCancer/PreTrainModel/gradient_boosting.pkl
 
 preprocess:
-  handl_missing: "False"
+  handling: None
+  handl_missing: False
   fill_value: None
   drop_columns: ["id"]
   drop_duplicates: True
@@ -53,6 +55,8 @@ preprocess:
   "perimeter_worst", "area_worst", "smoothness_worst", "compactness_worst", 
   "concavity_worst", "concave points_worst", "symmetry_worst", "fractal_dimension_worst"]  
   encoder_columns: ["diagnosis"]
-  method: None
+  method_encoder: None
   replce: True
   value_replce: {'M': 1, 'B': 0}
+  fill_na: False
+  plotes_pathes: "/home/alrashidissa/Desktop/BreastCancer/Plots"

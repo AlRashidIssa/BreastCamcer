@@ -1,22 +1,22 @@
 import sys
-import joblib # type: ignore
+import joblib  # type: ignore
 import numpy as np
-import pandas as pd # type: ignore
+import pandas as pd  # type: ignore
 from abc import ABC, abstractmethod
 from typing import Any
-from sklearn.base import BaseEstimator # type: ignore
-from sklearn.linear_model import LogisticRegression # type: ignore
-from sklearn.svm import SVC # type: ignore
+from sklearn.base import BaseEstimator  # type: ignore
+from sklearn.linear_model import LogisticRegression  # type: ignore
+from sklearn.svm import SVC  # type: ignore
 from sklearn.tree import DecisionTreeClassifier  # type: ignore
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier # type: ignore
-from sklearn.neighbors import KNeighborsClassifier # type: ignore
-from sklearn.naive_bayes import GaussianNB # type: ignore
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier  # type: ignore
+from sklearn.neighbors import KNeighborsClassifier  # type: ignore
+from sklearn.naive_bayes import GaussianNB  # type: ignore
 
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
 
-
 from BrestCancer import BrestCancer_info, BrestCancer_warning, BrestCancer_error, BrestCancer_debug, BrestCancer_critical
 
+# Define the IModel interface
 class IModel(ABC):
     """
     Interface for all machine learning models.
@@ -35,6 +35,7 @@ class IModel(ABC):
         """
         pass
 
+# Implementations of the different models
 class LogisticRegressionModel(IModel):
     def __init__(self) -> None:
         try:
@@ -45,14 +46,6 @@ class LogisticRegressionModel(IModel):
             raise
 
     def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
-        """
-        Train the Logistic Regression model and save it.
-
-        :param X: Training features.
-        :param y: Target labels.
-        :param model_path_s: Path where the model will be saved.
-        :return: The trained Logistic Regression model.
-        """
         try:
             self.model.fit(X, y)
             joblib.dump(self.model, model_path_s)
@@ -72,14 +65,6 @@ class SVCModel(IModel):
             raise
 
     def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
-        """
-        Train the Support Vector Machine model and save it.
-
-        :param X: Training features.
-        :param y: Target labels.
-        :param model_path_s: Path where the model will be saved.
-        :return: The trained Support Vector Machine model.
-        """
         try:
             self.model.fit(X, y)
             joblib.dump(self.model, model_path_s)
@@ -99,14 +84,6 @@ class DecisionTreeModel(IModel):
             raise
 
     def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
-        """
-        Train the Decision Tree model and save it.
-
-        :param X: Training features.
-        :param y: Target labels.
-        :param model_path_s: Path where the model will be saved.
-        :return: The trained Decision Tree model.
-        """
         try:
             self.model.fit(X, y)
             joblib.dump(self.model, model_path_s)
@@ -126,14 +103,6 @@ class RandomForestModel(IModel):
             raise
 
     def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
-        """
-        Train the Random Forest model and save it.
-
-        :param X: Training features.
-        :param y: Target labels.
-        :param model_path_s: Path where the model will be saved.
-        :return: The trained Random Forest model.
-        """
         try:
             self.model.fit(X, y)
             joblib.dump(self.model, model_path_s)
@@ -153,14 +122,6 @@ class KNeighborsModel(IModel):
             raise
 
     def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
-        """
-        Train the K-Nearest Neighbors model and save it.
-
-        :param X: Training features.
-        :param y: Target labels.
-        :param model_path_s: Path where the model will be saved.
-        :return: The trained K-Nearest Neighbors model.
-        """
         try:
             self.model.fit(X, y)
             joblib.dump(self.model, model_path_s)
@@ -180,14 +141,6 @@ class NaiveBayesModel(IModel):
             raise
 
     def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
-        """
-        Train the Naive Bayes model and save it.
-
-        :param X: Training features.
-        :param y: Target labels.
-        :param model_path_s: Path where the model will be saved.
-        :return: The trained Naive Bayes model.
-        """
         try:
             self.model.fit(X, y)
             joblib.dump(self.model, model_path_s)
@@ -207,14 +160,6 @@ class GradientBoostingModel(IModel):
             raise
 
     def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
-        """
-        Train the Gradient Boosting model and save it.
-
-        :param X: Training features.
-        :param y: Target labels.
-        :param model_path_s: Path where the model will be saved.
-        :return: The trained Gradient Boosting model.
-        """
         try:
             self.model.fit(X, y)
             joblib.dump(self.model, f"{model_path_s}/GradientBoostingModel.pkl")
@@ -222,4 +167,67 @@ class GradientBoostingModel(IModel):
             return self.model
         except Exception as e:
             BrestCancer_error(f"Error training Gradient Boosting model: {e}")
+            raise
+
+# Interface for choosing a model
+class IChooseModel(ABC):
+    """
+    Interface for selecting a machine learning model.
+
+    Defines the contract for selecting and returning a machine learning model.
+    """
+    @abstractmethod
+    def call(self, name_model: str = "GBM") -> IModel:
+        """
+        Select and return a machine learning model based on the provided name.
+
+        :param name_model: The name of the model to select.
+        :return: The selected model instance.
+        """
+        pass
+
+# Implementation for choosing a model
+class ChooseModel(IChooseModel):
+    """
+    Implementation of the IChooseModel interface.
+
+    Provides the functionality to select and return a machine learning model based on the provided name.
+    """
+    def call(self, name_model: str = "GBM") -> IModel:
+        """
+        Select and return a machine learning model based on the provided name.
+
+        :param name_model: The name of the model to select. Default is "GBM".
+        :return: The selected model instance.
+        :raises ValueError: If the provided model name is not recognized.
+        :support Machine learining Model: [LogisticRegression, SVM, DecisionTree, RandomForest,
+                                           KNN, NaiveBayes, GBM]
+        """
+        try:
+            if name_model == "LogisticRegression":
+                BrestCancer_info("Logistic Regression model selected.")
+                return LogisticRegressionModel()
+            elif name_model == "SVM":
+                BrestCancer_info("Support Vector Machine model selected.")
+                return SVCModel()
+            elif name_model == "DecisionTree":
+                BrestCancer_info("Decision Tree model selected.")
+                return DecisionTreeModel()
+            elif name_model == "RandomForest":
+                BrestCancer_info("Random Forest model selected.")
+                return RandomForestModel()
+            elif name_model == "KNN":
+                BrestCancer_info("K-Nearest Neighbors model selected.")
+                return KNeighborsModel()
+            elif name_model == "NaiveBayes":
+                BrestCancer_info("Naive Bayes model selected.")
+                return NaiveBayesModel()
+            elif name_model == "GBM":
+                BrestCancer_info("Gradient Boosting model selected.")
+                return GradientBoostingModel()
+            else:
+                BrestCancer_error(f"Unknown model: {name_model}")
+                raise ValueError(f"Unknown model: {name_model}")
+        except Exception as e:
+            BrestCancer_critical(f"Error selecting model: {e}")
             raise
