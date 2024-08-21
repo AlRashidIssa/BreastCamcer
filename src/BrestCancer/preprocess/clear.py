@@ -66,6 +66,7 @@ class Clean(IClean):
              df: pd.DataFrame,
              drop_duplicates: bool = True,
              outliers: bool = True,
+             fill_na: bool = False,
              handl_missing: bool = False,
              missing_columns: Union[List[str], None] = None, 
              method: str = "mean") -> pd.DataFrame:
@@ -76,6 +77,8 @@ class Clean(IClean):
         - df (pd.DataFrame): The DataFrame to clean.
         - drop_duplicates (bool): If True, duplicates will be removed. Default is True.
         - outliers (bool): If True, outliers will be detected and removed using the IQR method. Default is True.
+        - fill_na: bool = False,
+        - handl_missing: bool = False,
         - missing_columns (list of str or None): List of columns to handle missing values. If None, all columns with missing values will be processed.
         - method (str): The method to use for filling missing values. Supported values are 'mean', 'median', and 'mode'. Default is 'mean'.
         
@@ -93,7 +96,9 @@ class Clean(IClean):
             # Step 2: Handle missing values using the provided strategy
             if handl_missing:
                 df = FillMissingValues(fill_value=self.fill_value).call(df, columns=missing_columns, method=method) # type: ignore
-
+            
+            if fill_na:
+                df = df.fillna(0)
             # Step 3: Detect and remove outliers using the IQR method
             if outliers:
                 initial_row_count = df.shape[0]

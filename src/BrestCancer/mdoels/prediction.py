@@ -65,11 +65,11 @@ class ILoadModel(ABC):
     Defines the contract for loading a model from a specified path.
     """
     @abstractmethod
-    def call(self, path_model: str) -> Optional[BaseEstimator]:
+    def call(self, mdoel_path: str) -> Optional[BaseEstimator]:
         """
         Load the machine learning model from the given path.
 
-        :param path_model: Path to the model file.
+        :param mdoel_path: Path to the model file.
         :return: The loaded model, or None if loading fails.
         """
         pass
@@ -79,20 +79,20 @@ class LoadModel(ILoadModel):
     Concrete implementation for loading a machine learning model using joblib.
     """
 
-    def call(self, path_model: str) -> Optional[BaseEstimator]:
+    def call(self, mdoel_path: str) -> Optional[BaseEstimator]:
         """
         Load the model from a .pkl file using joblib.
 
-        :param path_model: Path to the model file.
+        :param mdoel_path: Path to the model file.
         :return: Loaded model if successful, None otherwise.
         """
         try:
-            BrestCancer_debug(f"Attempting to load model from {path_model}.")
-            model = joblib.load(path_model)
-            BrestCancer_info(f"Model loaded successfully from {path_model}.")
+            BrestCancer_debug(f"Attempting to load model from {mdoel_path}.")
+            model = joblib.load(mdoel_path)
+            BrestCancer_info(f"Model loaded successfully from {mdoel_path}.")
             return model
         except FileNotFoundError:
-            BrestCancer_error(f"Model file not found at {path_model}.")
+            BrestCancer_error(f"Model file not found at {mdoel_path}.")
         except Exception as e:
             BrestCancer_error(f"An error occurred while loading the model: {e}")
         return None

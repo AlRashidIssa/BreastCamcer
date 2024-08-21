@@ -90,3 +90,26 @@ class Scaler(IScaler):
         except Exception as e:
             BrestCancer_error(f"An error occurred: {str(e)}")
             raise
+
+
+if __name__ == "__main__":
+    import pandas as pd
+    # Sample DataFrame
+    data = pd.DataFrame({
+        'feature1': [1, 2, 3, 4, 5],
+        'feature2': [10, 20, 30, 40, 50]
+    })
+
+    # Create Scaler instance
+    scaler = Scaler()
+
+    # Apply standard scaling
+    scaled_data_standard = scaler.call(data, columns=['feature1', 'feature2'], method='standard')
+    print("Standard Scaled Data:")
+    print(scaled_data_standard)
+
+    # Apply min-max scaling
+    scaled_data_minmax = scaler.call(data, columns=['feature1', 'feature2'], method='minmax')
+    print("Min-Max Scaled Data:")
+    print(scaled_data_minmax)
+
