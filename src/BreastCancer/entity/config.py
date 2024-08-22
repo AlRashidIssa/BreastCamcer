@@ -1,6 +1,6 @@
 import os
 import sys
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Union
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
 from src.BreastCancer.utils.read_ymal import ReadYaml
 
@@ -19,6 +19,7 @@ class CONFIG:
         # Accessing dataset configuration
         self.dataset_config: Dict[str, Any] = self.config['dataset']
         self.model_config: Dict[str, Any] = self.config['model']
+        self.mlflow_config: Dict[str, Any] = self.config['mlflow']
 
         self.preprocess_config: Dict[str, Any] = self.config['preprocess']
         # Dataset configuration attributes
@@ -29,6 +30,8 @@ class CONFIG:
         self.extract_to: str = self.dataset_config["extract_to"]
         self.DFP: str = self.dataset_config["DFP"]
         self.target: str = self.dataset_config["target"]
+        self.data_version: str = self.dataset_config["data_version"]
+
         # Model configuration attributes
         self.name_model: str = self.model_config["name_model"]
         self.model_path_s: str = self.model_config["model_path_s"]
@@ -51,3 +54,7 @@ class CONFIG:
         self.replce: bool = self.preprocess_config["replce"]
         self.value_replce: Dict[str, int] = self.preprocess_config["value_replce"]
         self.plotes_pathes: str = self.preprocess_config["plotes_pathes"]
+
+        self.tage_name: str = self.mlflow_config["tage_name"]
+        self.tage_value: Union[int, float] = self.mlflow_config["tage_value"]
+        self.tage_description: str = self.mlflow_config["tage_description"]

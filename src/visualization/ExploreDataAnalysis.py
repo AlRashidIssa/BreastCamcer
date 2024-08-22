@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from abc import ABC, abstractmethod
 from typing import Dict, List, Tuple, Union, Optional, Any
+from io import StringIO
 
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
 from BreastCancer import BrestCancer_info, BrestCancer_debug, BrestCancer_warning
@@ -56,10 +57,13 @@ class DatasetLoader(DataOperation):
         """
         try:
             self.data = pd.read_csv(self.filepath)
+            if self.data.empty:
+                raise ValueError(f"Loaded dataset is empty from {self.filepath}")
             BrestCancer_info(f"Dataset loaded successfully from {self.filepath}")
+            return self.data
         except Exception as e:
             BrestCancer_warning(f"Failed to load dataset from {self.filepath}: {e}")
-        return self.data # type: ignore
+            raise
 
 # Data Inspector
 class DataInspector:
@@ -87,32 +91,25 @@ class DataInspector:
         Returns:
             Dict[str, Any]: A dictionary containing dataset inspection results.
         """
-        BrestCancer_info("|DEA|-->: Inspecting dataset")
-        BrestCancer_debug(f"|DEA|-->: Dataset Shape: {self.data.shape}")
-        BrestCancer_debug(f"\n|DEA|-->: First 5 Rows of the Dataset:\n{self.data.head()}")
-        
-        # Capture data info output
-        from io import StringIO
+        BrestCancer_info("Inspecting dataset")
+        BrestCancer_debug(f"Shape of Dataset :{self.data.head()}")
+        BrestCancer_debug(f"First 5 Rows of the Dataset:\n{self.data.head()}")
         buffer = StringIO()
         self.data.info(buf=buffer)
         data_info = buffer.getvalue()
-        
-        BrestCancer_debug(f"\n|DEA|-->: Data Info:\n{data_info}")
-        BrestCancer_debug(f"\n|DEA|-->: Statistical Summary:\n{self.data.describe()}")
-        BrestCancer_debug(f"\n|DEA|-->: Missing Values in Each Column:\n{self.data.isnull().sum()}")
-        BrestCancer_debug(f"\n|DEA|-->: Number of Duplicate Rows: {self.data.duplicated().sum()}")
-
+        BrestCancer_debug(f"Data Info:\n{data_info}")
+        BrestCancer_debug(f"Statistical Summary:\n{self.data.describe()}")
+        BrestCancer_debug(f"Missing Values in Each Column:\n{self.data.isnull().sum()}")
+        BrestCancer_debug(f"Number of Duplicate Rows: {self.data.duplicated().sum()}")
         data_inspected = {
-            "Data Shape": self.data.shape,
             "First 5 Rows of the Dataset": self.data.head(),
             "Missing Values in Each Column": self.data.isnull().sum(),
             "Number of Duplicate Rows": self.data.duplicated().sum(),
             "Data Information": data_info,
             "Statistical Summary": self.data.describe()
         }
-        
         return data_inspected
-    
+
 # Base class for Data Visualizations
 class DataVisualizer(ABC):
     """
@@ -120,6 +117,7 @@ class DataVisualizer(ABC):
 
     This class provides a structure for visualizing data and saving plots to files.
     """
+
     def __init__(self, data: pd.DataFrame, output_dir: str = "/home/alrashidissa/Desktop/BreastCancer/Plots"):
         """
         Initialize DataVisualizer with the dataset and output directory.
@@ -133,9 +131,9 @@ class DataVisualizer(ABC):
 
         # Create the output directory if it does not exist
         if not os.path.exists(self.output_dir):
-            BrestCancer_warning(f"|DEA|-->:No such Directory Exists: {self.output_dir}")
+            BrestCancer_warning(f"No such Directory Exists: {self.output_dir}")
             os.makedirs(self.output_dir)
-            BrestCancer_warning(f"|DEA|-->:Successfully Created new Directory. Dir Path: {self.output_dir}")
+            BrestCancer_info(f"Successfully Created new Directory. Dir Path: {self.output_dir}")
 
     @abstractmethod
     def visualize(self):
@@ -154,9 +152,9 @@ class DataVisualizer(ABC):
         try:
             file_path = os.path.join(self.output_dir, filename)
             plt.savefig(file_path)
-            BrestCancer_info(f"|DEA|-->:Plot saved as {filename} in {self.output_dir}")
+            BrestCancer_info(f"Plot saved as {filename} in {self.output_dir}")
         except Exception as e:
-            BrestCancer_warning(f"|DEA|-->:Failed to save plot {filename}: {e}")
+            BrestCancer_warning(f"Failed to save plot {filename}: {e}")
         finally:
             plt.close()
 
@@ -172,7 +170,7 @@ class TargetVariableVisualizer(DataVisualizer):
         """
         Create and save a count plot of the target variable distribution.
         """
-        BrestCancer_info("DEA|-->:Visualizing distribution of target variable")
+        BrestCancer_info("Visualizing distribution of target variable")
         sns.countplot(x='diagnosis', data=self.data)
         plt.title('Distribution of Diagnosis (Target Variable)')
         self.save_plot('target_variable_distribution.png')
@@ -186,7 +184,7 @@ class FeatureDistributionVisualizer(DataVisualizer):
         features (list): List of feature names to visualize.
     """
 
-    def __init__(self, data: pd.DataFrame, features: list, output_dir: str = "plots"):
+    def __init__(self, data: pd.DataFrame, features: List[str], output_dir: str = "/home/alrashidissa/Desktop/BreastCancer/Plots"):
         """
         Initialize FeatureDistributionVisualizer with the dataset and features.
 
@@ -202,7 +200,7 @@ class FeatureDistributionVisualizer(DataVisualizer):
         """
         Create and save histograms of the selected features.
         """
-        BrestCancer_info("DEA|-->:Visualizing distribution of selected features")
+        BrestCancer_info("Visualizing distribution of selected features")
         self.data[self.features].hist(bins=15, figsize=(15, 10), layout=(2, 3))
         plt.suptitle('Distribution of Selected Features')
         self.save_plot('feature_distribution.png')
@@ -217,7 +215,7 @@ class CorrelationMatrixVisualizer(DataVisualizer):
         """
         Create and save a heatmap of the correlation matrix.
         """
-        BrestCancer_info("DEA|-->:Visualizing correlation matrix")
+        BrestCancer_info("Visualizing correlation matrix")
         numerical_data = self.data.select_dtypes(include=['float64', 'int64'])
         correlation_matrix = numerical_data.corr()
         plt.figure(figsize=(18, 15))
@@ -235,7 +233,7 @@ class PairplotVisualizer(DataVisualizer):
         hue (str): The column name to use for color encoding in the pairplot.
     """
 
-    def __init__(self, data: pd.DataFrame, features: list, hue: str, output_dir: str = "plots"):
+    def __init__(self, data: pd.DataFrame, features: List[str], hue: str, output_dir: str = "/home/alrashidissa/Desktop/BreastCancer/Plots"):
         """
         Initialize PairplotVisualizer with the dataset, features, and hue.
 
@@ -253,7 +251,7 @@ class PairplotVisualizer(DataVisualizer):
         """
         Create and save a pairplot for the selected features.
         """
-        BrestCancer_info("DEA|-->:Visualizing pairplot of selected features")
+        BrestCancer_info("Visualizing pairplot of selected features")
         sns.pairplot(self.data[self.features], hue=self.hue)
         plt.title('Pairplot of Selected Features')
         self.save_plot('pairplot.png')
@@ -267,7 +265,7 @@ class BoxplotVisualizer(DataVisualizer):
         features (list): List of feature names to visualize.
     """
 
-    def __init__(self, data: pd.DataFrame, features: list, output_dir: str = "plots"):
+    def __init__(self, data: pd.DataFrame, features: List[str], output_dir: str = "/home/alrashidissa/Desktop/BreastCancer/Plots"):
         """
         Initialize BoxplotVisualizer with the dataset and features.
 
@@ -283,7 +281,7 @@ class BoxplotVisualizer(DataVisualizer):
         """
         Create and save boxplots of the selected features with respect to the diagnosis.
         """
-        BrestCancer_info("DEA|-->:Visualizing boxplots of selected features")
+        BrestCancer_info("Visualizing boxplots of selected features")
         plt.figure(figsize=(18, 10))
         for i, feature in enumerate(self.features):
             plt.subplot(2, 3, i+1)
@@ -314,56 +312,56 @@ class BreastCancerAnalyzer:
             output_dir (str): Directory where the plots will be saved.
         """
         self.loader = DatasetLoader(filepath)
-        self.data = None
         self.output_dir = output_dir
 
     def load_data(self):
         """
         Load the dataset using the DatasetLoader.
         """
-        BrestCancer_info("DEA|-->:Loading data")
+        BrestCancer_info("Loading data")
         self.data = self.loader.execute()
 
-    def inspect_data(self):
+    def inspect_data(self) -> Dict[str, Any]:
         """
         Inspect the dataset using the DataInspector.
         """
-        BrestCancer_info("DEA|-->:Inspecting data")
-        inspector = DataInspector(self.data) # type: ignore
-        data_inspecute = inspector.execute()
+        BrestCancer_info("Inspecting data")
+        inspector = DataInspector(self.data)
+        data_inspected = inspector.execute()
+        return data_inspected
 
     def analyze(self):
         """
         Perform a comprehensive analysis of the dataset, including visualization of target variable,
         feature distributions, correlation matrix, pairplots, and boxplots.
         """
-        BrestCancer_info("DEA|-->:Starting analysis")
+        BrestCancer_info("Starting analysis")
 
         # Target Variable Analysis
-        BrestCancer_info("DEA|-->:Analyzing target variable")
-        target_visualizer = TargetVariableVisualizer(self.data, self.output_dir) # type: ignore
+        BrestCancer_info("Analyzing target variable")
+        target_visualizer = TargetVariableVisualizer(self.data, self.output_dir)
         target_visualizer.visualize()
 
         # Univariate Analysis
-        BrestCancer_info("DEA|-->:Analyzing feature distributions")
+        BrestCancer_info("Analyzing feature distributions")
         features = ['radius_mean', 'texture_mean', 'perimeter_mean', 'area_mean', 'smoothness_mean']
-        feature_visualizer = FeatureDistributionVisualizer(self.data, features, self.output_dir) # type: ignore
+        feature_visualizer = FeatureDistributionVisualizer(self.data, features, self.output_dir)
         feature_visualizer.visualize()
 
         # Correlation Matrix
-        BrestCancer_info("DEA|-->:Analyzing correlation matrix") 
-        correlation_visualizer = CorrelationMatrixVisualizer(self.data, self.output_dir) # type: ignore
+        BrestCancer_info("Analyzing correlation matrix")
+        correlation_visualizer = CorrelationMatrixVisualizer(self.data, self.output_dir)
         correlation_visualizer.visualize()
 
         # Pairplot Analysis
-        BrestCancer_info("DEA|-->:Analyzing pairplot")
+        BrestCancer_info("Analyzing pairplot")
         selected_features = ['radius_mean', 'texture_mean', 'perimeter_mean', 'area_mean', 'smoothness_mean', 'diagnosis']
-        pairplot_visualizer = PairplotVisualizer(self.data, selected_features, hue='diagnosis', output_dir=self.output_dir) # type: ignore
+        pairplot_visualizer = PairplotVisualizer(self.data, selected_features, hue='diagnosis', output_dir=self.output_dir)
         pairplot_visualizer.visualize()
 
         # Boxplot Analysis
-        BrestCancer_info("DEA|-->:Analyzing boxplots")
-        boxplot_visualizer = BoxplotVisualizer(self.data, features, self.output_dir) # type: ignore
+        BrestCancer_info("Analyzing boxplots")
+        boxplot_visualizer = BoxplotVisualizer(self.data, features, self.output_dir)
         boxplot_visualizer.visualize()
 
 # Example Usage
@@ -371,5 +369,5 @@ if __name__ == "__main__":
     output_dir = "/home/alrashidissa/Desktop/BreastCancer/Plots"
     analyzer = BreastCancerAnalyzer("/home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv", output_dir)
     analyzer.load_data()
-    analyzer.inspect_data()
+    data_inspected = analyzer.inspect_data()
     analyzer.analyze()
