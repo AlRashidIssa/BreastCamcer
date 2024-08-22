@@ -1,0 +1,40 @@
+2024-08-22 18:44:55,659 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/ConfigrationYaml/config.yaml
+2024-08-22 18:44:55,659 - BrestCancer - INFO - Configuration loaded from: /home/alrashidissa/Desktop/BreastCancer/ConfigrationYaml/config.yaml
+2024-08-22 18:44:55,898 - BrestCancer - INFO - Starting Breast Cancer Pipeline...
+2024-08-22 18:44:55,898 - BrestCancer - INFO - Starting download from https://drive.google.com/uc?id=1gCvzRbsBtPT-u1LinpEesTfN5YkjzXNn
+2024-08-22 18:45:00,084 - BrestCancer - INFO - File size: 0.05 MB
+2024-08-22 18:45:00,084 - BrestCancer - INFO - Download completed. File size: File size: 0.05 MB
+2024-08-22 18:45:00,084 - BrestCancer - INFO - Data downloaded successfully.
+2024-08-22 18:45:00,084 - BrestCancer - INFO - Starting extraction of /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-22 18:45:00,093 - BrestCancer - INFO - Extraction completed successfully to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-22 18:45:00,093 - BrestCancer - INFO - Data unzipped successfully.
+2024-08-22 18:45:00,093 - BrestCancer - DEBUG - Starting Ingest Data From /home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv
+2024-08-22 18:45:00,113 - BrestCancer - INFO - Successfully ingested data from /home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv
+2024-08-22 18:45:02,391 - BrestCancer - INFO - Data ingested successfully.
+2024-08-22 18:45:02,394 - BrestCancer - INFO - Columns ['id'] dropped successfully
+2024-08-22 18:45:02,394 - BrestCancer - INFO - Feature selection completed.
+2024-08-22 18:45:02,410 - BrestCancer - INFO - Removed 0 duplicate rows
+2024-08-22 18:45:02,531 - BrestCancer - INFO - Removed 292 outlier rows using IQR method
+2024-08-22 18:45:02,531 - BrestCancer - INFO - Data cleaning process completed successfully.
+2024-08-22 18:45:02,532 - BrestCancer - INFO - Data cleaning completed.
+2024-08-22 18:45:02,534 - BrestCancer - INFO - Values replaced according to the provided dictionary.
+2024-08-22 18:45:02,535 - BrestCancer - INFO - Categorical encoding completed.
+2024-08-22 18:45:02,543 - BrestCancer - DEBUG - Data split into training and testing sets.
+2024-08-22 18:45:02,544 - BrestCancer - INFO - Data splitting completed.
+2024-08-22 18:45:02,656 - BrestCancer - INFO - Gradient Boosting model selected.
+2024-08-22 18:45:02,656 - BrestCancer - INFO - Gradient Boosting model initialized.
+2024-08-22 18:45:03,499 - BrestCancer - INFO - Gradient Boosting model trained and saved to /home/alrashidissa/Desktop/BreastCancer/PreTrainModel.
+2024-08-22 18:45:03,500 - BrestCancer - INFO - Model parameters extraction Saccessfully.
+2024-08-22 18:45:15,836 - BrestCancer - INFO - Starting prediction process with model.
+2024-08-22 18:45:15,836 - BrestCancer - DEBUG - Model loaded successfully. Attempting to make predictions.
+2024-08-22 18:45:15,847 - BrestCancer - INFO - Model made predictions successfully.
+2024-08-22 18:45:15,849 - BrestCancer - DEBUG - Predictions: [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0]
+2024-08-22 18:45:15,906 - BrestCancer - INFO - Accuracy Model: 0.9285714285714286
+2024-08-22 18:45:15,906 - BrestCancer - INFO - Precision Score: 0.9285714285714286
+2024-08-22 18:45:15,907 - BrestCancer - INFO - Recall Score: 0.9285714285714286
+2024-08-22 18:45:15,907 - BrestCancer - INFO - F1 Score: 0.9285714285714286
+2024-08-22 18:45:15,907 - BrestCancer - INFO - ROC AUC: 0.6477987421383647
+2024-08-22 18:45:15,907 - BrestCancer - INFO - Matthews Corrcoef: 0.29559748427672955
+2024-08-22 18:45:15,908 - BrestCancer - INFO - Log Loss: 2.5745466706512254
+2024-08-22 18:45:15,908 - BrestCancer - INFO - Metrics calculated successfully.

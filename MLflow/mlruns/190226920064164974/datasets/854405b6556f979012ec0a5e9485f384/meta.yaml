@@ -1,0 +1,31 @@
+digest: 3d94b307
+name: dataset
+profile: '{"num_rows": 569, "num_elements": 18208}'
+schema: '{"mlflow_colspec": [{"type": "long", "name": "id", "required": true}, {"type":
+  "string", "name": "diagnosis", "required": true}, {"type": "double", "name": "radius_mean",
+  "required": true}, {"type": "double", "name": "texture_mean", "required": true},
+  {"type": "double", "name": "perimeter_mean", "required": true}, {"type": "double",
+  "name": "area_mean", "required": true}, {"type": "double", "name": "smoothness_mean",
+  "required": true}, {"type": "double", "name": "compactness_mean", "required": true},
+  {"type": "double", "name": "concavity_mean", "required": true}, {"type": "double",
+  "name": "concave points_mean", "required": true}, {"type": "double", "name": "symmetry_mean",
+  "required": true}, {"type": "double", "name": "fractal_dimension_mean", "required":
+  true}, {"type": "double", "name": "radius_se", "required": true}, {"type": "double",
+  "name": "texture_se", "required": true}, {"type": "double", "name": "perimeter_se",
+  "required": true}, {"type": "double", "name": "area_se", "required": true}, {"type":
+  "double", "name": "smoothness_se", "required": true}, {"type": "double", "name":
+  "compactness_se", "required": true}, {"type": "double", "name": "concavity_se",
+  "required": true}, {"type": "double", "name": "concave points_se", "required": true},
+  {"type": "double", "name": "symmetry_se", "required": true}, {"type": "double",
+  "name": "fractal_dimension_se", "required": true}, {"type": "double", "name": "radius_worst",
+  "required": true}, {"type": "double", "name": "texture_worst", "required": true},
+  {"type": "double", "name": "perimeter_worst", "required": true}, {"type": "double",
+  "name": "area_worst", "required": true}, {"type": "double", "name": "smoothness_worst",
+  "required": true}, {"type": "double", "name": "compactness_worst", "required": true},
+  {"type": "double", "name": "concavity_worst", "required": true}, {"type": "double",
+  "name": "concave points_worst", "required": true}, {"type": "double", "name": "symmetry_worst",
+  "required": true}, {"type": "double", "name": "fractal_dimension_worst", "required":
+  true}]}'
+source: '{"tags": {"mlflow.user": "alrashidissa", "mlflow.source.name": "mlflow_pipeline.py",
+  "mlflow.source.type": "LOCAL", "mlflow.source.git.commit": "c86a5fba022037b0c92c428f09280d7c09da4694"}}'
+source_type: code
