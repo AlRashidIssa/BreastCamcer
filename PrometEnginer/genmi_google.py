@@ -1,8 +1,13 @@
 import google.generativeai as genai
 from typing import Dict, List
+from src.BreastCancer.entity.config import CONFIG
+import os
+name_yaml = os.listdir("/home/alrashidissa/Desktop/BreastCancer/ConfigrationYaml")
+yaml = name_yaml[0]
+config = CONFIG(yaml_path=f"/home/alrashidissa/Desktop/BreastCancer/ConfigrationYaml/{yaml}")
 
 # Manually set your API key
-GOOGLE_API_KEY = 'AIzaSyBmnV48Lgg54buSbr4Pag89NmqbeFCuZ1E'
+GOOGLE_API_KEY = config.google_api_key
 genai.configure(api_key=GOOGLE_API_KEY)
 
 class BreastCancerDiagnosis:

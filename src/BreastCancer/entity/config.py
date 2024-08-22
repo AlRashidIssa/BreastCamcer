@@ -58,3 +58,4 @@ class CONFIG:
         self.tage_name: str = self.mlflow_config["tage_name"]
         self.tage_value: Union[int, float] = self.mlflow_config["tage_value"]
         self.tage_description: str = self.mlflow_config["tage_description"]
+        self.google_api_key: str = self.mlflow_config["google_api_key"]
