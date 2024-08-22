@@ -38,3 +38,43 @@
 2024-08-22 18:45:15,907 - BrestCancer - INFO - Matthews Corrcoef: 0.29559748427672955
 2024-08-22 18:45:15,908 - BrestCancer - INFO - Log Loss: 2.5745466706512254
 2024-08-22 18:45:15,908 - BrestCancer - INFO - Metrics calculated successfully.
+2024-08-22 19:48:03,192 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/ConfigrationYaml/config.yaml
+2024-08-22 19:48:03,195 - BrestCancer - INFO - Configuration loaded from: /home/alrashidissa/Desktop/BreastCancer/ConfigrationYaml/config.yaml
+2024-08-22 19:48:03,746 - BrestCancer - INFO - Starting Breast Cancer Pipeline...
+2024-08-22 19:48:03,747 - BrestCancer - INFO - Starting download from https://drive.google.com/uc?id=1gCvzRbsBtPT-u1LinpEesTfN5YkjzXNn
+2024-08-22 19:48:07,866 - BrestCancer - INFO - File size: 0.05 MB
+2024-08-22 19:48:07,867 - BrestCancer - INFO - Download completed. File size: File size: 0.05 MB
+2024-08-22 19:48:07,868 - BrestCancer - INFO - Data downloaded successfully.
+2024-08-22 19:48:07,874 - BrestCancer - INFO - Starting extraction of /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-22 19:48:07,895 - BrestCancer - INFO - Extraction completed successfully to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-22 19:48:07,896 - BrestCancer - INFO - Data unzipped successfully.
+2024-08-22 19:48:07,900 - BrestCancer - DEBUG - Starting Ingest Data From /home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv
+2024-08-22 19:48:07,957 - BrestCancer - INFO - Successfully ingested data from /home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv
+2024-08-22 19:48:12,471 - BrestCancer - INFO - Data ingested successfully.
+2024-08-22 19:48:12,476 - BrestCancer - INFO - Columns ['id'] dropped successfully
+2024-08-22 19:48:12,476 - BrestCancer - INFO - Feature selection completed.
+2024-08-22 19:48:12,501 - BrestCancer - INFO - Removed 0 duplicate rows
+2024-08-22 19:48:12,857 - BrestCancer - INFO - Removed 292 outlier rows using IQR method
+2024-08-22 19:48:12,858 - BrestCancer - INFO - Data cleaning process completed successfully.
+2024-08-22 19:48:12,858 - BrestCancer - INFO - Data cleaning completed.
+2024-08-22 19:48:12,860 - BrestCancer - INFO - Values replaced according to the provided dictionary.
+2024-08-22 19:48:12,861 - BrestCancer - INFO - Categorical encoding completed.
+2024-08-22 19:48:12,872 - BrestCancer - DEBUG - Data split into training and testing sets.
+2024-08-22 19:48:12,873 - BrestCancer - INFO - Data splitting completed.
+2024-08-22 19:48:13,113 - BrestCancer - INFO - Gradient Boosting model selected.
+2024-08-22 19:48:13,114 - BrestCancer - INFO - Gradient Boosting model initialized.
+2024-08-22 19:48:14,710 - BrestCancer - INFO - Gradient Boosting model trained and saved to /home/alrashidissa/Desktop/BreastCancer/PreTrainModel.
+2024-08-22 19:48:14,711 - BrestCancer - INFO - Model parameters extraction Saccessfully.
+2024-08-22 19:48:34,897 - BrestCancer - INFO - Starting prediction process with model.
+2024-08-22 19:48:34,898 - BrestCancer - DEBUG - Model loaded successfully. Attempting to make predictions.
+2024-08-22 19:48:34,901 - BrestCancer - INFO - Model made predictions successfully.
+2024-08-22 19:48:34,904 - BrestCancer - DEBUG - Predictions: [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0]
+2024-08-22 19:48:35,035 - BrestCancer - INFO - Accuracy Model: 0.9285714285714286
+2024-08-22 19:48:35,036 - BrestCancer - INFO - Precision Score: 0.9285714285714286
+2024-08-22 19:48:35,046 - BrestCancer - INFO - Recall Score: 0.9285714285714286
+2024-08-22 19:48:35,047 - BrestCancer - INFO - F1 Score: 0.9285714285714286
+2024-08-22 19:48:35,048 - BrestCancer - INFO - ROC AUC: 0.6477987421383647
+2024-08-22 19:48:35,049 - BrestCancer - INFO - Matthews Corrcoef: 0.29559748427672955
+2024-08-22 19:48:35,049 - BrestCancer - INFO - Log Loss: 2.5745466706512254
+2024-08-22 19:48:35,052 - BrestCancer - INFO - Metrics calculated successfully.

@@ -2,7 +2,7 @@
 
 echo "Activating virtual environment..."
 cd ~/Desktop/BreastCancer
-source Brest/bin/activate
+source env_/bin/activate
 
 # Initialize variables
 YAML_PATH=""
