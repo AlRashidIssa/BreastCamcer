@@ -5,11 +5,11 @@ import numpy as np
 import pandas as pd
 import sys
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
-from src.BrestCancer.mdoels.prediction import LoadModel, Predict
-from src.BrestCancer.preprocess.features_selction import Selction
-from src.BrestCancer.preprocess.clear import Clean
-from src.BrestCancer.preprocess.scaler import Scaler
-from src.BrestCancer import BrestCancer_critical, BrestCancer_info
+from src.BreastCancer.models.prediction import LoadModel, Predict
+from BreastCancer.preprocess.features_selection import Selction
+from BreastCancer.preprocess.clean import Clean
+from src.BreastCancer.preprocess.scaler import Scaler
+from src.BreastCancer import BrestCancer_critical, BrestCancer_info
 
 class IAPIPredict(ABC):
     """
@@ -72,11 +72,12 @@ class APIPredict(IAPIPredict):
 
             # Step 2: Data cleaning and preprocessing
             BrestCancer_info("Cleaning and preprocessing data.")
-            df = Clean(fill_value=0).call(df=df, 
-                                          drop_duplicates=False,
-                                          outliers=False,
-                                          handl_missing=False,
-                                          fill_na=True)
+            df = Clean().call(df=df, 
+                              drop_duplicates=False,
+                              outliers=False,
+                              handl_missing=False,
+                              fill_na=True,
+                              fill_value=0)
             
 
             # # Step 3: Data scaling

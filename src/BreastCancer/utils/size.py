@@ -4,7 +4,7 @@ import numpy as np # type: ignore
 
 import sys
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
-from BrestCancer import BrestCancer_critical, BrestCancer_error, BrestCancer_info
+from BreastCancer import BrestCancer_critical, BrestCancer_error, BrestCancer_info
 
 
 class ISize(ABC):

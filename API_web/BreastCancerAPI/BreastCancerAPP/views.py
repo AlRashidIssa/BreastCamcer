@@ -10,8 +10,8 @@ from .forms import LoginForm, RegisterForm
 import sys
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
 from PrometEnginer.genmi_google import BreastCancerDiagnosis
-from src.BrestCancer.components.PreprocessAndPrediction import APIPredict
-from src.BrestCancer import BrestCancer_critical
+from src.BreastCancer.components.PreprocessAndPrediction import APIPredict
+from src.BreastCancer import BrestCancer_critical
 
 def main_page(request):
     """

@@ -17,8 +17,6 @@ seaborn
 plotly
 
 # Model Management
-mlflow
-tfx
 
 # Deployment
 flask

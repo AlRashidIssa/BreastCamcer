@@ -7,7 +7,7 @@ from sklearn.metrics import (accuracy_score, precision_score, recall_score,
                              matthews_corrcoef, log_loss)
 
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
-from BrestCancer import BrestCancer_critical, BrestCancer_error, BrestCancer_info
+from BreastCancer import BrestCancer_critical, BrestCancer_error, BrestCancer_info
 
 class IMetricsEvaluator(ABC):
     """

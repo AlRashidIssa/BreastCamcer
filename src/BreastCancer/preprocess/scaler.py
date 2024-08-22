@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler as SklearnStandardScaler
 from sklearn.preprocessing import MinMaxScaler as SklearnMinMaxScaler
 
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
-from BrestCancer import BrestCancer_debug, BrestCancer_critical, BrestCancer_error, BrestCancer_info, BrestCancer_warning
+from BreastCancer import BrestCancer_debug, BrestCancer_critical, BrestCancer_error, BrestCancer_info, BrestCancer_warning
 
 class IScaler(ABC):
     """

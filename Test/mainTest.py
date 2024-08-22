@@ -4,17 +4,17 @@ import pandas as pd
 
 # Assume the main function and related classes have been imported as follows:
 from preprocess.scaler import Scaler
-from src.BrestCancer.ingestdata.download_data import Download
-from src.BrestCancer.ingestdata.unzip_data import Unzip
-from src.BrestCancer.ingestdata.ingesting import Ingest
-from src.BrestCancer.ingestdata.split import Split
-from src.BrestCancer.preprocess.features_selction import Selction
-from src.BrestCancer.preprocess.clear import Clean
-from src.BrestCancer.preprocess.cat_encoder import Encoder
-from src.BrestCancer.mdoels.algorithms import GradientBoostingModel
-from src.BrestCancer.entity.config import CONFIG
-from src.BrestCancer.components.evaluation_metrics import MetricsEvaluator
-from src.BrestCancer.mdoels.prediction import Predict
+from src.BreastCancer.ingestdata.download_data import Download
+from src.BreastCancer.ingestdata.unzip_data import Unzip
+from src.BreastCancer.ingestdata.ingesting import Ingest
+from src.BreastCancer.ingestdata.split import Split
+from BreastCancer.preprocess.features_selection import Selction
+from BreastCancer.preprocess.clean import Clean
+from src.BreastCancer.preprocess.cat_encoder import Encoder
+from src.BreastCancer.models.algorithms import GradientBoostingModel
+from src.BreastCancer.entity.config import CONFIG
+from src.BreastCancer.components.evaluation_metrics import MetricsEvaluator
+from src.BreastCancer.models.prediction import Predict
 from src.visualization.ExploreDataAnalysis import BreastCancerAnalyzer
 import main
 class TestMainFunction(unittest.TestCase):

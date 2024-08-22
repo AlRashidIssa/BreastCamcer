@@ -5,7 +5,7 @@ import os
 import sys
 
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
-from BrestCancer import BrestCancer_critical, BrestCancer_error, BrestCancer_info, BrestCancer_warning
+from BreastCancer import BrestCancer_critical, BrestCancer_error, BrestCancer_info, BrestCancer_warning
 
 class IUnzip(ABC):
     """

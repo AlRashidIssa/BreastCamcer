@@ -89,3 +89,63 @@
 2024-08-22 00:28:00,440 - BrestCancer - INFO - Matthews Corrcoef :0.29559748427672955
 2024-08-22 00:28:00,440 - BrestCancer - INFO - Log Loss :2.5745466706512254
 2024-08-22 00:28:00,441 - BrestCancer - INFO - Metrics calculated successfully.
+2024-08-22 00:26:05,896 - BrestCancer - INFO - Starting prediction process.
+2024-08-22 00:26:05,900 - BrestCancer - INFO - Selecting relevant features.
+2024-08-22 00:26:05,916 - BrestCancer - INFO - Columns ['id'] dropped successfully
+2024-08-22 00:26:05,917 - BrestCancer - INFO - Cleaning and preprocessing data.
+2024-08-22 00:26:05,917 - BrestCancer - CRITICAL - An unexpected error occurred: Clean() takes no arguments
+2024-08-22 00:26:05,917 - BrestCancer - CRITICAL - Unexpected error during prediction: An unexpected error occurred: Clean() takes no arguments
+2024-08-22 00:26:05,918 - BrestCancer - CRITICAL - Error in index view: An unexpected error occurred: Clean() takes no arguments
+2024-08-22 00:29:35,384 - BrestCancer - INFO - Starting prediction process.
+2024-08-22 00:29:35,387 - BrestCancer - INFO - Selecting relevant features.
+2024-08-22 00:29:35,413 - BrestCancer - INFO - Columns ['id'] dropped successfully
+2024-08-22 00:29:35,414 - BrestCancer - INFO - Cleaning and preprocessing data.
+2024-08-22 00:29:35,417 - BrestCancer - INFO - Data cleaning process completed successfully.
+2024-08-22 00:29:35,417 - BrestCancer - INFO - Loading model from /home/alrashidissa/Desktop/BreastCancer/PreTrainModel/GradientBoostingModel.pkl.
+2024-08-22 00:29:35,418 - BrestCancer - DEBUG - Attempting to load model from /home/alrashidissa/Desktop/BreastCancer/PreTrainModel/GradientBoostingModel.pkl.
+2024-08-22 00:29:36,307 - BrestCancer - INFO - Model loaded successfully from /home/alrashidissa/Desktop/BreastCancer/PreTrainModel/GradientBoostingModel.pkl.
+2024-08-22 00:29:36,308 - BrestCancer - INFO - Making predictions using the loaded model.
+2024-08-22 00:29:36,309 - BrestCancer - INFO - Starting prediction process with model.
+2024-08-22 00:29:36,310 - BrestCancer - DEBUG - Model loaded successfully. Attempting to make predictions.
+2024-08-22 00:29:36,327 - BrestCancer - INFO - Model made predictions successfully.
+2024-08-22 00:29:36,328 - BrestCancer - DEBUG - Predictions: [1]
+2024-08-22 00:29:36,329 - BrestCancer - INFO - Prediction process completed successfully.
+2024-08-22 05:40:39,699 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/ConfigrationYaml/config.yaml
+2024-08-22 05:40:39,708 - BrestCancer - INFO - Configuration loaded from: /home/alrashidissa/Desktop/BreastCancer/ConfigrationYaml/config.yaml
+2024-08-22 05:40:40,539 - BrestCancer - INFO - Starting Breast Cancer Pipeline...
+2024-08-22 05:40:40,545 - BrestCancer - INFO - Starting download from https://drive.google.com/uc?id=1gCvzRbsBtPT-u1LinpEesTfN5YkjzXNn
+2024-08-22 05:40:44,904 - BrestCancer - INFO - File size: 0.05 MB
+2024-08-22 05:40:44,907 - BrestCancer - INFO - Download completed. File size: File size: 0.05 MB
+2024-08-22 05:40:44,910 - BrestCancer - INFO - Starting extraction of /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-22 05:40:44,923 - BrestCancer - INFO - Extraction completed successfully to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-22 05:40:44,926 - BrestCancer - DEBUG - Starting Ingest Data From /home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv
+2024-08-22 05:40:45,005 - BrestCancer - INFO - Successfully ingested data from /home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv
+2024-08-22 05:40:45,011 - BrestCancer - INFO - DEA|-->:Inspecting data
+2024-08-22 05:40:45,017 - BrestCancer - INFO - |DEA|-->:Inspecting dataset
+2024-08-22 05:40:45,119 - BrestCancer - CRITICAL - Pipeline encountered an error: 'NoneType' object has no attribute 'shape'
+2024-08-22 05:42:00,931 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/ConfigrationYaml/config.yaml
+2024-08-22 05:42:00,938 - BrestCancer - INFO - Configuration loaded from: /home/alrashidissa/Desktop/BreastCancer/ConfigrationYaml/config.yaml
+2024-08-22 05:42:01,042 - BrestCancer - INFO - Starting Breast Cancer Pipeline...
+2024-08-22 05:42:01,046 - BrestCancer - INFO - Starting download from https://drive.google.com/uc?id=1gCvzRbsBtPT-u1LinpEesTfN5YkjzXNn
+2024-08-22 05:42:05,091 - BrestCancer - INFO - File size: 0.05 MB
+2024-08-22 05:42:05,093 - BrestCancer - INFO - Download completed. File size: File size: 0.05 MB
+2024-08-22 05:42:05,095 - BrestCancer - INFO - Starting extraction of /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-22 05:42:05,104 - BrestCancer - INFO - Extraction completed successfully to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-22 05:42:05,109 - BrestCancer - DEBUG - Starting Ingest Data From /home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv
+2024-08-22 05:42:05,182 - BrestCancer - INFO - Successfully ingested data from /home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv
+2024-08-22 05:42:05,184 - BrestCancer - INFO - DEA|-->:Inspecting data
+2024-08-22 05:42:05,186 - BrestCancer - INFO - |DEA|-->:Inspecting dataset
+2024-08-22 05:42:05,234 - BrestCancer - CRITICAL - Pipeline encountered an error: 'NoneType' object has no attribute 'shape'
+2024-08-22 05:45:05,608 - BrestCancer - INFO - Successfully read YAML file: /home/alrashidissa/Desktop/BreastCancer/ConfigrationYaml/config.yaml
+2024-08-22 05:45:05,614 - BrestCancer - INFO - Configuration loaded from: /home/alrashidissa/Desktop/BreastCancer/ConfigrationYaml/config.yaml
+2024-08-22 05:45:05,687 - BrestCancer - INFO - Starting Breast Cancer Pipeline...
+2024-08-22 05:45:05,691 - BrestCancer - INFO - Starting download from https://drive.google.com/uc?id=1gCvzRbsBtPT-u1LinpEesTfN5YkjzXNn
+2024-08-22 05:45:09,789 - BrestCancer - INFO - File size: 0.05 MB
+2024-08-22 05:45:09,793 - BrestCancer - INFO - Download completed. File size: File size: 0.05 MB
+2024-08-22 05:45:09,796 - BrestCancer - INFO - Starting extraction of /home/alrashidissa/Desktop/BreastCancer/Dataset/downloads/brestcancerset.zip to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-22 05:45:09,810 - BrestCancer - INFO - Extraction completed successfully to /home/alrashidissa/Desktop/BreastCancer/Dataset/extract
+2024-08-22 05:45:09,815 - BrestCancer - DEBUG - Starting Ingest Data From /home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv
+2024-08-22 05:45:09,889 - BrestCancer - INFO - Successfully ingested data from /home/alrashidissa/Desktop/BreastCancer/Dataset/extract/breast-cancer.csv
+2024-08-22 05:45:09,897 - BrestCancer - INFO - DEA|-->:Inspecting data
+2024-08-22 05:45:09,901 - BrestCancer - INFO - |DEA|-->:Inspecting dataset
+2024-08-22 05:45:09,979 - BrestCancer - CRITICAL - Pipeline encountered an error: 'NoneType' object has no attribute 'shape'

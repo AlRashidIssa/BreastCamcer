@@ -1,6 +1,6 @@
 # Ignore environment directories
 /env/
-Brest/
+env_/
 
 # Ignore files larger than 100 MB
 # This line excludes files larger than 100 MB, but it might not work with all Git versions or configurations.

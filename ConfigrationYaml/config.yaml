@@ -32,7 +32,7 @@ dataset:
   target: "diagnosis"
 
 model:
-  name_model: "GBM"
+  name_model: "GradientBoostingModel"
   model_path_s: /home/alrashidissa/Desktop/BreastCancer/PreTrainModel
   path_model: /home/alrashidissa/Desktop/BreastCancer/PreTrainModel/gradient_boosting.pkl
 

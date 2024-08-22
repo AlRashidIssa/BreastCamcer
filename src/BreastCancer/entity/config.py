@@ -1,8 +1,8 @@
 import os
 import sys
 from typing import Dict, Any, List
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src/BrestCancer")
-from utils.read_ymal import ReadYaml
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
+from src.BreastCancer.utils.read_ymal import ReadYaml
 
 class CONFIG:
     """

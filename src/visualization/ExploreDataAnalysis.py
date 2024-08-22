@@ -4,9 +4,10 @@ import sys
 import matplotlib.pyplot as plt
 import seaborn as sns
 from abc import ABC, abstractmethod
+from typing import Dict, List, Tuple, Union, Optional, Any
 
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
-from BrestCancer import BrestCancer_info, BrestCancer_debug, BrestCancer_warning
+from BreastCancer import BrestCancer_info, BrestCancer_debug, BrestCancer_warning
 
 # Interface for Data Operations
 class DataOperation(ABC):
@@ -61,7 +62,7 @@ class DatasetLoader(DataOperation):
         return self.data # type: ignore
 
 # Data Inspector
-class DataInspector(DataOperation):
+class DataInspector:
     """
     Class responsible for inspecting a dataset for basic information,
     such as shape, missing values, duplicates, and summary statistics.
@@ -79,19 +80,39 @@ class DataInspector(DataOperation):
         """
         self.data = data
 
-    def execute(self):
+    def execute(self) -> Dict[str, Any]:
         """
-        Perform basic inspection of the dataset and print the results.
+        Perform basic inspection of the dataset and return the results as a dictionary.
+        
+        Returns:
+            Dict[str, Any]: A dictionary containing dataset inspection results.
         """
-        BrestCancer_info("|DEA|-->:Inspecting dataset")
-        BrestCancer_debug(f"|DEA|-->:Dataset Shape: {self.data.shape}")
-        BrestCancer_debug(f"\n|DEA|-->:First 5 Rows of the Dataset:\n{self.data.head()}")
-        BrestCancer_debug(f"\n|DEA|-->:Data Info:\n")
-        self.data.info()
-        BrestCancer_debug(f"\n|DEA|-->:Statistical Summary:\n{self.data.describe()}")
-        BrestCancer_debug(f"\n|DEA|-->:Missing Values in Each Column:\n{self.data.isnull().sum()}")
-        BrestCancer_debug(f"\n|DEA|-->:Number of Duplicate Rows: {self.data.duplicated().sum()}")
+        BrestCancer_info("|DEA|-->: Inspecting dataset")
+        BrestCancer_debug(f"|DEA|-->: Dataset Shape: {self.data.shape}")
+        BrestCancer_debug(f"\n|DEA|-->: First 5 Rows of the Dataset:\n{self.data.head()}")
+        
+        # Capture data info output
+        from io import StringIO
+        buffer = StringIO()
+        self.data.info(buf=buffer)
+        data_info = buffer.getvalue()
+        
+        BrestCancer_debug(f"\n|DEA|-->: Data Info:\n{data_info}")
+        BrestCancer_debug(f"\n|DEA|-->: Statistical Summary:\n{self.data.describe()}")
+        BrestCancer_debug(f"\n|DEA|-->: Missing Values in Each Column:\n{self.data.isnull().sum()}")
+        BrestCancer_debug(f"\n|DEA|-->: Number of Duplicate Rows: {self.data.duplicated().sum()}")
 
+        data_inspected = {
+            "Data Shape": self.data.shape,
+            "First 5 Rows of the Dataset": self.data.head(),
+            "Missing Values in Each Column": self.data.isnull().sum(),
+            "Number of Duplicate Rows": self.data.duplicated().sum(),
+            "Data Information": data_info,
+            "Statistical Summary": self.data.describe()
+        }
+        
+        return data_inspected
+    
 # Base class for Data Visualizations
 class DataVisualizer(ABC):
     """
@@ -309,7 +330,7 @@ class BreastCancerAnalyzer:
         """
         BrestCancer_info("DEA|-->:Inspecting data")
         inspector = DataInspector(self.data) # type: ignore
-        inspector.execute()
+        data_inspecute = inspector.execute()
 
     def analyze(self):
         """

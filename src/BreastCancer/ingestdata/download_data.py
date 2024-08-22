@@ -1,11 +1,11 @@
 import sys
-import gdown
+import gdown # type: ignore
 from pathlib import Path
 from abc import ABC, abstractmethod
 
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
-from BrestCancer import BrestCancer_critical, BrestCancer_info
-from BrestCancer.utils.size import Size
+from BreastCancer import BrestCancer_critical, BrestCancer_info
+from BreastCancer.utils.size import Size
 
 
 class IDownload(ABC):

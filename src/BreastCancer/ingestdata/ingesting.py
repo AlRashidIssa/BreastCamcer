@@ -5,7 +5,7 @@ import os
 from typing import Dict, Tuple, Optional, Any
 
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
-from BrestCancer import BrestCancer_critical, BrestCancer_debug, BrestCancer_error, BrestCancer_info, BrestCancer_warning
+from BreastCancer import BrestCancer_critical, BrestCancer_debug, BrestCancer_error, BrestCancer_info, BrestCancer_warning
 
 class IIngest(ABC):
     """

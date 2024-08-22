@@ -14,7 +14,7 @@ from sklearn.naive_bayes import GaussianNB  # type: ignore
 
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
 
-from BrestCancer import BrestCancer_info, BrestCancer_warning, BrestCancer_error, BrestCancer_debug, BrestCancer_critical
+from BreastCancer import BrestCancer_info, BrestCancer_warning, BrestCancer_error, BrestCancer_debug, BrestCancer_critical
 
 # Define the IModel interface
 class IModel(ABC):
@@ -204,25 +204,25 @@ class ChooseModel(IChooseModel):
                                            KNN, NaiveBayes, GBM]
         """
         try:
-            if name_model == "LogisticRegression":
+            if name_model == "LogisticRegressionModel":
                 BrestCancer_info("Logistic Regression model selected.")
                 return LogisticRegressionModel()
-            elif name_model == "SVM":
+            elif name_model == "SVCModel":
                 BrestCancer_info("Support Vector Machine model selected.")
                 return SVCModel()
-            elif name_model == "DecisionTree":
+            elif name_model == "DecisionTreeModel":
                 BrestCancer_info("Decision Tree model selected.")
                 return DecisionTreeModel()
-            elif name_model == "RandomForest":
+            elif name_model == "RandomForestModel":
                 BrestCancer_info("Random Forest model selected.")
                 return RandomForestModel()
-            elif name_model == "KNN":
+            elif name_model == "KNeighborsModel":
                 BrestCancer_info("K-Nearest Neighbors model selected.")
                 return KNeighborsModel()
-            elif name_model == "NaiveBayes":
+            elif name_model == "NaiveBayesModel":
                 BrestCancer_info("Naive Bayes model selected.")
                 return NaiveBayesModel()
-            elif name_model == "GBM":
+            elif name_model == "GradientBoostingModel":
                 BrestCancer_info("Gradient Boosting model selected.")
                 return GradientBoostingModel()
             else:

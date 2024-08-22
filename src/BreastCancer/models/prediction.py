@@ -7,7 +7,7 @@ import joblib  # Assuming joblib is used for loading the model
 
 import sys
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
-from BrestCancer import BrestCancer_critical, BrestCancer_error,BrestCancer_debug, BrestCancer_info, BrestCancer_warning
+from BreastCancer import BrestCancer_critical, BrestCancer_error,BrestCancer_debug, BrestCancer_info, BrestCancer_warning
 
 class IPredict(ABC):
     """

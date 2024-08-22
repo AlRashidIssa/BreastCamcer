@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 
 
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
-from BrestCancer import BrestCancer_critical, BrestCancer_debug, BrestCancer_error, BrestCancer_warning
+from BreastCancer import BrestCancer_critical, BrestCancer_debug, BrestCancer_error, BrestCancer_warning
 
 
 class ISplit(ABC):

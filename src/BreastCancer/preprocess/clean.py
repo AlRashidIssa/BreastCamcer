@@ -4,9 +4,9 @@ from abc import ABC, abstractmethod
 from typing import List, Union
 
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
-from BrestCancer import BrestCancer_critical, BrestCancer_error, BrestCancer_info, BrestCancer_warning
+from BreastCancer import BrestCancer_critical, BrestCancer_error, BrestCancer_info, BrestCancer_warning
 
-from BrestCancer.preprocess.miss_value import FillMissingValues
+from BreastCancer.preprocess.miss_value import FillMissingValues
 
 class IClean(ABC):
     """
@@ -121,7 +121,7 @@ class Clean(IClean):
                                               fill_value=fill_value)
             
             if fill_na:
-                df.fillna(0, inplace=True)
+                df.fillna(fill_value, inplace=True)
             
             # Step 3: Detect and remove outliers using the IQR method
             if outliers:

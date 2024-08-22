@@ -4,21 +4,21 @@ import sys
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
 
 from abc import ABC, abstractmethod
-from src.BrestCancer.preprocess.scaler import Scaler
-from src.BrestCancer.ingestdata.download_data import Download
-from src.BrestCancer.ingestdata.unzip_data import Unzip
-from src.BrestCancer.ingestdata.ingesting import Ingest
-from src.BrestCancer.ingestdata.split import Split
-from src.BrestCancer.preprocess.features_selction import Selction
-from src.BrestCancer.preprocess.clear import Clean
-from src.BrestCancer.preprocess.cat_encoder import Encoder
-from src.BrestCancer.mdoels.algorithms import ChooseModel
-from src.BrestCancer.entity.config import CONFIG
-from src.BrestCancer.components.evaluation_metrics import MetricsEvaluator
-from src.BrestCancer.mdoels.prediction import Predict
+from src.BreastCancer.preprocess.scaler import Scaler
+from src.BreastCancer.ingestdata.download_data import Download
+from src.BreastCancer.ingestdata.unzip_data import Unzip
+from src.BreastCancer.ingestdata.ingesting import Ingest
+from src.BreastCancer.ingestdata.split import Split
+from BreastCancer.preprocess.features_selection import Selction
+from BreastCancer.preprocess.clean import Clean
+from src.BreastCancer.preprocess.cat_encoder import Encoder
+from src.BreastCancer.models.algorithms import ChooseModel
+from src.BreastCancer.entity.config import CONFIG
+from src.BreastCancer.components.evaluation_metrics import MetricsEvaluator
+from src.BreastCancer.models.prediction import Predict
 from src.visualization.ExploreDataAnalysis import BreastCancerAnalyzer
 
-from src.BrestCancer import BrestCancer_critical, BrestCancer_debug, BrestCancer_error, BrestCancer_info, BrestCancer_warning
+from src.BreastCancer import BrestCancer_critical, BrestCancer_debug, BrestCancer_error, BrestCancer_info, BrestCancer_warning
 
 
 class IBreastCancerPipeline(ABC):
