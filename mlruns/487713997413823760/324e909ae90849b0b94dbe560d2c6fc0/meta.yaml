@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/487713997413823760/324e909ae90849b0b94dbe560d2c6fc0/artifacts
+end_time: 1724377030066
+entry_point_name: ''
+experiment_id: '487713997413823760'
+lifecycle_stage: active
+run_id: 324e909ae90849b0b94dbe560d2c6fc0
+run_name: skillful-stork-823
+run_uuid: 324e909ae90849b0b94dbe560d2c6fc0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1724377025536
+status: 4
+tags: []
+user_id: alrashidissa

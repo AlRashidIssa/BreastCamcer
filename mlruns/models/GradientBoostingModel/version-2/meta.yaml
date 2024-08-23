@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1724377469502
+current_stage: None
+description: ''
+last_updated_timestamp: 1724377469502
+name: GradientBoostingModel
+run_id: f7b27e19a65d471d97ab8c4e70f39b78
+run_link: ''
+source: mlflow-artifacts:/487713997413823760/f7b27e19a65d471d97ab8c4e70f39b78/artifacts/PreTrainModel
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/487713997413823760/f7b27e19a65d471d97ab8c4e70f39b78/artifacts/PreTrainModel
+user_id: null
+version: 2

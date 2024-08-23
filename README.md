@@ -1,4 +1,4 @@
-Certainly! Here's a revised version of your `README.md` file with a more restrictive license that aligns with your requirements:
+Here’s the revised `README.md` with the license section and the execution instructions for different scenarios:
 
 ---
 
@@ -64,10 +64,10 @@ Before running the pipeline, ensure you have the following installed:
     Make sure you have MLflow installed and running. You can start the MLflow server with:
 
     ```bash
-    mlflow ui
+    mlflow ui --port 8080
     ```
 
-    By default, MLflow runs on `http://127.0.0.1:5000`. Update the `mlflow.set_tracking_uri()` in the code if your MLflow server is running on a different address.
+    By default, MLflow runs on `http://127.0.0.1:8080`. Update the `mlflow.set_tracking_uri()` in the code if your MLflow server is running on a different address.
 
 ## Usage
 
@@ -107,18 +107,63 @@ The `run.sh` script manages both the training pipeline and the API server. It ac
 - `--yaml_path`: Path to the YAML configuration file (required if `--train` is `True`).
 - `--analyzer`: Optional flag to perform EDA.
 - `--train`: Set to `True` to run the training process or `False` to start the API server.
+- `--mlflow`: Set to `True` to run the MLflow pipeline or `False` otherwise.
 
-Example to run the training process with EDA:
+#### Position 1: Train Only
 
-```bash
-./run.sh --yaml_path path/to/your/config.yaml --analyzer --train True
-```
-
-Example to start the API server:
+Run the script with training enabled and MLflow disabled:
 
 ```bash
-./run.sh --train False
+./run.sh --yaml_path /path/to/your/config.yaml --analyzer True --train True --mlflow False
 ```
+
+**Expected Behavior:**
+
+- Activates the virtual environment.
+- Runs `main.py` with `--yaml_path` and `--analyzer` arguments.
+- Starts the Django API server on port 8000.
+
+#### Position 2: MLflow Only
+
+Run the script with MLflow enabled and training disabled:
+
+```bash
+./run.sh --train False --mlflow True
+```
+
+**Expected Behavior:**
+
+- Activates the virtual environment.
+- Displays a message that MLflow is configured but not started by this script.
+- Starts the Django API server on port 8000.
+
+#### Position 3: Train and MLflow
+
+Run the script with both training and MLflow enabled:
+
+```bash
+./run.sh --yaml_path /path/to/your/config.yaml --analyzer True --train True --mlflow True
+```
+
+**Expected Behavior:**
+
+- Activates the virtual environment.
+- Starts MLflow server (as a separate action, not in this script).
+- Runs `mlflow_pipeline.py` with `--yaml_path` argument.
+- Starts the Django API server on port 8000.
+
+#### Position 4: API Only
+
+Run the script with neither training nor MLflow:
+
+```bash
+./run.sh --train False --mlflow False
+```
+
+**Expected Behavior:**
+
+- Activates the virtual environment.
+- Starts the Django API server on port 8000.
 
 ## File Structure
 

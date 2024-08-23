@@ -54,13 +54,12 @@ class BreastCancerPipeline(IBreastCancerPipeline):
     """
     Pipeline for processing breast cancer data, training a model, and evaluating predictions.
     """
-    def run(self, yaml_path: str, analyzer: bool = True):
+    def run(self, yaml_path: str):
         """
         Execute the pipeline with the given configuration.
 
         Args:
             yaml_path (str): Path to the YAML configuration file.
-            analyzer (bool): Flag to perform Exploratory Data Analysis (EDA) if True.
         """
         # Initialize configuration and logging
         self.config = CONFIG(yaml_path=yaml_path)
@@ -89,7 +88,7 @@ class BreastCancerPipeline(IBreastCancerPipeline):
                 BrestCancer_info("Data ingested successfully.")
                 
                 # Exploratory Data Analysis (EDA)
-                if analyzer:
+                if True:
                     output_dir = "/home/alrashidissa/Desktop/BreastCancer/Plots"
                     __analyzer = BreastCancerAnalyzer(filepath=self.config.DFP, output_dir=self.config.plotes_pathes)
                     __analyzer.load_data()
@@ -257,8 +256,7 @@ class BreastCancerPipeline(IBreastCancerPipeline):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run the Breast Cancer pipeline.")
     parser.add_argument('--yaml_path', type=str, required=True, help='Path to the YAML configuration file.')
-    parser.add_argument('--analyzer', action='store_true', help='Perform Exploratory Data Analysis (EDA).')
     args = parser.parse_args()
 
     pipeline = BreastCancerPipeline()
-    pipeline.run(yaml_path=args.yaml_path, analyzer=args.analyzer)
+    pipeline.run(yaml_path=args.yaml_path)

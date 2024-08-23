@@ -26,14 +26,18 @@ class IBreastCancerPipeline(ABC):
     Abstract base class for the Breast Cancer pipeline.
     """
     @abstractmethod
-    def call(self):
+    def run(self, yaml_path: str, analyzer: bool = False):
         """
         Abstract method for executing the pipeline stages.
+        
+        Args:
+            yaml_path (str): Path to the YAML configuration file.
+            analyzer (bool): Flag to perform Exploratory Data Analysis (EDA) if True.
         """
         pass
 
 
-class BreastCancerPipeline:
+class BreastCancerPipeline(IBreastCancerPipeline):
     """
     Pipeline for processing breast cancer data, training a model, and evaluating predictions.
     """
