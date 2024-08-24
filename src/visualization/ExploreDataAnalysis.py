@@ -8,7 +8,7 @@ from typing import Dict, List, Tuple, Union, Optional, Any
 from io import StringIO
 
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
-from BreastCancer import BrestCancer_info, BrestCancer_debug, BrestCancer_warning
+from src import BrestCancer_info, BrestCancer_debug, BrestCancer_warning
 
 # Interface for Data Operations
 class DataOperation(ABC):

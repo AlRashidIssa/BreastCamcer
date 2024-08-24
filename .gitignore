@@ -42,3 +42,9 @@ config.json
 *.env
 secrets/
 
+
+logs/
+data/
+mlruns/
+
+
