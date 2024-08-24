@@ -4,12 +4,13 @@ from typing import Any
 import numpy as np
 import pandas as pd
 import sys
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
-from src.BreastCancer.models.prediction import LoadModel, Predict
-from BreastCancer.preprocess.features_selection import Selction
-from BreastCancer.preprocess.clean import Clean
-from src.BreastCancer.preprocess.scaler import Scaler
-from src import BrestCancer_critical, BrestCancer_info
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer/")
+from src.utils.logging import info, critical
+from src.models.prediction import LoadModel, Predict
+from src.data.preprocess import (Clean,
+                                 Scale)
+
+from src.features.feature_selection import Selection
 
 class IAPIPredict(ABC):
     """
@@ -67,14 +68,14 @@ class APIPredict(IAPIPredict):
             if not isinstance(X, pd.DataFrame):
                 raise ValueError("Input X must be a pandas DataFrame.")
     
-            BrestCancer_info("Starting prediction process.")
+            info("Starting prediction process.")
     
             # Step 1: Feature selection
-            BrestCancer_info("Selecting relevant features.")
-            df = Selction().call(X, drop_columns=["id"])
+            info("Selecting relevant features.")
+            df = Selection().call(X, drop_columns=["id"])
     
             # Step 2: Data cleaning and preprocessing
-            BrestCancer_info("Cleaning and preprocessing data.")
+            info("Cleaning and preprocessing data.")
             df = Clean().call(df=df, 
                               drop_duplicates=False,
                               outliers=False,
@@ -83,14 +84,14 @@ class APIPredict(IAPIPredict):
                               fill_value=0)
     
             # Step 3: Load the pre-trained model
-            BrestCancer_info(f"Loading model from {model_path}.")
+            info(f"Loading model from {model_path}.")
             model = LoadModel().call(mdoel_path=model_path)
             
             if model is None:
                 raise FileNotFoundError(f"Model file not found at {model_path}.")
     
             # Step 4: Make predictions
-            BrestCancer_info("Making predictions using the loaded model.")
+            info("Making predictions using the loaded model.")
             predictions = Predict().call(model=model, X=df.values)  # type: ignore
     
             if np.all(predictions == 0):
@@ -100,18 +101,18 @@ class APIPredict(IAPIPredict):
             else:
                 predictions = "Mixed"
     
-            BrestCancer_info("Prediction process completed successfully.")
+            info("Prediction process completed successfully.")
             return predictions
     
         except FileNotFoundError as e:
-            BrestCancer_critical(f"Model file not found: {e}")
+            critical(f"Model file not found: {e}")
             raise
         
         except ValueError as e:
-            BrestCancer_critical(f"Invalid input data: {e}")
+            critical(f"Invalid input data: {e}")
             raise
         
         except Exception as e:
-            BrestCancer_critical(f"An unexpected error occurred: {e}")
+            critical(f"An unexpected error occurred: {e}")
             raise
         

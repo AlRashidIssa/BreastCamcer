@@ -5,13 +5,13 @@ import numpy as np
 import seaborn as sns
 import sys
 from abc import ABC, abstractmethod
-from typing import Optional, Tuple, Union, Dict
+from typing import Tuple, Union, Dict
 from sklearn.metrics import (accuracy_score, precision_score, recall_score,
                              f1_score, roc_auc_score, confusion_matrix,
                              matthews_corrcoef, log_loss)
 
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
-from src import BrestCancer_critical, BrestCancer_error, BrestCancer_info
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
+from src.utils.logging import info, error, critical
 
 class IMetricsEvaluator(ABC):
     """
@@ -61,11 +61,11 @@ class MetricsEvaluator(IMetricsEvaluator):
             Exception: For any other unforeseen errors during metric computation.
         """
         if not isinstance(y_true, pd.Series) or not isinstance(y_pred, pd.Series):
-            BrestCancer_error("Inputs must be pandas Series.")
+            error("Inputs must be pandas Series.")
             raise TypeError("Inputs must be pandas Series.")
 
         if len(y_true) != len(y_pred):
-            BrestCancer_error("Length of y_true and y_pred must be the same.")
+            error("Length of y_true and y_pred must be the same.")
             raise ValueError("Length of y_true and y_pred must be the same.")
 
         metrics = {}
@@ -83,14 +83,14 @@ class MetricsEvaluator(IMetricsEvaluator):
             metrics['log_loss'] = log_loss(y_true, y_pred)
             
             # Log metrics
-            BrestCancer_info(f"Accuracy Model: {metrics['accuracy']}")
-            BrestCancer_info(f"Precision Score: {metrics['precision']}")
-            BrestCancer_info(f"Recall Score: {metrics['recall']}")
-            BrestCancer_info(f"F1 Score: {metrics['f1']}")
-            BrestCancer_info(f"ROC AUC: {metrics['roc_auc']}")
-            BrestCancer_info(f"Matthews Corrcoef: {metrics['matthews_corrcoef']}")
-            BrestCancer_info(f"Log Loss: {metrics['log_loss']}")
-            BrestCancer_info("Metrics calculated successfully.")
+            info(f"Accuracy Model: {metrics['accuracy']}")
+            info(f"Precision Score: {metrics['precision']}")
+            info(f"Recall Score: {metrics['recall']}")
+            info(f"F1 Score: {metrics['f1']}")
+            info(f"ROC AUC: {metrics['roc_auc']}")
+            info(f"Matthews Corrcoef: {metrics['matthews_corrcoef']}")
+            info(f"Log Loss: {metrics['log_loss']}")
+            info("Metrics calculated successfully.")
             
             path_plot = "/home/alrashidissa/Desktop/BreastCancer/Plots"
             # Plot and save confusion matrix
@@ -111,13 +111,13 @@ class MetricsEvaluator(IMetricsEvaluator):
             fig.savefig(plot_path)
             plt.close(fig)
         except ValueError as ve:
-            BrestCancer_error(f"Value error occurred: {ve}")
+            error(f"Value error occurred: {ve}")
             raise
         except TypeError as te:
-            BrestCancer_error(f"Type error occurred: {te}")
+            error(f"Type error occurred: {te}")
             raise
         except Exception as e:
-            BrestCancer_critical(f"An unexpected error occurred: {e}")
+            critical(f"An unexpected error occurred: {e}")
             raise
 
         return metrics, plot_path

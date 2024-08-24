@@ -1,10 +1,15 @@
 import google.generativeai as genai
-from typing import Dict, List
-from src.BreastCancer.entity.config import CONFIG
 import os
-name_yaml = os.listdir("/home/alrashidissa/Desktop/BreastCancer/ConfigrationYaml")
+import sys
+from typing import List
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer/")
+from src.entity.config import CONFIG
+
+
+# Load configuration
+name_yaml = os.listdir("/home/alrashidissa/Desktop/BreastCancer/configs")
 yaml = name_yaml[0]
-config = CONFIG(yaml_path=f"/home/alrashidissa/Desktop/BreastCancer/ConfigrationYaml/{yaml}")
+config = CONFIG(yaml_path=f"/home/alrashidissa/Desktop/BreastCancer/configs/{yaml}")
 
 # Manually set your API key
 GOOGLE_API_KEY = config.google_api_key
@@ -57,7 +62,7 @@ class BreastCancerDiagnosis:
             str: The constructed prompt for generating a detailed explanation.
         """
         # Construct the prompt to explain the prediction
-        prompt =f"The incidence of breast cancer is a {prediction}. Writing a message of condolence or blessing based on the situation. Note the 70 word limit."    
+        prompt = f"The incidence of breast cancer is {prediction}. Write a message of condolence or blessing based on the situation, noting the 70-word limit."    
         return prompt
 
 # Example usage

@@ -12,9 +12,8 @@ from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier 
 from sklearn.neighbors import KNeighborsClassifier  # type: ignore
 from sklearn.naive_bayes import GaussianNB  # type: ignore
 
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
-
-from src import BrestCancer_info, BrestCancer_warning, BrestCancer_error, BrestCancer_debug, BrestCancer_critical
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer/")
+from src.utils.logging import info, error,  critical
 
 # Define the IModel interface
 class IModel(ABC):
@@ -40,133 +39,133 @@ class LogisticRegressionModel(IModel):
     def __init__(self) -> None:
         try:
             self.model = LogisticRegression()
-            BrestCancer_info("Logistic Regression model initialized.")
+            info("Logistic Regression model initialized.")
         except Exception as e:
-            BrestCancer_critical(f"Error initializing Logistic Regression model: {e}")
+            critical(f"Error initializing Logistic Regression model: {e}")
             raise
 
     def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
         try:
             self.model.fit(X, y)
             joblib.dump(self.model, model_path_s)
-            BrestCancer_info(f"Logistic Regression model trained and saved to {model_path_s}.")
+            info(f"Logistic Regression model trained and saved to {model_path_s}.")
             return self.model
         except Exception as e:
-            BrestCancer_error(f"Error training Logistic Regression model: {e}")
+            error(f"Error training Logistic Regression model: {e}")
             raise
 
 class SVCModel(IModel):
     def __init__(self) -> None:
         try:
             self.model = SVC()
-            BrestCancer_info("Support Vector Machine model initialized.")
+            info("Support Vector Machine model initialized.")
         except Exception as e:
-            BrestCancer_critical(f"Error initializing Support Vector Machine model: {e}")
+            critical(f"Error initializing Support Vector Machine model: {e}")
             raise
 
     def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
         try:
             self.model.fit(X, y)
             joblib.dump(self.model, model_path_s)
-            BrestCancer_info(f"Support Vector Machine model trained and saved to {model_path_s}.")
+            info(f"Support Vector Machine model trained and saved to {model_path_s}.")
             return self.model
         except Exception as e:
-            BrestCancer_error(f"Error training Support Vector Machine model: {e}")
+            error(f"Error training Support Vector Machine model: {e}")
             raise
 
 class DecisionTreeModel(IModel):
     def __init__(self) -> None:
         try:
             self.model = DecisionTreeClassifier()
-            BrestCancer_info("Decision Tree model initialized.")
+            info("Decision Tree model initialized.")
         except Exception as e:
-            BrestCancer_critical(f"Error initializing Decision Tree model: {e}")
+            critical(f"Error initializing Decision Tree model: {e}")
             raise
 
     def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
         try:
             self.model.fit(X, y)
             joblib.dump(self.model, model_path_s)
-            BrestCancer_info(f"Decision Tree model trained and saved to {model_path_s}.")
+            info(f"Decision Tree model trained and saved to {model_path_s}.")
             return self.model
         except Exception as e:
-            BrestCancer_error(f"Error training Decision Tree model: {e}")
+            error(f"Error training Decision Tree model: {e}")
             raise
 
 class RandomForestModel(IModel):
     def __init__(self) -> None:
         try:
             self.model = RandomForestClassifier()
-            BrestCancer_info("Random Forest model initialized.")
+            info("Random Forest model initialized.")
         except Exception as e:
-            BrestCancer_critical(f"Error initializing Random Forest model: {e}")
+            critical(f"Error initializing Random Forest model: {e}")
             raise
 
     def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
         try:
             self.model.fit(X, y)
             joblib.dump(self.model, model_path_s)
-            BrestCancer_info(f"Random Forest model trained and saved to {model_path_s}.")
+            info(f"Random Forest model trained and saved to {model_path_s}.")
             return self.model
         except Exception as e:
-            BrestCancer_error(f"Error training Random Forest model: {e}")
+            error(f"Error training Random Forest model: {e}")
             raise
 
 class KNeighborsModel(IModel):
     def __init__(self) -> None:
         try:
             self.model = KNeighborsClassifier()
-            BrestCancer_info("K-Nearest Neighbors model initialized.")
+            info("K-Nearest Neighbors model initialized.")
         except Exception as e:
-            BrestCancer_critical(f"Error initializing K-Nearest Neighbors model: {e}")
+            critical(f"Error initializing K-Nearest Neighbors model: {e}")
             raise
 
     def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
         try:
             self.model.fit(X, y)
             joblib.dump(self.model, model_path_s)
-            BrestCancer_info(f"K-Nearest Neighbors model trained and saved to {model_path_s}.")
+            info(f"K-Nearest Neighbors model trained and saved to {model_path_s}.")
             return self.model
         except Exception as e:
-            BrestCancer_error(f"Error training K-Nearest Neighbors model: {e}")
+            error(f"Error training K-Nearest Neighbors model: {e}")
             raise
 
 class NaiveBayesModel(IModel):
     def __init__(self) -> None:
         try:
             self.model = GaussianNB()
-            BrestCancer_info("Naive Bayes model initialized.")
+            info("Naive Bayes model initialized.")
         except Exception as e:
-            BrestCancer_critical(f"Error initializing Naive Bayes model: {e}")
+            critical(f"Error initializing Naive Bayes model: {e}")
             raise
 
     def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
         try:
             self.model.fit(X, y)
             joblib.dump(self.model, model_path_s)
-            BrestCancer_info(f"Naive Bayes model trained and saved to {model_path_s}.")
+            info(f"Naive Bayes model trained and saved to {model_path_s}.")
             return self.model
         except Exception as e:
-            BrestCancer_error(f"Error training Naive Bayes model: {e}")
+            error(f"Error training Naive Bayes model: {e}")
             raise
 
 class GradientBoostingModel(IModel):
     def __init__(self) -> None:
         try:
             self.model = GradientBoostingClassifier()
-            BrestCancer_info("Gradient Boosting model initialized.")
+            info("Gradient Boosting model initialized.")
         except Exception as e:
-            BrestCancer_critical(f"Error initializing Gradient Boosting model: {e}")
+            critical(f"Error initializing Gradient Boosting model: {e}")
             raise
 
     def train(self, X: np.ndarray, y: pd.Series, model_path_s: str) -> BaseEstimator:
         try:
             self.model.fit(X, y)
             joblib.dump(self.model, f"{model_path_s}/GradientBoostingModel.pkl")
-            BrestCancer_info(f"Gradient Boosting model trained and saved to {model_path_s}.")
+            info(f"Gradient Boosting model trained and saved to {model_path_s}.")
             return self.model
         except Exception as e:
-            BrestCancer_error(f"Error training Gradient Boosting model: {e}")
+            error(f"Error training Gradient Boosting model: {e}")
             raise
 
 # Interface for choosing a model
@@ -205,29 +204,29 @@ class ChooseModel(IChooseModel):
         """
         try:
             if name_model == "LogisticRegressionModel":
-                BrestCancer_info("Logistic Regression model selected.")
+                info("Logistic Regression model selected.")
                 return LogisticRegressionModel()
             elif name_model == "SVCModel":
-                BrestCancer_info("Support Vector Machine model selected.")
+                info("Support Vector Machine model selected.")
                 return SVCModel()
             elif name_model == "DecisionTreeModel":
-                BrestCancer_info("Decision Tree model selected.")
+                info("Decision Tree model selected.")
                 return DecisionTreeModel()
             elif name_model == "RandomForestModel":
-                BrestCancer_info("Random Forest model selected.")
+                info("Random Forest model selected.")
                 return RandomForestModel()
             elif name_model == "KNeighborsModel":
-                BrestCancer_info("K-Nearest Neighbors model selected.")
+                info("K-Nearest Neighbors model selected.")
                 return KNeighborsModel()
             elif name_model == "NaiveBayesModel":
-                BrestCancer_info("Naive Bayes model selected.")
+                info("Naive Bayes model selected.")
                 return NaiveBayesModel()
             elif name_model == "GradientBoostingModel":
-                BrestCancer_info("Gradient Boosting model selected.")
+                info("Gradient Boosting model selected.")
                 return GradientBoostingModel()
             else:
-                BrestCancer_error(f"Unknown model: {name_model}")
+                error(f"Unknown model: {name_model}")
                 raise ValueError(f"Unknown model: {name_model}")
         except Exception as e:
-            BrestCancer_critical(f"Error selecting model: {e}")
+            critical(f"Error selecting model: {e}")
             raise

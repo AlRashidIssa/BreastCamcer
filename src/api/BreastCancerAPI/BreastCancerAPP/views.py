@@ -9,9 +9,9 @@ from .forms import LoginForm, RegisterForm
 
 import sys
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
-from PrometEnginer.genmi_google import BreastCancerDiagnosis
+from src.prompt_engineer.genmi_google import BreastCancerDiagnosis
 from src.components.PreprocessAndPrediction import APIPredict
-from src import BrestCancer_critical
+from src.utils.logging import critical
 
 def main_page(request):
     """
@@ -66,7 +66,7 @@ def index(request):
                     # Process the CSV file
                     data = pd.read_csv(fs.path(filename))  # Using the actual path
                     # Perform prediction
-                    predictions = predict(model_path='/home/alrashidissa/Desktop/BreastCancer/PreTrainModel/GradientBoostingModel.pkl', 
+                    predictions = predict(model_path='/home/alrashidissa/Desktop/BreastCancer/models/latest/GradientBoostingModel.pkl', 
                                           X=data)
 
                     # Store predictions in session
@@ -87,7 +87,8 @@ def index(request):
                                                              "compactness_worst","concavity_worst","concave points_worst",
                                                              "symmetry_worst","fractal_dimension_worst"])
                 # Perform prediction
-                predictions = predict(model_path='/path/to/model', X=df_pre)
+                predictions = predict(model_path='/home/alrashidissa/Desktop/BreastCancer/models/latest/GradientBoostingModel.pkl',
+                                      X=df_pre)
                 
                 # Store predictions in session
                 request.session['predictions'] = predictions
@@ -97,7 +98,7 @@ def index(request):
         return render(request, 'index.html')
     except Exception as e:
         # Log the error and redirect to the error page
-        BrestCancer_critical(f"Error in index view: {str(e)}")
+        critical(f"Error in index view: {str(e)}")
         return render(request, 'errors.html', {'error': 'An unexpected error occurred. Please try again later.'})
 
 
@@ -121,7 +122,7 @@ def result(request):
                                                'massage_promet': explanation})
     except Exception as e:
         # Log the error and redirect to the error page
-        BrestCancer_critical(f"Error in result view: {str(e)}")
+        critical(f"Error in result view: {str(e)}")
         return render(request, 'errors.html', {'error': 'An unexpected error occurred while processing results. Please try again later.'})
 
 
@@ -145,13 +146,13 @@ def predict(model_path: str, X: pd.DataFrame) -> Any:
         return predictions
     except FileNotFoundError as e:
         # Log and re-raise the exception
-        BrestCancer_critical(f"Model file not found: {model_path}")
+        critical(f"Model file not found: {model_path}")
         raise FileNotFoundError(f"Model file not found: {model_path}") from e
     except ValueError as e:
         # Log and re-raise the exception
-        BrestCancer_critical("Error occurred during prediction")
+        critical("Error occurred during prediction")
         raise ValueError("Error occurred during prediction") from e
     except Exception as e:
         # Log and re-raise any other unexpected exceptions
-        BrestCancer_critical(f"Unexpected error during prediction: {str(e)}")
+        critical(f"Unexpected error during prediction: {str(e)}")
         raise

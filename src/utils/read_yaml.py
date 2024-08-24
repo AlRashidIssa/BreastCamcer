@@ -4,8 +4,8 @@ import sys
 from abc import ABC, abstractmethod
 from typing import Dict, Any
 
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer/src")
-from src import BrestCancer_error, BrestCancer_info, BrestCancer_critical
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer/")
+from src.utils.logging import error, info
 
 
 class IReadYaml(ABC):
@@ -57,7 +57,7 @@ class ReadYaml(IReadYaml):
         try:
             # Check if the file path is valid
             if not os.path.exists(path_yaml):
-                BrestCancer_error(f"File not found: {path_yaml}")
+                error(f"File not found: {path_yaml}")
                 raise FileNotFoundError(f"YAML file not found: {path_yaml}")
 
             # Read and parse the YAML file
@@ -65,19 +65,19 @@ class ReadYaml(IReadYaml):
                 config = yaml.safe_load(file)
 
             # Log information about successful reading
-            BrestCancer_info(f"Successfully read YAML file: {path_yaml}")
+            info(f"Successfully read YAML file: {path_yaml}")
             
             return config
 
         except FileNotFoundError as e:
             # Log and raise the exception for file not found
-            BrestCancer_error(f"File not found error: {str(e)}")
+            error(f"File not found error: {str(e)}")
             raise
         except yaml.YAMLError as e:
             # Log and raise the exception for YAML parsing errors
-            BrestCancer_error(f"YAML parsing error: {str(e)}")
+            error(f"YAML parsing error: {str(e)}")
             raise
         except Exception as e:
             # Log and raise any other exceptions
-            BrestCancer_error(f"An unexpected error occurred: {str(e)}")
+            error(f"An unexpected error occurred: {str(e)}")
             raise

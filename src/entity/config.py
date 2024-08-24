@@ -2,7 +2,7 @@ import os
 import sys
 from typing import Dict, Any, List, Union
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
-from BreastCancer.utils.read_yaml import ReadYaml
+from src.utils.read_yaml import ReadYaml
 
 class CONFIG:
     """
@@ -36,7 +36,7 @@ class CONFIG:
         self.name_model: str = self.model_config["name_model"]
         self.model_path_s: str = self.model_config["model_path_s"]
         self.path_model: str = self.model_config["path_model"]
-
+        self.random_state: int = self.model_config["random_state"]
         # Preprocessing configuration attributes
         self.handling = self.preprocess_config["handling"]
         self.handl_missing: bool = self.preprocess_config["handl_missing"]
@@ -54,6 +54,7 @@ class CONFIG:
         self.replce: bool = self.preprocess_config["replce"]
         self.value_replce: Dict[str, int] = self.preprocess_config["value_replce"]
         self.plotes_pathes: str = self.preprocess_config["plotes_pathes"]
+        self.test_size: float = self.preprocess_config["test_size"]
 
         self.tage_name: str = self.mlflow_config["tage_name"]
         self.tage_value: Union[int, float] = self.mlflow_config["tage_value"]

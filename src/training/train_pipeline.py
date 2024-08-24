@@ -1,27 +1,20 @@
 import argparse
 import pandas as pd
 import sys
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
-
 from abc import ABC, abstractmethod
-from src.preprocess.scaler import Scaler
-from src.data.load_data import Download
-from src.utils.unzip_data import Unzip
-from src.data.ingesting import Ingest
-from src.data.split import Split
-from features.feature_selection import Selction
-from src.preprocess.clean import Clean
-from src.preprocess.cat_encoder import Encoder
+
+sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
+from src.data.data_pipeline import DataPipeline
 from src.models.models import ChooseModel
 from src.entity.config import CONFIG
 from src.evaluation.evaluate_model import MetricsEvaluator
 from src.models.prediction import Predict
 from src.visualization.ExploreDataAnalysis import BreastCancerAnalyzer
 
-from src import BrestCancer_critical, BrestCancer_debug, BrestCancer_error, BrestCancer_info, BrestCancer_warning
+# Import logging functions
+from src.utils.logging import info, critical
 
-
-class IBreastCancerPipeline(ABC):
+class ITrainPipeline(ABC):
     """
     Abstract base class for the Breast Cancer pipeline.
     """
@@ -36,8 +29,7 @@ class IBreastCancerPipeline(ABC):
         """
         pass
 
-
-class BreastCancerPipeline(IBreastCancerPipeline):
+class TrainPipeline(ITrainPipeline):
     """
     Pipeline for processing breast cancer data, training a model, and evaluating predictions.
     """
@@ -50,53 +42,22 @@ class BreastCancerPipeline(IBreastCancerPipeline):
             analyzer (bool): Flag to perform Exploratory Data Analysis (EDA) if True.
         """
         self.config = CONFIG(yaml_path=yaml_path)  # Initialize config
-        self.config
         self.df = None
-        BrestCancer_info(f"configuration loaded from: {yaml_path}")
+        info(f"Configuration loaded from: {yaml_path}")
 
         try:
-            BrestCancer_info("Starting Breast Cancer Pipeline...")
-
-            # Download data
-            Download().call(url=self.config.url, output_path=self.config.download)
+            info("Starting Pipeline...")
+            # Get the data from DataPipeline
+            data_pipeline = DataPipeline(config=self.config)
+            X_train, X_test, y_train, y_test, df_row = data_pipeline.call()
             
-            # Unzip data
-            Unzip().call(zip_path=self.config.zip_path, extract_to=self.config.extract_to)
-
-            # Ingest data
-            self.df = Ingest().call(path_csv=self.config.DFP)
-
             # Perform Exploratory Data Analysis (if analyzer is True)
             if analyzer:
-                BreastCancerAnalyzer(filepath=self.config.DFP, output_dir=self.config.plotes_pathes)
-
-            # Feature selection
-            self.df = Selction().call(df=self.df, drop_columns=self.config.drop_columns) # type: ignore
-            
-            # Data cleaning
-            self.df = Clean().call(
-                df=self.df, # type: ignore
-                handling=self.config.handling,
-                drop_duplicates=self.config.drop_duplicates,
-                outliers=self.config.drop_outliers,
-                fill_na=self.config.fill_na,
-                handl_missing=self.config.handl_missing,
-                missing_column=self.config.missing_column,
-                method=self.config.missing_method,
-                fill_value=self.config.fill_value
-            )
-            
-            # Encoding categorical features
-            self.df = Encoder().call(
-                df=self.df, # type: ignore
-                columns=self.config.encoder_columns,
-                method=self.config.method_encoder,
-                replce=self.config.replce,
-                value_replace=self.config.value_replce
-            )
-            
-            # Splitting data into training and test sets
-            X_train, X_test, y_train, y_test = Split().call(target=self.config.target, df=self.df) # type: ignore
+                analyzer = BreastCancerAnalyzer(filepath=self.config.DFP, output_dir=self.config.plotes_pathes)
+                analyzer.load_data()
+                data_inspected = analyzer.inspect_data()
+                analyzer.analyze()
+                info(f"EDA completed. Results: {data_inspected}")
 
             # Model selection and training
             choos_model = ChooseModel().call(name_model=self.config.name_model)
@@ -108,26 +69,26 @@ class BreastCancerPipeline(IBreastCancerPipeline):
             # Metrics evaluation
             y_true = pd.Series(y_test)
             y_pred = pd.Series(y_pred)
-            MetricsEvaluator().call(y_true=y_test, y_pred=y_pred)
+            metrics = MetricsEvaluator().call(y_true=y_true, y_pred=y_pred)
+            info(f"Metrics evaluated: {metrics}")
 
         except Exception as e:
-            BrestCancer_critical(f"Pipeline encountered an error: {e}")
+            critical(f"Pipeline encountered an error: {e}")
             raise
-
 
 def main(yaml_path=None, analyzer=False):
     # If the function is called with arguments, use them
     # Otherwise, parse the arguments from the command line
     if yaml_path is None:
         parser = argparse.ArgumentParser(description="Run the Breast Cancer pipeline.")
-        parser.add_argument('--yaml_path', type=str, required=True, help='Path to the YAML configuration file.')
+        parser.add_argument('--config', type=str, required=True, help='Path to the YAML configuration file.')
         parser.add_argument('--analyzer', action='store_true', help='Perform Exploratory Data Analysis (EDA).')
 
         args = parser.parse_args()
-        yaml_path = args.yaml_path
+        yaml_path = args.config
         analyzer = args.analyzer
 
-    pipeline = BreastCancerPipeline()
+    pipeline = TrainPipeline()
     pipeline.run(yaml_path=yaml_path, analyzer=analyzer)
 
 if __name__ == "__main__":
