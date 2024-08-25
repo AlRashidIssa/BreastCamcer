@@ -1,16 +1,18 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login
 from django.core.files.storage import FileSystemStorage
-import pandas as pd
-import numpy as np
+from django.contrib.auth.decorators import user_passes_test
 from typing import Any
 
-from .forms import LoginForm, RegisterForm
-
+import pandas as pd
+import numpy as np
 import sys
+import os
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
 from src.prompt_engineer.genmi_google import BreastCancerDiagnosis
 from src.components.PreprocessAndPrediction import APIPredict
+from .forms import LoginForm, RegisterForm
+from src.api.BreastCancerAPI.BreastCancerAPP.dev_interface import main
 from src.utils.logging import critical
 
 def main_page(request):
@@ -89,7 +91,6 @@ def index(request):
                 # Perform prediction
                 predictions = predict(model_path='/home/alrashidissa/Desktop/BreastCancer/models/latest/GradientBoostingModel.pkl',
                                       X=df_pre)
-                
                 # Store predictions in session
                 request.session['predictions'] = predictions
 
@@ -156,3 +157,37 @@ def predict(model_path: str, X: pd.DataFrame) -> Any:
         # Log and re-raise any other unexpected exceptions
         critical(f"Unexpected error during prediction: {str(e)}")
         raise
+
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def dev_interface(request):
+    messages = []
+    CONFIG_DIR = '/home/alrashidissa/Desktop/BreastCancer/configs'
+
+    if request.method == "POST":
+        # Handle file upload
+        config_file = request.FILES.get('config')
+        if config_file:
+            config_path = os.path.join(CONFIG_DIR, config_file.name)
+            with open(config_path, 'wb+') as destination:
+                for chunk in config_file.chunks():
+                    destination.write(chunk)
+            messages.append({"type": "success", "text": "Configuration file uploaded successfully."})
+        else:
+            messages.append({"type": "error", "text": "No configuration file uploaded."})
+
+        analyzer = '--analyzer' if 'analyzer' in request.POST else ''
+        train = '--train' if 'train' in request.POST else ''
+        mlflow = '--mlflow' if 'mlflow' in request.POST else ''
+        mlflow_ui = '--mlflow-ui' if 'mlflow-ui' in request.POST else ''
+
+        try:
+            # Run the main function from the provided script
+            result = main(config=config_path, analyzer=analyzer, train=train, mlflow=mlflow, mlflow_ui=mlflow_ui)
+            messages.append({"type": "success", "text": "Script executed successfully."})
+        except Exception as e:
+            critical(f"Error executing script: {str(e)}")
+            messages.append({"type": "error", "text": "Error occurred during script execution."})
+
+    return render(request, 'dev_interface.html', {'messages': messages})

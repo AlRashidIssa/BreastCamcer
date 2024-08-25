@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import sys
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/")
-from src.utils.logging import info, critical
+from src.utils.logging import info, critical, debug, error, warning
 from src.models.prediction import LoadModel, Predict
 from src.data.preprocess import (Clean,
                                  Scale)
@@ -68,8 +68,7 @@ class APIPredict(IAPIPredict):
             if not isinstance(X, pd.DataFrame):
                 raise ValueError("Input X must be a pandas DataFrame.")
     
-            info("Starting prediction process.")
-    
+            info("Starting prediction process.")    
             # Step 1: Feature selection
             info("Selecting relevant features.")
             df = Selection().call(X, drop_columns=["id"])
@@ -98,8 +97,7 @@ class APIPredict(IAPIPredict):
                 predictions = "Benign"
             elif np.all(predictions == 1):
                 predictions = "Malignant"
-            else:
-                predictions = "Mixed"
+
     
             info("Prediction process completed successfully.")
             return predictions
@@ -107,12 +105,12 @@ class APIPredict(IAPIPredict):
         except FileNotFoundError as e:
             critical(f"Model file not found: {e}")
             raise
-        
         except ValueError as e:
             critical(f"Invalid input data: {e}")
             raise
-        
         except Exception as e:
             critical(f"An unexpected error occurred: {e}")
             raise
+
+
         

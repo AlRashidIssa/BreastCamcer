@@ -195,7 +195,7 @@ class Encoder(IEncoder):
                             df[col] = le.fit_transform(df[col])
                     info("Label encoding applied.")
                 elif method == "onehot":
-                    ohe = SklearnOneHotEncoder(sparse=False, drop='first')
+                    ohe = SklearnOneHotEncoder(drop=None)
                     encoded = ohe.fit_transform(df[columns])
                     encoded_df = pd.DataFrame(encoded, columns=ohe.get_feature_names_out(columns))
                     df = df.drop(columns=columns).join(encoded_df)
