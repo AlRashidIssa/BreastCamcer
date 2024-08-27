@@ -6,7 +6,7 @@ import numpy as np
 import joblib  # Assuming joblib is used for loading the model
 
 import sys
-sys.path.append("/home/alrashid/Desktop/BreastCancer")
+sys.path.append("/app")
 from src.utils.logging import critical, error, debug, info, warning
 
 class IPredict(ABC):

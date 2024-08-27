@@ -1,22 +1,19 @@
 from abc import ABC, abstractmethod
 import os
 from typing import Any, Optional
-from mlflow.client import MlflowClient
-from mlflow.exceptions import MlflowException
-import mlflow.pyfunc
 import numpy as np
 import pandas as pd
 import sys
 
-sys.path.append("/home/alrashid/Desktop/BreastCancer")
+sys.path.append("/app")
 from src.utils.logging import info, critical
 from src.models.prediction import Predict, LoadModel
 from src.data.preprocess import Clean, Scale
 from src.features.feature_selection import Selection
 
 # Path to the latest model version
-models_paths = os.listdir("/home/alrashid/Desktop/BreastCancer/models/versioned")
-model_path = os.path.join("/home/alrashid/Desktop/BreastCancer/models/versioned", models_paths[-1])
+models_paths = os.listdir("/app/models/versioned")
+model_path = os.path.join("/app/models/versioned", models_paths[-1])
 
 class IAPIPredict(ABC):
     """
@@ -105,9 +102,6 @@ class APIPredict(IAPIPredict):
             raise
         except ValueError as e:
             critical(f"Invalid input data: {e}")
-            raise
-        except MlflowException as e:
-            critical(f"MLflow exception occurred: {e}")
             raise
         except Exception as e:
             critical(f"An unexpected error occurred: {e}")

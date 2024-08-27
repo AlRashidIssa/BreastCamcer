@@ -3,7 +3,7 @@ import gdown # type: ignore
 from pathlib import Path
 from abc import ABC, abstractmethod
 
-sys.path.append("/home/alrashid/Desktop/BreastCancer")
+sys.path.append("/app")
 from src.utils.logging import info, error,warning, critical, debug
 from src.utils.size import Size
 

@@ -4,7 +4,7 @@ import sys
 from abc import ABC, abstractmethod
 from typing import Dict, Any
 
-sys.path.append("/home/alrashid/Desktop/BreastCancer")
+sys.path.append("/app")
 from src.utils.logging import error, info
 
 
@@ -39,7 +39,7 @@ class ReadYaml(IReadYaml):
     """
 
     def call(self, 
-             path_yaml: str = "/home/alrashidissa/Desktop/BreastCancer/ConfigrationYaml/config.yaml"
+             path_yaml: str = "app/configs/config.yaml"
              ) -> Dict[str, Any]:
         """
         Reads a YAML file and returns its contents as a dictionary.

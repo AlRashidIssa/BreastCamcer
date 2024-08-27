@@ -3,7 +3,7 @@ import pandas as pd
 import sys
 from abc import ABC, abstractmethod
 
-sys.path.append("/home/alrashid/Desktop/BreastCancer")
+sys.path.append("/app")
 from src.data.data_pipeline import DataPipeline
 from src.models.models import ChooseModel
 from src.entity.config import CONFIG

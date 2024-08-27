@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect
 
-sys.path.append("/home/alrashid/Desktop/BreastCancer")
+sys.path.append("/app")
 
 from src.api.BreastCancerAPI.BreastCancerAPP.dev_interface import run_main_function
 from src.components.PreprocessAndPrediction import APIPredict
@@ -166,7 +166,7 @@ def predict(X: pd.DataFrame) -> Any:
 @login_required
 def dev_interface(request):
     messages_output = []
-    CONFIG_DIR = '/home/alrashidissa/Desktop/BreastCancer/configs'
+    CONFIG_DIR = '/app/configs'
 
     if request.method == "POST":
         # Handle file upload

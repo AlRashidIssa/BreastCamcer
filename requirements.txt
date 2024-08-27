@@ -21,6 +21,7 @@ django
 gunicorn
 fastapi
 uvicorn
+mlflow
 
 # Utilities
 pytest
@@ -33,3 +34,4 @@ joblib
 
 
 gdown
+google-generativeai

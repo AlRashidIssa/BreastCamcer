@@ -24,7 +24,7 @@ COPY ./mlruns /app/mlruns
 COPY ./models /app/models
 COPY ./notebooks /app/notebooks
 COPY ./scripts /app/scripts
-COPY ./test /app/test
+COPY ./tests /app/test
 
 # Expose the port the app runs on (API Django)
 EXPOSE 8000

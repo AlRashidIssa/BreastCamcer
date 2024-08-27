@@ -29,7 +29,7 @@ def activate_virtual_environment(env_path):
 def run_training_pipeline(config, analyzer):
     messages = []
     messages.append("Starting training process...")
-    messages.append(change_directory('~/Desktop/BreastCancer/src/training'))
+    messages.append(change_directory('~/app/src/training'))
     command = ["python", "train_pipeline.py", "--config", config]
     if analyzer:
         command.append("--analyzer")
@@ -39,7 +39,7 @@ def run_training_pipeline(config, analyzer):
 def run_mlflow_pipeline(config):
     messages = []
     messages.append("MLflow configuration is enabled. Starting MLflow pipeline...")
-    messages.append(change_directory('~/Desktop/BreastCancer/src/mlflow'))
+    messages.append(change_directory('~/app/src/mlflow'))
     messages.append(run_command(f"python mlflow_pipeline.py --config {config}"))
     return messages
 
@@ -52,10 +52,10 @@ def run_main_function(config, analyzer=False, train=False, mlflow=False, mlflow_
     
     # Change to project directory
     messages.append("Changing directory to the BreastCancer project directory...")
-    messages.append(change_directory('~/Desktop/BreastCancer'))
+    messages.append(change_directory('~/app'))
 
     # Activate virtual environment
-    messages.append(activate_virtual_environment('~/Desktop/BreastCancer/env_'))
+    messages.append(activate_virtual_environment('~/app/env_'))
 
     # Validate CONFIG if --train is True
     if train and not config:
