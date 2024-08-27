@@ -1,7 +1,12 @@
 import pandas as pd
 import numpy as np
+import sys
 from typing import Tuple
 from abc import ABC, abstractmethod
+
+sys.path.append("/home/alrashid/Desktop/BreastCancer")
+
+
 from src.utils.logging import info, error
 from src.data.load_data import Download
 from src.utils.unzip_data import Unzip
@@ -139,7 +144,7 @@ class DataPipeline(IDataPipeline):
             info("Starting scaling")
             df = self.scale.call(df=df, columns=self.config.scaler_columns,
                                 method=self.config.scaler_method)
-            df.to_csv(path_or_buf="/home/alrashidissa/Desktop/BreastCancer/data/processed/processed.csv")
+            df.to_csv(path_or_buf="/home/alrashid/Desktop/BreastCancer/data/processed/processed.csv")
             info("Scaling completed successfully")
         except Exception as e:
             error(f"Error during scaling: {e}")

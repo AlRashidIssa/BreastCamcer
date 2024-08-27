@@ -4,7 +4,7 @@ import pandas as pd
 import sys
 
 
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer/")
+sys.path.append("/home/alrashid/Desktop/BreastCancer")
 from src.utils.logging import info, error, critical
 
 class ISelection(ABC):

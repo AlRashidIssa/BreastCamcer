@@ -12,7 +12,7 @@ from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier 
 from sklearn.neighbors import KNeighborsClassifier  # type: ignore
 from sklearn.naive_bayes import GaussianNB  # type: ignore
 
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer/")
+sys.path.append("/home/alrashid/Desktop/BreastCancer")
 from src.utils.logging import info, error,  critical
 
 # Define the IModel interface

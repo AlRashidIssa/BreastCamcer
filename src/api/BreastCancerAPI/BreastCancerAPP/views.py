@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect
 
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
+sys.path.append("/home/alrashid/Desktop/BreastCancer")
 
 from src.api.BreastCancerAPI.BreastCancerAPP.dev_interface import run_main_function
 from src.components.PreprocessAndPrediction import APIPredict

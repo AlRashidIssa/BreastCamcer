@@ -2,14 +2,14 @@ import google.generativeai as genai
 import os
 import sys
 from typing import List
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer/")
+sys.path.append("/home/alrashid/Desktop/BreastCancer")
 from src.entity.config import CONFIG
 
 
 # Load configuration
-name_yaml = os.listdir("/home/alrashidissa/Desktop/BreastCancer/configs")
+name_yaml = os.listdir("/home/alrashid/Desktop/BreastCancer/configs")
 yaml = name_yaml[0]
-config = CONFIG(yaml_path=f"/home/alrashidissa/Desktop/BreastCancer/configs/{yaml}")
+config = CONFIG(yaml_path=f"/home/alrashid/Desktop/BreastCancer/configs/{yaml}")
 
 # Manually set your API key
 GOOGLE_API_KEY = config.google_api_key

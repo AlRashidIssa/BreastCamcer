@@ -7,7 +7,7 @@ from abc import ABC, abstractmethod
 from typing import Dict, List, Tuple, Union, Optional, Any
 from io import StringIO
 
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
+sys.path.append("/home/alrashid/Desktop/BreastCancer")
 from src.utils.logging import info, debug, warning
 
 # Interface for Data Operations
@@ -184,7 +184,7 @@ class FeatureDistributionVisualizer(DataVisualizer):
         features (list): List of feature names to visualize.
     """
 
-    def __init__(self, data: pd.DataFrame, features: List[str], output_dir: str = "/home/alrashidissa/Desktop/BreastCancer/notebooks/prototyping"):
+    def __init__(self, data: pd.DataFrame, features: List[str], output_dir: str = "/home/alrashid/Desktop/BreastCancer/notebooks/prototyping"):
         """
         Initialize FeatureDistributionVisualizer with the dataset and features.
 
@@ -233,7 +233,7 @@ class PairplotVisualizer(DataVisualizer):
         hue (str): The column name to use for color encoding in the pairplot.
     """
 
-    def __init__(self, data: pd.DataFrame, features: List[str], hue: str, output_dir: str = "/home/alrashidissa/Desktop/BreastCancer/notebooks/prototyping"):
+    def __init__(self, data: pd.DataFrame, features: List[str], hue: str, output_dir: str = "/home/alrashid/Desktop/BreastCancer/notebooks/prototyping"):
         """
         Initialize PairplotVisualizer with the dataset, features, and hue.
 
@@ -265,7 +265,7 @@ class BoxplotVisualizer(DataVisualizer):
         features (list): List of feature names to visualize.
     """
 
-    def __init__(self, data: pd.DataFrame, features: List[str], output_dir: str = "/home/alrashidissa/Desktop/BreastCancer/notebooks/prototyping"):
+    def __init__(self, data: pd.DataFrame, features: List[str], output_dir: str = "/home/alrashid/Desktop/BreastCancer/notebooks/prototyping"):
         """
         Initialize BoxplotVisualizer with the dataset and features.
 
@@ -303,7 +303,7 @@ class BreastCancerAnalyzer:
         data (pd.DataFrame): DataFrame containing the loaded data.
     """
 
-    def __init__(self, filepath: str, output_dir: str = "/home/alrashidissa/Desktop/BreastCancer/Plots"):
+    def __init__(self, filepath: str, output_dir: str = "/home/alrashid/Desktop/BreastCancer/notebooks/prototyping"):
         """
         Initialize BreastCancerAnalyzer with the path to the dataset and output directory.
 

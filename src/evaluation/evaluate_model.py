@@ -10,7 +10,7 @@ from sklearn.metrics import (accuracy_score, precision_score, recall_score,
                              f1_score, roc_auc_score, confusion_matrix,
                              matthews_corrcoef, log_loss)
 
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
+sys.path.append("/home/alrashid/Desktop/BreastCancer")
 from src.utils.logging import info, error, critical
 
 class IMetricsEvaluator(ABC):
@@ -92,7 +92,7 @@ class MetricsEvaluator(IMetricsEvaluator):
             info(f"Log Loss: {metrics['log_loss']}")
             info("Metrics calculated successfully.")
             
-            path_plot = "/home/alrashidissa/Desktop/BreastCancer/Plots"
+            path_plot = "/home/alrashid/Desktop/BreastCancer/notebooks/prototyping"
             # Plot and save confusion matrix
             fig, ax = plt.subplots(figsize=(8, 6))
             sns.heatmap(confusion_matrix_pram, annot=True, fmt='d', cmap='Blues', ax=ax)

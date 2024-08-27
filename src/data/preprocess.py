@@ -10,7 +10,7 @@ from sklearn.preprocessing import StandardScaler as SklearnStandardScaler
 from sklearn.preprocessing import MinMaxScaler as SklearnMinMaxScaler
 from sklearn.model_selection import train_test_split
 
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer/")
+sys.path.append("/home/alrashid/Desktop/BreastCancer")
 from src.utils.logging import info, error,warning, critical, debug
 
 # Abstract base class for data ingest

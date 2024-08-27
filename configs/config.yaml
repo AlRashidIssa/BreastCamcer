@@ -25,18 +25,18 @@
 
 dataset:
   url: "https://drive.google.com/file/d/1gCvzRbsBtPT-u1LinpEesTfN5YkjzXNn/view?usp=sharing"
-  download: "/home/alrashidissa/Desktop/BreastCancer/data/raw/downloads"
+  download: "/home/alrashid/Desktop/BreastCancer/data/raw/downloads"
   name_dataset: "brestcancerset"
-  zip_path: "/home/alrashidissa/Desktop/BreastCancer/data/raw/downloads/brestcancerset.zip"
-  extract_to: "/home/alrashidissa/Desktop/BreastCancer/data/raw/extract"
-  DFP: "/home/alrashidissa/Desktop/BreastCancer/data/raw/extract/breast-cancer.csv"
+  zip_path: "/home/alrashid/Desktop/BreastCancer/data/raw/downloads/brestcancerset.zip"
+  extract_to: "/home/alrashid/Desktop/BreastCancer/data/raw/extract"
+  DFP: "/home/alrashid/Desktop/BreastCancer/data/raw/extract/breast-cancer.csv"
   target: "diagnosis"
   data_version: "1.0.0"
 
 model:
   name_model: "GradientBoostingModel"
-  model_path_s: "/home/alrashidissa/Desktop/BreastCancer/models/versioned"
-  path_model: "/home/alrashidissa/Desktop/BreastCancer/models/latest/GradientBoostingModel.pkl"
+  model_path_s: "/home/alrashid/Desktop/BreastCancer/models/versioned"
+  path_model: "/home/alrashid/Desktop/BreastCancer/models/latest/GradientBoostingModel.pkl"
   random_state: 42
 preprocess:
   handling: None
@@ -86,7 +86,7 @@ preprocess:
     M: 1
     B: 0
   fill_na: False
-  plotes_pathes: "/home/alrashidissa/Desktop/BreastCancer/notebooks/prototyping/"
+  plotes_pathes: "/home/alrashid/Desktop/BreastCancer/notebooks/prototyping/"
   test_size: 0.2
 mlflow:
   tage_name: "BCCV2"

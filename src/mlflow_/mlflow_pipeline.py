@@ -7,7 +7,7 @@ from abc import ABC, abstractmethod
 import mlflow
 import pandas as pd
 
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
+sys.path.append("/home/alrashid/Desktop/BreastCancer")
 
 from src.entity.config import CONFIG
 from src.utils.logging import critical, info
@@ -129,7 +129,7 @@ class MLflowPipeline(IMLflowPipeline):
             y_train (pd.Series): Training labels.
             y_test (pd.Series): Testing labels.
         """
-        split_dir = '/home/alrashidissa/Desktop/BreastCancer/data/processed'
+        split_dir = '/home/alrashid/Desktop/BreastCancer/data/processed'
         os.makedirs(split_dir, exist_ok=True)
 
         X_train.to_csv(os.path.join(split_dir, 'X_train.csv'), index=False)

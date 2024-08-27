@@ -30,7 +30,7 @@ def setup_logging(log_path: str):
     return logger
 
 # Log directory path for BreastCancer logs
-log_path = "/home/alrashidissa/Desktop/BreastCancer/logs/system.log"
+log_path = "/home/alrashid/Desktop/BreastCancer/logs/system.log"
 
 # Setup logging
 logger = setup_logging(log_path)

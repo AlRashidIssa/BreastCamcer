@@ -7,7 +7,7 @@ from mlflow.client import MlflowClient
 import numpy as np
 import pandas as pd
 import sys
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer/")
+sys.path.append("/home/alrashid/Desktop/BreastCancer")
 from src.utils.logging import info, critical, debug, error, warning
 from src.models.prediction import Predict
 from src.data.preprocess import (Clean, Scale)
