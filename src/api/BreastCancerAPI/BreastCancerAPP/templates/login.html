@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,15 +7,16 @@
     <title>Login - Breast Cancer Prediction</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f2f5;
-            color: #333;
+            background: url("{% static 'stock-photo-partial-view-woman-pink-breast-cancer-sign-pink-background-copy.jpeg' %}") no-repeat center center fixed;
+            background-size: cover;
+            color: #2c3e50;
         }
         header {
-            background-color: #007bff;
-            color: #fff;
+            background-color: #ffc8f0;
+            color: #f5f5f5;
             padding: 20px;
             text-align: center;
         }
@@ -43,21 +45,21 @@
         }
         button {
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #f5abf8;
             color: #fff;
             border: none;
             border-radius: 4px;
             cursor: pointer;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #f9f9f9;
         }
         footer {
             text-align: center;
             margin-top: 20px;
         }
         a {
-            color: #007bff;
+            color: #ffffff;
             text-decoration: none;
         }
         a:hover {

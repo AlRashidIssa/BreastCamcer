@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,50 +7,86 @@
     <title>Main - Breast Cancer Prediction</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f2f5;
-            color: #333;
+            background: url("{% static 'stock-photo-partial-view-woman-pink-breast-cancer-sign-pink-background-copy.jpeg' %}") no-repeat center center fixed;
+            background-size: cover;
+            color: #2c3e50;
         }
         header {
-            background-color: #007bff;
+            background-color: rgba(105, 1, 64, 0.9); /* A calming green color */
             color: #fff;
             padding: 20px;
             text-align: center;
+            font-size: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
         h1 {
             margin: 0;
+            font-size: 32px;
         }
         .container {
-            max-width: 1200px;
-            margin: 20px auto;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.85); /* Softer opacity for readability */
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .info-box {
+            margin-top: 20px;
             padding: 20px;
-            background: #fff;
+            background: rgba(230, 230, 250, 0.95); /* A soft lavender color */
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
         a {
-            color: #007bff;
+            color: #53003c; /* Match the header color */
             text-decoration: none;
+            font-weight: bold;
         }
         a:hover {
             text-decoration: underline;
         }
         footer {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 40px;
+            font-size: 16px;
+        }
+        footer a {
+            color: #fbfbfb;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Breast Cancer Prediction</h1>
+        <h1>Breast Cancer</h1>
     </header>
+
     <div class="container">
-        <p>Learn more about our project and access the source code on GitHub.</p>
-        <a href="https://github.com/AlRashidIssa/BreastCamcer" target="_blank">View on GitHub</a>
+        <div class="info-box">
+            <p>
+                Breast cancer is one of the most common cancers affecting women worldwide. Over the years, millions of women have been treated for this disease, and thanks to advancements in medical technology and treatment methods, survival rates have significantly improved. Modern technology, including early detection methods like mammography and innovative treatments, have greatly enhanced the ability of doctors to manage and treat breast cancer effectively.
+            </p>
+            <p>
+                Today, many patients diagnosed with breast cancer can achieve full recovery. Science, supported by skilled medical professionals, has made it possible to treat this condition more successfully than ever before. There's much hope, and thanks to continued research and development, the fear of breast cancer can be met with confidence in the available treatments and the promise of a better tomorrow.
+            </p>
+            <p>
+                Remember, early detection and treatment are key. Do not hesitate to consult your doctor and get regular screenings to ensure that you stay healthy and strong.
+            </p>
+        </div>
     </div>
+
     <footer>
         <a href="/login">Login</a> | <a href="/register">Register</a>
     </footer>

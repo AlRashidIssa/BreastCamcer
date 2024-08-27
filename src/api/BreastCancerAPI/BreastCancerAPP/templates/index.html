@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +7,15 @@
     <title>Breast Cancer Prediction - Index</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f2f5;
-            color: #333;
+            background: url("{% static 'stock-photo-partial-view-woman-pink-breast-cancer-sign-pink-background-copy.jpeg' %}") no-repeat center center fixed;
+            background-size: cover;
+            color: #2c3e50;
         }
         header {
-            background-color: #007bff;
+            background-color: #fb77c9;
             color: #fff;
             padding: 20px;
             text-align: center;
@@ -47,21 +49,21 @@
         }
         button {
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #fb77c9;
             color: #fff;
             border: none;
             border-radius: 4px;
             cursor: pointer;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #fb77c9;
         }
         footer {
             text-align: center;
             margin-top: 20px;
         }
         a {
-            color: #007bff;
+            color: #fb77c9;
             text-decoration: none;
         }
         a:hover {
@@ -71,21 +73,21 @@
 </head>
 <body>
     <header>
-        <h1>Breast Cancer Prediction</h1>
+        <h1>Breast Cancer</h1>
     </header>
     <div class="container">
-        <h2>Upload CSV File</h2>
+        <h2>Report</h2>
         <form action="/index/" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <label for="csv-file">Choose CSV file:</label>
+            <label for="csv-file">Sample report from lab</label>
             <input type="file" id="csv-file" name="csv-file" accept=".csv" required>
             <button type="submit">Upload</button>
         </form>
 
-        <h2>Enter Input Values</h2>
+        <h2>Report</h2>
         <form action="/index/" method="post">
             {% csrf_token %}
-            <label for="input-values">Enter input values:</label>
+            <label for="csv-file">Manual entry</label>
             <textarea id="input-values" name="input-values" rows="10" cols="50" placeholder="id,radius_mean,...,fractal_dimension_worst" required></textarea>
             <button type="submit">Submit</button>
         </form>

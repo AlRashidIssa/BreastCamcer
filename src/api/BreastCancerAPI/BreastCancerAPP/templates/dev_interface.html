@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,10 +7,12 @@
     <title>BreastCancer Project Operations</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            background: url("{% static 'stock-photo-partial-view-woman-pink-breast-cancer-sign-pink-background-copy.jpeg' %}") no-repeat center center fixed;
+            background-size: cover;
+            color: #2c3e50;
         }
         h1 {
             text-align: center;
@@ -49,7 +52,7 @@
             border-radius: 5px;
         }
         input[type="submit"]:hover {
-            background-color: #4cae4c;
+            background-color: #fb77c9;
         }
         .messages {
             border: 1px solid #ddd;
@@ -64,10 +67,10 @@
             font-size: 14px;
         }
         .messages .error {
-            color: #d9534f;
+            color: #fb77c9;
         }
         .messages .success {
-            color: #5bc0de;
+            color: #fb77c9;
         }
     </style>
 </head>
