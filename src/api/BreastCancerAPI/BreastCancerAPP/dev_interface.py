@@ -1,13 +1,14 @@
 import subprocess
 import os
-import sys
 
-def run_command(command):
+def run_command(command, output_file=None):
     result = subprocess.run(command, shell=True, capture_output=True, text=True, executable="/bin/bash")
-    if result.returncode == 0:
-        return result.stdout.strip()
-    else:
-        return f"Error: {result.stderr.strip()}"
+    output = result.stdout.strip() if result.returncode == 0 else f"Error: {result.stderr.strip()}"
+    
+    if output_file:
+        with open(output_file, 'a') as f:
+            f.write(output + '\n')
+    return output
 
 def change_directory(directory):
     try:
@@ -42,11 +43,11 @@ def run_mlflow_pipeline(config):
     messages.append(run_command(f"python mlflow_pipeline.py --config {config}"))
     return messages
 
-def run_mlflow_ui(port=8080):
+def run_mlflow_ui(port=8080, output_file="mlflow_ui_output.txt"):
     command = f"mlflow ui --port {port}"
-    return run_command(command)
+    return run_command(command, output_file=output_file)
 
-def main(config, analyzer=False, train=False, mlflow=False, mlflow_ui=False):
+def run_main_function(config, analyzer=False, train=False, mlflow=False, mlflow_ui=False):
     messages = []
     
     # Change to project directory
@@ -64,7 +65,8 @@ def main(config, analyzer=False, train=False, mlflow=False, mlflow_ui=False):
     # Run MLflow UI if requested
     if mlflow_ui:
         messages.append("Starting MLflow UI...")
-        messages.append(run_mlflow_ui())
+        output_file = "mlflow_ui_output.txt"
+        messages.append(run_command(f"mlflow ui --port 8080", output_file=output_file))
 
     # Position 1: Train only
     if train and not mlflow:
@@ -75,21 +77,3 @@ def main(config, analyzer=False, train=False, mlflow=False, mlflow_ui=False):
         messages.extend(run_mlflow_pipeline(config))
 
     return messages
-
-if __name__ == "__main__":
-    import argparse
-
-    parser = argparse.ArgumentParser(description="Run the BreastCancer project operations")
-    parser.add_argument("--config", type=str, required=False, help="Path to the configuration file")
-    parser.add_argument("--analyzer", action="store_true", help="Enable the analyzer")
-    parser.add_argument("--train", action="store_true", help="Enable training")
-    parser.add_argument("--mlflow", action="store_true", help="Enable MLflow")
-    parser.add_argument("--mlflow-ui", action="store_true", help="Run the MLflow UI")
-
-    args = parser.parse_args()
-
-    output_messages = main(config=args.config, analyzer=args.analyzer, train=args.train, mlflow=args.mlflow, mlflow_ui=args.mlflow_ui)
-
-    # Print or log the collected messages
-    for message in output_messages:
-        print(message)

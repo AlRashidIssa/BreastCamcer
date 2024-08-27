@@ -1,74 +1,64 @@
 from abc import ABC, abstractmethod
 from typing import Any
 
+import mlflow
+import mlflow.pyfunc
+from mlflow.client import MlflowClient
 import numpy as np
 import pandas as pd
 import sys
 sys.path.append("/home/alrashidissa/Desktop/BreastCancer/")
 from src.utils.logging import info, critical, debug, error, warning
-from src.models.prediction import LoadModel, Predict
-from src.data.preprocess import (Clean,
-                                 Scale)
-
+from src.models.prediction import Predict
+from src.data.preprocess import (Clean, Scale)
 from src.features.feature_selection import Selection
+
+client = MlflowClient()
+
+# Set the model name dynamically or statically
+model_name = "MyModel"  # Set this to your model's name
+
+# Get the latest version of the model
+latest_version = client.get_latest_versions(model_name, stages=["None"])[-1].version
+
+# Transition the latest version to 'Production'
+client.transition_model_version_stage(
+    name=model_name,
+    version=latest_version,
+    stage="Production",
+    archive_existing_versions=True
+)
+
+# Load the latest production version of the model
+model = mlflow.pyfunc.load_model(f"models:/{model_name}/Production")
 
 class IAPIPredict(ABC):
     """
     Abstract base class for making predictions using a pre-trained model.
-
-    This class defines a common interface for all prediction implementations.
     """
 
     @abstractmethod
-    def call(self, model_path: str, X: pd.DataFrame) -> Any:
+    def call(self, X: pd.DataFrame) -> Any:
         """
         Execute the prediction process.
-
-        Args:
-            model_path (str): Path to the pre-trained model file.
-            X (pd.DataFrame): Input features for prediction.
-
-        Returns:
-            Any: Prediction results.
-
-        Raises:
-            NotImplementedError: If the method is not implemented in a subclass.
         """
         pass
 
 class APIPredict(IAPIPredict):
     """
     Concrete implementation of IAPIPredict for making predictions.
-
-    This class performs the following steps:
-    1. Selection of relevant features.
-    2. Data cleaning and preprocessing.
-    3. Data scaling using Min-Max scaling.
-    4. Loading the pre-trained model.
-    5. Making predictions using the model.
     """
 
     def call(self, model_path: str, X: pd.DataFrame) -> Any:
         """
         Execute the prediction process.
-    
-        Args:
-            model_path (str): Path to the pre-trained model file.
-            X (pd.DataFrame): Input features for prediction.
-    
-        Returns:
-            Any: Prediction results.
-    
-        Raises:
-            FileNotFoundError: If the model file is not found.
-            ValueError: If the input data is invalid.
-            Exception: For any other unexpected errors.
         """
         try:
             if not isinstance(X, pd.DataFrame):
                 raise ValueError("Input X must be a pandas DataFrame.")
     
             info("Starting prediction process.")    
+            
             # Step 1: Feature selection
             info("Selecting relevant features.")
             df = Selection().call(X, drop_columns=["id"])
@@ -78,13 +68,13 @@ class APIPredict(IAPIPredict):
             df = Clean().call(df=df, 
                               drop_duplicates=False,
                               outliers=False,
-                              handl_missing=False,
+                              handle_missing=False,
                               fill_na=True,
                               fill_value=0)
     
             # Step 3: Load the pre-trained model
-            info(f"Loading model from {model_path}.")
-            model = LoadModel().call(mdoel_path=model_path)
+            info(f"Loading model from {f"models:/{model_name}/Production"}.")
+            model = mlflow.pyfunc.load_model(f"models:/{model_name}/Production")
             
             if model is None:
                 raise FileNotFoundError(f"Model file not found at {model_path}.")
@@ -98,7 +88,6 @@ class APIPredict(IAPIPredict):
             elif np.all(predictions == 1):
                 predictions = "Malignant"
 
-    
             info("Prediction process completed successfully.")
             return predictions
     
@@ -111,6 +100,3 @@ class APIPredict(IAPIPredict):
         except Exception as e:
             critical(f"An unexpected error occurred: {e}")
             raise
-
-
-        
