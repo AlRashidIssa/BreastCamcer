@@ -4,7 +4,7 @@ import zipfile
 import os
 import sys
 
-sys.path.append("/app")
+sys.path.append("/BreastCancer")
 from src.utils.logging import critical, error, info, warning
 
 class IUnzip(ABC):

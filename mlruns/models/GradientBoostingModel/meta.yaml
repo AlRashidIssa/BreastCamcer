@@ -1,6 +1,5 @@
-aliases:
-  champion: '1'
-creation_timestamp: 1724728451356
+aliases: {}
+creation_timestamp: 1724857898144
 description: ''
-last_updated_timestamp: 1724770263259
+last_updated_timestamp: 1724858127650
 name: GradientBoostingModel

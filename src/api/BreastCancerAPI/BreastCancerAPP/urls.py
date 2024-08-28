@@ -7,5 +7,5 @@ urlpatterns = [
     path('register/', views.register_view, name='register'),
     path('index/', views.index, name='index'),
     path('results/', views.result, name='results'),
-    path('dev_interface/', views.dev_interface, name="dev_interface")
+    path('run-command/', views.command_page, name='run_command')
 ]

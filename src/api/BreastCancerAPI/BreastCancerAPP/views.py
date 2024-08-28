@@ -1,8 +1,10 @@
 import os
+import subprocess
 import sys
 import threading
 from typing import Any
 
+from django.http import JsonResponse, StreamingHttpResponse
 import numpy as np
 import pandas as pd
 
@@ -10,15 +12,13 @@ from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
 
-sys.path.append("/app")
-
-from src.api.BreastCancerAPI.BreastCancerAPP.dev_interface import run_main_function
+sys.path.append("/home/alrashid/Desktop/BreastCancer")
 from src.components.PreprocessAndPrediction import APIPredict
 from src.prompt_engineer.genmi_google import BreastCancerDiagnosis
 from src.utils.logging import critical
 from .forms import LoginForm, RegisterForm
-
 
 def main_page(request):
     """
@@ -163,38 +163,19 @@ def predict(X: pd.DataFrame) -> Any:
 
 
 
-@login_required
-def dev_interface(request):
-    messages_output = []
-    CONFIG_DIR = '/app/configs'
+def stream_output(command):
+    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, bufsize=1, universal_newlines=True)
+    stdout, stderr = process.communicate()
+    return stdout + stderr
 
-    if request.method == "POST":
-        # Handle file upload
-        config_file = request.FILES.get('config')
-        if config_file:
-            config_path = os.path.join(CONFIG_DIR, config_file.name)
-            with open(config_path, 'wb+') as destination:
-                for chunk in config_file.chunks():
-                    destination.write(chunk)
+def run_command(request):
+    command = request.GET.get('command', '')
+    if command:
+        output = stream_output(command)
+        return StreamingHttpResponse(output, content_type='text/plain')
+    return StreamingHttpResponse("No command provided.", content_type='text/plain')
 
-            # Prepare parameters for background processing
-            analyzer = 'analyzer' in request.POST
-            train = 'train' in request.POST
-            mlflow = 'mlflow' in request.POST
-            mlflow_ui = 'mlflow-ui' in request.POST
+def command_page(request):
+    return render(request, 'command.html')
 
-            # Run the main function in a background thread
-            def run_in_background():
-                messages = run_main_function(config_path, analyzer, train, mlflow, mlflow_ui)
-                # You can save messages to a file or database for retrieval
-                with open('background_task_output.txt', 'a') as f:
-                    for message in messages:
-                        f.write(message + '\n')
 
-            thread = threading.Thread(target=run_in_background)
-            thread.start()
-
-            # Immediate feedback
-            messages_output.append('Processing has started in the background. URL for MLflow UI http://127.0.0.1:8080/')
-
-    return render(request, 'dev_interface.html', {'messages': messages_output})

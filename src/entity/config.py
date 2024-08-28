@@ -1,7 +1,7 @@
 import os
 import sys
 from typing import Dict, Any, List, Union
-sys.path.append("/app")
+sys.path.append("/BreastCancer")
 from src.utils.read_yaml import ReadYaml
 
 class CONFIG:

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 echo "Al Rashid Issa as a Machine Learning Engineer, He's just starting out!"
 echo "Activating virtual environment..."
 
@@ -11,7 +10,7 @@ cd ~/Desktop/BreastCancer || { echo "Error: Failed to change directory to ~/Desk
 source env_/bin/activate || { echo "Error: Failed to activate the virtual environment"; exit 1; }
 
 # Initialize variables
-CONFIG="/home/alrashidissa/Desktop/BreastCancer/configs/config.yaml"
+CONFIG="/BreastCancer/configs/config.yaml"
 ANALAYZR="False"
 TRAIN="False"
 MLFLOW="False"
@@ -56,6 +55,13 @@ fi
 start_django_server() {
     echo "Starting Django API server..."
     cd ~/Desktop/BreastCancer/src/api/BreastCancerAPI || { echo "Error: Failed to change directory to ~/Desktop/BreastCancer/src/api/BreastCancerAPI"; exit 1; }
+
+    # Check if port 8000 is in use
+    if lsof -i:8000 > /dev/null; then
+        echo "Error: Port 8000 is already in use. Please stop the existing Django server or use a different port."
+        exit 1
+    fi
+
     echo "Running Django server on port 8000..."
     python manage.py runserver 8000 &
 }

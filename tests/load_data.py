@@ -1,6 +1,6 @@
 import unittest
 import sys
-sys.path.append("/home/alrashidissa/Desktop/BreastCancer")
+sys.path.append("/BreastCancer")
 
 from unittest.mock import patch, MagicMock
 from pathlib import Path

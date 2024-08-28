@@ -3,7 +3,7 @@ import sys
 from typing import Dict, Any
 from sklearn.base import BaseEstimator
 
-sys.path.append("/app")
+sys.path.append("/BreastCancer")
 from src.utils.logging import info, error
 
 def get_model_parameters(model: BaseEstimator) -> Dict[Any, Any]:

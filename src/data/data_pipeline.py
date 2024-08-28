@@ -4,7 +4,7 @@ import sys
 from typing import Tuple
 from abc import ABC, abstractmethod
 
-sys.path.append("/app")
+sys.path.append("/BreastCancer")
 
 
 from src.utils.logging import info, error
@@ -144,7 +144,7 @@ class DataPipeline(IDataPipeline):
             info("Starting scaling")
             df = self.scale.call(df=df, columns=self.config.scaler_columns,
                                 method=self.config.scaler_method)
-            df.to_csv(path_or_buf="/app/data/processed/processed.csv")
+            df.to_csv(path_or_buf="/home/alrashid/Desktop/BreastCancer/data/processed/processed.csv")
             info("Scaling completed successfully")
         except Exception as e:
             error(f"Error during scaling: {e}")

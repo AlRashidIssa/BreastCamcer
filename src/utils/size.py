@@ -3,7 +3,7 @@ import os
 import numpy as np # type: ignore
 
 import sys
-sys.path.append("/app")
+sys.path.append("/BreastCancer")
 from src.utils.logging import critical, error, info
 
 
@@ -37,9 +37,9 @@ class Size(ISize):
                 raise FileNotFoundError(f"Path does not exist or is not a file: {path}")
 
             # Get file size in MB
-            file_size = (os.path.getsize(path) / 1024) / 1024  # Size in MB
-            info(f"File size: {file_size:.2f} MB")
-            return f"File size: {file_size:.2f} MB"
+            file_size = (os.path.getsize(path) / 1024)   # Size in KB
+            info(f"File size: {file_size:.2f} KB")
+            return f"File size: {file_size:.2f} KB"
 
         except FileNotFoundError as fnf_error:
             error(f"FileNotFoundError: {fnf_error}")

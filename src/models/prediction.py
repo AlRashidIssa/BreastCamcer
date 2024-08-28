@@ -3,10 +3,10 @@ import pandas as pd
 from sklearn.base import BaseEstimator
 from typing import Any, Optional
 import numpy as np
-import joblib  # Assuming joblib is used for loading the model
+import joblib
 
 import sys
-sys.path.append("/app")
+sys.path.append("/home/alrashid/Desktop/BreastCancer")
 from src.utils.logging import critical, error, debug, info, warning
 
 class IPredict(ABC):

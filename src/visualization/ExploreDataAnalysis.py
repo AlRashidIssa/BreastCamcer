@@ -7,7 +7,7 @@ from abc import ABC, abstractmethod
 from typing import Dict, List, Tuple, Union, Optional, Any
 from io import StringIO
 
-sys.path.append("/app")
+sys.path.append("/BreastCancer")
 from src.utils.logging import info, debug, warning
 
 # Interface for Data Operations
@@ -118,7 +118,7 @@ class DataVisualizer(ABC):
     This class provides a structure for visualizing data and saving plots to files.
     """
 
-    def __init__(self, data: pd.DataFrame, output_dir: str = "/app/notebooks/prototyping"):
+    def __init__(self, data: pd.DataFrame, output_dir: str = "/BreastCancer/notebooks/prototyping"):
         """
         Initialize DataVisualizer with the dataset and output directory.
 
@@ -184,7 +184,7 @@ class FeatureDistributionVisualizer(DataVisualizer):
         features (list): List of feature names to visualize.
     """
 
-    def __init__(self, data: pd.DataFrame, features: List[str], output_dir: str = "/app/notebooks/prototyping"):
+    def __init__(self, data: pd.DataFrame, features: List[str], output_dir: str = "/BreastCancer/notebooks/prototyping"):
         """
         Initialize FeatureDistributionVisualizer with the dataset and features.
 
@@ -233,7 +233,7 @@ class PairplotVisualizer(DataVisualizer):
         hue (str): The column name to use for color encoding in the pairplot.
     """
 
-    def __init__(self, data: pd.DataFrame, features: List[str], hue: str, output_dir: str = "/app/notebooks/prototyping"):
+    def __init__(self, data: pd.DataFrame, features: List[str], hue: str, output_dir: str = "/BreastCancer/notebooks/prototyping"):
         """
         Initialize PairplotVisualizer with the dataset, features, and hue.
 
@@ -265,7 +265,7 @@ class BoxplotVisualizer(DataVisualizer):
         features (list): List of feature names to visualize.
     """
 
-    def __init__(self, data: pd.DataFrame, features: List[str], output_dir: str = "/app/notebooks/prototyping"):
+    def __init__(self, data: pd.DataFrame, features: List[str], output_dir: str = "/BreastCancer/notebooks/prototyping"):
         """
         Initialize BoxplotVisualizer with the dataset and features.
 
@@ -303,7 +303,7 @@ class BreastCancerAnalyzer:
         data (pd.DataFrame): DataFrame containing the loaded data.
     """
 
-    def __init__(self, filepath: str, output_dir: str = "/app/notebooks/prototyping"):
+    def __init__(self, filepath: str, output_dir: str = "/BreastCancer/notebooks/prototyping"):
         """
         Initialize BreastCancerAnalyzer with the path to the dataset and output directory.
 
@@ -366,8 +366,8 @@ class BreastCancerAnalyzer:
 
 # Example Usage
 if __name__ == "__main__":
-    output_dir = "/app/notebooks/prototyping"
-    analyzer = BreastCancerAnalyzer("/app/Dataset/extract/breast-cancer.csv", output_dir)
+    output_dir = "/BreastCancer/notebooks/prototyping"
+    analyzer = BreastCancerAnalyzer("/BreastCancer/Dataset/extract/breast-cancer.csv", output_dir)
     analyzer.load_data()
     data_inspected = analyzer.inspect_data()
     analyzer.analyze()

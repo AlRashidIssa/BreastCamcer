@@ -4,7 +4,7 @@ import sys
 from abc import ABC, abstractmethod
 from typing import Dict, Any
 
-sys.path.append("/app")
+sys.path.append("/BreastCancer")
 from src.utils.logging import error, info
 
 

@@ -5,15 +5,15 @@ import numpy as np
 import pandas as pd
 import sys
 
-sys.path.append("/app")
+sys.path.append("/home/alrashid/Desktop/BreastCancer")
 from src.utils.logging import info, critical
 from src.models.prediction import Predict, LoadModel
 from src.data.preprocess import Clean, Scale
 from src.features.feature_selection import Selection
-
+print("Hello")
 # Path to the latest model version
-models_paths = os.listdir("/app/models/versioned")
-model_path = os.path.join("/app/models/versioned", models_paths[-1])
+models_paths = os.listdir("/home/alrashid/Desktop/BreastCancer/models/versioned")
+model_path = os.path.join("/home/alrashid/Desktop/BreastCancer/models/versioned", models_paths[-1])
 
 class IAPIPredict(ABC):
     """
