@@ -24,16 +24,29 @@ while [[ "$#" -gt 0 ]]; do
             shift
             ;;
         --analyzer)
-            ANALAYZR="True"
-            echo "Analyzer enabled."
+            ANALAYZR="$2"
+            if [[ "$ANALAYZR" != "True" && "$ANALAYZR" != "False" ]]; then
+                echo "Error: --analyzer must be followed by 'True' or 'False'"
+                exit 1
+            fi
+            echo "Analyzer set to: $ANALAYZR"
+            shift
             ;;
         --train)
             TRAIN="$2"
+            if [[ "$TRAIN" != "True" && "$TRAIN" != "False" ]]; then
+                echo "Error: --train must be followed by 'True' or 'False'"
+                exit 1
+            fi
             echo "Training set to: $TRAIN"
             shift
             ;;
         --mlflow)
             MLFLOW="$2"
+            if [[ "$MLFLOW" != "True" && "$MLFLOW" != "False" ]]; then
+                echo "Error: --mlflow must be followed by 'True' or 'False'"
+                exit 1
+            fi
             echo "MLflow set to: $MLFLOW"
             shift
             ;;
@@ -52,19 +65,19 @@ if [ "$TRAIN" = "True" ] && [ -z "$CONFIG" ]; then
 fi
 
 # Function to start the Django server
-start_django_server() {
-    echo "Starting Django API server..."
-    cd ~/Desktop/BreastCancer/src/api/BreastCancerAPI || { echo "Error: Failed to change directory to ~/Desktop/BreastCancer/src/api/BreastCancerAPI"; exit 1; }
+#start_django_server() {
+#    echo "Starting Django API server..."
+#    cd ~/Desktop/BreastCancer/src/api/BreastCancerAPI || { echo "Error: Failed to change directory to ~/Desktop/BreastCancer/src/api/BreastCancerAPI"; exit 1; }
 
-    # Check if port 8000 is in use
-    if lsof -i:8000 > /dev/null; then
-        echo "Error: Port 8000 is already in use. Please stop the existing Django server or use a different port."
-        exit 1
-    fi
+#    # Check if port 8000 is in use
+#    if lsof -i:8000 > /dev/null; then
+#        echo "Error: Port 8000 is already in use. Please stop the existing Django server or use a different port."
+#        exit 1
+#    fi
 
-    echo "Running Django server on port 8000..."
-    python manage.py runserver 8000 &
-}
+#    echo "Running Django server on port 8000..."
+#    python manage.py runserver 8000 &
+#}
 
 # Position 1: Train only
 if [ "$TRAIN" = "True" ] && [ "$MLFLOW" = "False" ]; then
@@ -77,7 +90,7 @@ if [ "$TRAIN" = "True" ] && [ "$MLFLOW" = "False" ]; then
         echo "Running train_pipeline.py with --config argument"
         python train_pipeline.py --config "$CONFIG"
     fi
-    start_django_server
+#    start_django_server
     exit 0
 fi
 
@@ -85,18 +98,18 @@ fi
 if [ "$TRAIN" = "True" ] && [ "$MLFLOW" = "True" ]; then
     echo "MLflow configuration is enabled. Starting MLflow pipeline..."
     echo "Running mlflow_pipeline.py with --config argument..."
-    cd ~/Desktop/BreastCancer/src/mlflow || { echo "Error: Failed to change directory to ~/Desktop/BreastCancer/src/mlflow"; exit 1; }
+    cd ~/Desktop/BreastCancer/src/mlflow_ || { echo "Error: Failed to change directory to ~/Desktop/BreastCancer/src/mlflow"; exit 1; }
     python mlflow_pipeline.py --config "$CONFIG"
-    start_django_server
+#    start_django_server
     exit 0
 fi
 
 # Position 4: API only
-if [ "$TRAIN" = "False" ] && [ "$MLFLOW" = "False" ]; then
-    echo "No training or MLflow specified. Starting Django API server..."
-    start_django_server
-    exit 0
-fi
+#if [ "$TRAIN" = "False" ] && [ "$MLFLOW" = "False" ]; then
+#    echo "No training or MLflow specified. Starting Django API server..."
+#    start_django_server
+#    exit 0
+#fi
 
 # No valid options provided
 echo "Error: No valid options provided. Exiting."

